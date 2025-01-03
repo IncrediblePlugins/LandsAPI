@@ -13,8 +13,9 @@ import java.util.UUID;
 
 /**
  * Called whenever the relationship between lands or nations changes.
+ * This is not called when an {@link me.angeschossen.lands.api.relations.RelationRequest} is sent, but rather when it is accepted by the receiver.
  */
-public class MemberHolderRelationChangedEvent extends MemberHolderEvent implements Cancellable {
+public class MemberHolderRelationChangeEvent extends MemberHolderEvent implements Cancellable {
 
     public static final HandlerList handlerList = new HandlerList();
 
@@ -29,7 +30,7 @@ public class MemberHolderRelationChangedEvent extends MemberHolderEvent implemen
      * @param target    the target land or nation
      * @param relation  the new relation status
      */
-    public MemberHolderRelationChangedEvent(@NotNull MemberHolder initiator, @NotNull MemberHolder target, @NotNull Relation relation) {
+    public MemberHolderRelationChangeEvent(@NotNull MemberHolder initiator, @NotNull MemberHolder target, @NotNull Relation relation) {
         super(initiator);
 
         this.target = Checks.requireNonNull(target, "target");
