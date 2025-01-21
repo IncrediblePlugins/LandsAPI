@@ -63,7 +63,7 @@ public interface WarStats {
     int getDeaths();
 
     /**
-     * Modify points of team.
+     * Modify points of the team.
      *
      * @param mod Can be positive or negative
      */

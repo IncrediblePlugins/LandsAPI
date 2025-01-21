@@ -43,13 +43,13 @@ public interface RoleFlag extends Flag<RoleFlag>, DefaultStateFlag<RoleFlag> {
     /**
      * Check whether or not this flag is toggleable by the nation of the land.
      * This only applied to the nation role.
-     * @return true, if this flag is toggleable by the nation.
+     * @return true, if this flag is only toggleable by the nation.
      */
     boolean isToggleableByNation();
 
     /**
      * Set whether or not this flag should be toggleable by the nation for the nation role.
-     * @param toggleable If true, nations can decide if player's of the nation have this flag in all lands of the nation.
+     * @param toggleable If true, nations can decide if player's of the nation have this flag in all lands of the nation. The lands itself won't be able the change the state for this flag.
      * @return instance of this flag
      */
     @NotNull RoleFlag setToggleableByNation(boolean toggleable);
