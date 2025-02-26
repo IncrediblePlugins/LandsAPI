@@ -6,7 +6,7 @@ import com.github.angeschossen.pluginframework.api.events.ExpressionEntity;
 import com.github.angeschossen.pluginframework.api.exceptions.PlayerUntrustedException;
 import me.angeschossen.lands.api.flags.type.NaturalFlag;
 import me.angeschossen.lands.api.flags.type.RoleFlag;
-import me.angeschossen.lands.api.land.rental.RentalOffer;
+import me.angeschossen.lands.api.land.rental.offer.base.RentalOfferBase;
 import me.angeschossen.lands.api.player.LandPlayer;
 import me.angeschossen.lands.api.player.invite.Invite;
 import me.angeschossen.lands.api.role.Role;
@@ -326,7 +326,7 @@ public interface Area extends ExpressionEntity, TaxHolder, SystemFlagStatesHolde
      * @return null, if area isn't setup to be rented or sold
      */
     @Nullable
-    RentalOffer getRentalOffer();
+    RentalOfferBase getRentalOffer();
 
     /**
      * Set role for a trusted player.

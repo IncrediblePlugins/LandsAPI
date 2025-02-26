@@ -3,7 +3,7 @@ package me.angeschossen.lands.api.events.rent;
 import com.github.angeschossen.pluginframework.api.utils.Checks;
 import me.angeschossen.lands.api.events.player.area.PlayerAreaEvent;
 import me.angeschossen.lands.api.land.Area;
-import me.angeschossen.lands.api.land.rental.RentalOffer;
+import me.angeschossen.lands.api.land.rental.offer.base.RentalOfferBase;
 import me.angeschossen.lands.api.player.LandPlayer;
 import org.bukkit.event.Cancellable;
 import org.jetbrains.annotations.NotNull;
@@ -43,7 +43,7 @@ public abstract class RentalEvent extends PlayerAreaEvent implements Cancellable
      * @return never null
      */
     @NotNull
-    public RentalOffer getOffer() {
+    public RentalOfferBase getOffer() {
         return Objects.requireNonNull(area.getRentalOffer(), "expected rental offer");
     }
 
