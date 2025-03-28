@@ -1,14 +1,15 @@
 package me.angeschossen.lands.api.events.war.captureflag;
 
+import me.angeschossen.lands.api.events.war.captureflag.base.CaptureFlagEvent;
 import me.angeschossen.lands.api.war.captureflag.CaptureFlag;
-import org.bukkit.event.Cancellable;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * Called whenever a capture flag has been captured successfully.
+ * If you want to prevent a team from capturing a flag, cancel {@link CaptureFlagProgressEvent} instead.
  */
-public class CaptureFlagCapturedEvent extends CaptureFlagEvent implements Cancellable {
+public class CaptureFlagCapturedEvent extends CaptureFlagEvent {
 
     public static HandlerList handlerList = new HandlerList();
 

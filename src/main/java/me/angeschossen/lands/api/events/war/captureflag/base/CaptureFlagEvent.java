@@ -1,10 +1,9 @@
-package me.angeschossen.lands.api.events.war.captureflag;
+package me.angeschossen.lands.api.events.war.captureflag.base;
 
 import com.google.common.collect.ImmutableMap;
 import me.angeschossen.lands.api.events.war.WarEvent;
 import me.angeschossen.lands.api.player.LandPlayer;
 import me.angeschossen.lands.api.war.captureflag.CaptureFlag;
-import org.bukkit.event.Cancellable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -14,9 +13,8 @@ import java.util.UUID;
 /**
  * Used for events that effect a capture flag.
  */
-public abstract class CaptureFlagEvent extends WarEvent implements Cancellable {
+public abstract class CaptureFlagEvent extends WarEvent  {
     protected final @Nullable LandPlayer player;
-    private boolean cancelled;
     protected final @NotNull CaptureFlag captureFlag;
 
     /**
@@ -39,16 +37,6 @@ public abstract class CaptureFlagEvent extends WarEvent implements Cancellable {
     @Nullable
     public LandPlayer getLandPlayer() {
         return player;
-    }
-
-    @Override
-    public boolean isCancelled() {
-        return this.cancelled;
-    }
-
-    @Override
-    public void setCancelled(boolean cancelled) {
-        this.cancelled = cancelled;
     }
 
     @Override
