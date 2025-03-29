@@ -13,18 +13,18 @@ import org.jetbrains.annotations.NotNull;
 public class CaptureFlagProgressEvent extends CaptureFlagCancellableEvent {
     public static HandlerList handlerList = new HandlerList();
 
-    private final @NotNull WarTeam progressorTeam;
+    private @NotNull WarTeam progressor;
 
     /**
      * Create instance of this event.
      *
-     * @param captureFlag    the flag that is being captured
-     * @param progressorTeam the progressor
+     * @param captureFlag the flag that is being captured
+     * @param progressor  the progressor
      */
-    public CaptureFlagProgressEvent(@NotNull CaptureFlag captureFlag, @NotNull WarTeam progressorTeam) {
+    public CaptureFlagProgressEvent(@NotNull CaptureFlag captureFlag, @NotNull WarTeam progressor) {
         super(captureFlag, null);
 
-        this.progressorTeam = Checks.requireNonNull(progressorTeam, "progressorTeam");
+        this.progressor = Checks.requireNonNull(progressor, "progressorTeam");
     }
 
     /**
@@ -32,8 +32,20 @@ public class CaptureFlagProgressEvent extends CaptureFlagCancellableEvent {
      *
      * @return if team equals {@link WarTeam#DEFENDER}, the defenders are capturing the flag back. Will never be {@link WarTeam#NEUTRAL}
      */
-    public @NotNull WarTeam getProgressorTeam() {
-        return progressorTeam;
+    public @NotNull WarTeam getProgressor() {
+        return progressor;
+    }
+
+    /**
+     * Set the progressor team. The progress will count for their side.
+     *
+     * @param progressor must be either {@link WarTeam#ATTACKER} or {@link WarTeam#DEFENDER}
+     */
+    public void setProgressor(@NotNull WarTeam progressor) {
+        Checks.requireNonNull(progressor, "progressor");
+        progressor.ensureIsAttackerOrDefender();
+
+        this.progressor = progressor;
     }
 
     public static HandlerList getHandlerList() {

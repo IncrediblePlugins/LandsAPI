@@ -56,6 +56,15 @@ public interface CaptureFlag extends ExpressionEntity {
     void setSecondsToHold(long secondsToHold);
 
     /**
+     * Modify the capture progress.
+     *
+     * @param progressor the team that should progress
+     * @param progress   either {@link WarTeam#ATTACKER} or {@link WarTeam#DEFENDER}
+     * @return false, if progress doesn't change the current progress or progress was cancelled by a 3rd party plugin
+     */
+    boolean modifyProgress(@NotNull WarTeam progressor, float progress);
+
+    /**
      * Break this flag.
      *
      * @param player   if a player broke that flag

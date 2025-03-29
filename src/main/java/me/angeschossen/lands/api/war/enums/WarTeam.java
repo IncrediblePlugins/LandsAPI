@@ -18,4 +18,10 @@ public enum WarTeam {
     public WarTeam getOpposite() {
         return this == ATTACKER ? DEFENDER : this == DEFENDER ? ATTACKER : NEUTRAL;
     }
+
+    public void ensureIsAttackerOrDefender() {
+        if (this != ATTACKER && this != DEFENDER) {
+            throw new IllegalArgumentException("Must be an attacker or defender");
+        }
+    }
 }
