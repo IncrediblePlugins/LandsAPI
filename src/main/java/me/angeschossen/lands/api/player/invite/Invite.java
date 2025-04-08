@@ -3,13 +3,13 @@ package me.angeschossen.lands.api.player.invite;
 import com.github.angeschossen.pluginframework.api.holder.Changeable;
 import me.angeschossen.lands.api.land.Land;
 import me.angeschossen.lands.api.player.LandPlayer;
-import me.angeschossen.lands.api.utils.TrustResult;
+import me.angeschossen.lands.api.player.invite.result.InviteResult;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 
-public interface Invite extends Changeable {
+public interface Invite<T extends InviteResult> extends Changeable {
 
     /**
      * Get the result of the acceptance of this invite.
@@ -46,7 +46,7 @@ public interface Invite extends Changeable {
      * @param player The player that should get a response in chat about this acceptance
      * @return false, if the invite fails because of max members permission (lands.members.number).
      */
-    TrustResult accept(@Nullable LandPlayer player);
+    @NotNull CompletableFuture<T> accept(@NotNull LandPlayer player);
 
     /**
      * Deny this invite.

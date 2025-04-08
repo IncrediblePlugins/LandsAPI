@@ -39,7 +39,9 @@ public interface CaptureFlag extends ExpressionEntity {
      * @return either {@link WarTeam#ATTACKER} or {@link WarTeam#DEFENDER}
      */
     @NotNull
-    WarTeam getTeam();
+    WarTeam getPlacedByTeam();
+
+    @Nullable WarTeam getProgressingTeam();
 
     /**
      * Get amount of seconds that the flag must be hold.

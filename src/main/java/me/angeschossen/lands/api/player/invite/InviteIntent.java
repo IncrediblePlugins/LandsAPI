@@ -8,5 +8,9 @@ public enum InviteIntent {
     /**
      * The land wants to set a new owner.
      */
-    OWNER
+    OWNER,
+    /**
+     * The land wants to merge another land into theirs.
+     */
+    MERGE
 }

@@ -1,6 +1,6 @@
-package me.angeschossen.lands.api.utils;
+package me.angeschossen.lands.api.player.invite.result;
 
-public enum TrustResult {
+public enum TrustResult implements InviteResult{
     /**
      * A player tried to trust himself.
      */
@@ -64,6 +64,7 @@ public enum TrustResult {
      */
     SUCCESS_TRUSTED;
 
+    @Override
     public boolean isSuccess(){
         return this == SUCCESS_INVITED || this == SUCCESS_TRUSTED;
     }

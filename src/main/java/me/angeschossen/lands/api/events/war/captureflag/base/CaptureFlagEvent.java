@@ -13,20 +13,30 @@ import java.util.UUID;
 /**
  * Used for events that effect a capture flag.
  */
-public abstract class CaptureFlagEvent extends WarEvent  {
+public abstract class CaptureFlagEvent extends WarEvent {
     protected final @Nullable LandPlayer player;
     protected final @NotNull CaptureFlag captureFlag;
 
     /**
      * Constructor
+     *
      * @param captureFlag the affected capture flag
-     * @param player if null, no player is involved in triggering this event
+     * @param player      if null, no player is involved in triggering this event
      */
     public CaptureFlagEvent(@NotNull CaptureFlag captureFlag, @Nullable LandPlayer player) {
         super(captureFlag.getWar());
 
         this.player = player;
         this.captureFlag = captureFlag;
+    }
+
+    /**
+     * Get the flag that is affected by this event.
+     *
+     * @return never null
+     */
+    public @NotNull CaptureFlag getCaptureFlag() {
+        return captureFlag;
     }
 
     /**
