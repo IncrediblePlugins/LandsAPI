@@ -88,6 +88,8 @@ public class MemberHolderRelationChangeEvent extends MemberHolderEvent implement
         super.setExpressionVariables(builder);
 
         target.setExpressionVariables("target_" + target.getExpressionPrefix(), builder, null);
+        builder.put("relation_current", getCurrentRelation().toString())
+                .put("relation_new", getNewRelation().toString());
     }
 
     @Override
