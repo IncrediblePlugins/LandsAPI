@@ -20,5 +20,14 @@ public enum RentalType {
      * The sub area or land is sold.
      * See {@link SoldState}
      */
-    SOLD
+    SOLD;
+
+    /**
+     * Check if rental is completed.
+     *
+     * @return true if completed
+     */
+    public boolean isCompleted() {
+        return this == SOLD || this == RENTED;
+    }
 }
