@@ -2,7 +2,6 @@ package me.angeschossen.lands.api.war;
 
 import com.github.angeschossen.applicationframework.api.util.ULID;
 import com.github.angeschossen.pluginframework.api.holder.Changeable;
-import com.github.angeschossen.pluginframework.api.player.PlayerData;
 import com.github.angeschossen.pluginframework.api.player.PlayerDataBase;
 import me.angeschossen.lands.api.memberholder.MemberHolder;
 import me.angeschossen.lands.api.player.LandPlayer;
@@ -18,6 +17,14 @@ import java.util.concurrent.CompletableFuture;
 import java.util.function.Function;
 
 public interface WarState extends Changeable {
+
+    /**
+     * Check if the current server should tick this war.
+     * Only one server should return true, if you use Redis.
+     *
+     * @return true if the current server should tick this war
+     */
+    boolean shouldServerTick();
 
     /**
      * Called each time a land or nation object of this war needed to be recreated because of a Redis update.

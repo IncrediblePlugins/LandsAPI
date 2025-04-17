@@ -18,7 +18,7 @@ import java.util.concurrent.CompletableFuture;
 
 public interface War extends ExpressionEntity, WarState {
 
-    void updateStats(ActiveWarStats statsAtt, ActiveWarStats statsDef);
+    void updateStats(@NotNull ActiveWarStats statsAtt,@NotNull  ActiveWarStats statsDef);
 
     /**
      * Add an online player to this war.
