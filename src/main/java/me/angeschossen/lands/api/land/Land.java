@@ -12,6 +12,7 @@ import me.angeschossen.lands.api.war.War;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -54,6 +55,12 @@ public interface Land extends MemberHolder, SystemFlagStatesHolder {
      */
     @NotNull
     Collection<? extends Container> getContainers();
+
+    /**
+     * Get the inventory of the storage.
+     * @return never null
+     */
+    @NotNull Inventory getItemStorage();
 
     /**
      * Get the default areas of this land. Parts of the land that aren't part of a sub areas, are automatically part of this area.

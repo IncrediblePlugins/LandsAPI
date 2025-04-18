@@ -36,18 +36,6 @@ public class CaptureFlagProgressEvent extends CaptureFlagCancellableEvent {
         return progressor;
     }
 
-    /**
-     * Set the progressor team. The progress will count for their side.
-     *
-     * @param progressor must be either {@link WarTeam#ATTACKER} or {@link WarTeam#DEFENDER}
-     */
-    public void setProgressor(@NotNull WarTeam progressor) {
-        Checks.requireNonNull(progressor, "progressor");
-        progressor.ensureIsAttackerOrDefender();
-
-        this.progressor = progressor;
-    }
-
     public static HandlerList getHandlerList() {
         return handlerList;
     }
