@@ -2,6 +2,7 @@ package me.angeschossen.lands.api.land;
 
 import com.github.angeschossen.pluginframework.api.blockutil.UnloadedPosition;
 import me.angeschossen.lands.api.events.land.DeleteReason;
+import me.angeschossen.lands.api.events.land.LandConvertEvent;
 import me.angeschossen.lands.api.handler.APIHandler;
 import me.angeschossen.lands.api.land.enums.LandType;
 import me.angeschossen.lands.api.memberholder.MemberHolder;
@@ -58,6 +59,7 @@ public interface Land extends MemberHolder, SystemFlagStatesHolder {
 
     /**
      * Get the inventory of the storage.
+     *
      * @return never null
      */
     @NotNull Inventory getItemStorage();
@@ -315,6 +317,15 @@ public interface Land extends MemberHolder, SystemFlagStatesHolder {
      * @param title If title is null, it will set the default title instead.
      */
     void setTitleMessage(@Nullable String title);
+
+    /**
+     * Set the land type. You can use this to convert a normal land into a server owned admin land.
+     *
+     * @param landType   this can't be {@link LandType#CAMP}
+     * @param landPlayer you can provide a player that initiates this change. This player will be forwarded to the {@link LandConvertEvent}.
+     * @return false, if the {@link LandConvertEvent} was cancelled by a 3rd party plugin.
+     */
+    boolean setLandType(@NotNull LandType landType, @Nullable LandPlayer landPlayer);
 
     /**
      * Set a new owner.
