@@ -45,6 +45,10 @@ public class PlayerToggleRoleFlagEvent extends RoleEvent implements Cancellable 
         return handlerList;
     }
 
+    public static HandlerList getHandlerList() {
+        return handlerList;
+    }
+
     @Override
     public boolean isCancelled() {
         return cancelled;
