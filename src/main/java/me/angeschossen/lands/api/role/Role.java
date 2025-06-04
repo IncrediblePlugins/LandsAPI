@@ -175,4 +175,11 @@ public interface Role extends ExpressionEntity {
      *             parameter role will receive the priority of the current role
      */
     void swapPriority(@NotNull Role from);
+
+    /**
+     * Get land, area etc. that the role belongs to.
+     * @return never null
+     */
+    @NotNull
+    RoleHolder getHolder();
 }
