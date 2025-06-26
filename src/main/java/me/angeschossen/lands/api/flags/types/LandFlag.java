@@ -5,8 +5,11 @@ import me.angeschossen.lands.api.flags.Flag;
 import me.angeschossen.lands.api.flags.enums.FlagModule;
 import me.angeschossen.lands.api.flags.type.NaturalFlag;
 import me.angeschossen.lands.api.handler.APIHandler;
+import me.angeschossen.lands.api.land.Area;
+import me.angeschossen.lands.api.player.LandPlayer;
 import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
 
@@ -56,6 +59,11 @@ public class LandFlag extends DefaultStateFlag<NaturalFlag> implements NaturalFl
     @Override
     public final @NotNull String getTogglePerm() {
         return "lands.setting." + name;
+    }
+
+    @Override
+    public boolean shouldDisplay(@Nullable Area area, @Nullable LandPlayer landPlayer) {
+        return false;
     }
 
     @Override

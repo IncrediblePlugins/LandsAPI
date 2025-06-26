@@ -3,8 +3,11 @@ package me.angeschossen.lands.api.flags.types;
 import me.angeschossen.lands.api.flags.DefaultStateFlag;
 import me.angeschossen.lands.api.flags.enums.FlagModule;
 import me.angeschossen.lands.api.handler.APIHandler;
+import me.angeschossen.lands.api.land.Area;
+import me.angeschossen.lands.api.player.LandPlayer;
 import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
 
@@ -36,6 +39,11 @@ public class PlayerFlag extends DefaultStateFlag<me.angeschossen.lands.api.flags
     @Override
     public @NotNull String getTogglePerm() {
         return "lands.player.setting." + name;
+    }
+
+    @Override
+    public boolean shouldDisplay(@Nullable Area area, @Nullable LandPlayer landPlayer) {
+        return false;
     }
 
     @Override

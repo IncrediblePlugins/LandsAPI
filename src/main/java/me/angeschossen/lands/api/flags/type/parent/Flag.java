@@ -2,6 +2,8 @@ package me.angeschossen.lands.api.flags.type.parent;
 
 import me.angeschossen.lands.api.flags.enums.FlagModule;
 import me.angeschossen.lands.api.flags.enums.FlagTarget;
+import me.angeschossen.lands.api.land.Area;
+import me.angeschossen.lands.api.player.LandPlayer;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
@@ -22,6 +24,15 @@ public interface Flag<T> {
      * @return never null
      */
     @NotNull Plugin getPlugin();
+
+    /**
+     * Check if the flag should be displayed in the toggle menu.
+     *
+     * @param area       Should it be displayed for this specific area? If null, this is checked for wilderness.
+     * @param landPlayer Flags might still be displayed for players that have server admin perms. This is the case for flags that are only meant to be set by server admins.
+     * @return false, if should not be displayed
+     */
+    boolean shouldDisplay(@Nullable Area area, @Nullable LandPlayer landPlayer);
 
     /**
      * Get the icon that is used for this flag in menus.
@@ -103,12 +114,14 @@ public interface Flag<T> {
 
     /**
      * Check if this flag does display in any toggle menus.
+     *
      * @return true, if this flag does display in toggle menus
      */
     boolean isDisplay();
 
     /**
      * Set whether or not this flag should be displayed in flag toggle menus.
+     *
      * @param display if true, this flag displays in flag toggle menus
      * @return instance of this flag
      */
@@ -116,12 +129,14 @@ public interface Flag<T> {
 
     /**
      * Get the display name for this flag.
+     *
      * @return this might include already parsed color
      */
     @NotNull String getDisplayName();
 
     /**
      * Set the display name for this flag.
+     *
      * @param displayName might include already parsed color
      * @return instance of this plugin
      */
@@ -129,18 +144,21 @@ public interface Flag<T> {
 
     /**
      * Get the unique name of this flag.
+     *
      * @return the name is unique
      */
     @NotNull String getName();
 
     /**
      * Check whether or not this flag is enabled in wars.
+     *
      * @return true, if this flag is enabled in wars
      */
     boolean isActiveInWar();
 
     /**
      * Set whether or not this flag should be enabled in all wars.
+     *
      * @param activeInWar if true, this flag will be enabled in all current and future wars
      * @return instance of this flag
      */
@@ -148,18 +166,21 @@ public interface Flag<T> {
 
     /**
      * Get the needed permission to toggle this flag.
+     *
      * @return never null
      */
     @NotNull String getTogglePermission();
 
     /**
      * Get the module to which this flag belongs.
+     *
      * @return never null
      */
     @NotNull FlagModule getModule();
 
     /**
      * Get the target of this flag.
+     *
      * @return never null
      */
     @NotNull FlagTarget getTarget();
