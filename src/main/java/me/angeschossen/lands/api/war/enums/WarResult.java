@@ -12,5 +12,9 @@ public enum WarResult {
     /**
      * One team won.
      */
-    NORMAL
+    NORMAL,
+    /**
+     * A server admin forcefully ended the war.
+     */
+    ADMIN
 }
