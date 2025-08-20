@@ -1,6 +1,6 @@
 package me.angeschossen.lands.api.player.invite.result;
 
-public enum TrustResult implements InviteResult{
+public enum TrustResult implements InviteResult {
     /**
      * A player tried to trust himself.
      */
@@ -31,6 +31,10 @@ public enum TrustResult implements InviteResult{
      * and a owner of their own land at the same time. This is related to the "invite-owner" option in config.yml.
      */
     FAILURE_OWN_LAND,
+    /**
+     * The player reached the maximum amount of lands, they can own.
+     */
+    FAILURE_PLAYER_MAX_OWN_LANDS,
     /**
      * The player reached its maximum amount of lands, they can be a member of. This is related to the
      * lands.lands.number permission.
@@ -65,7 +69,7 @@ public enum TrustResult implements InviteResult{
     SUCCESS_TRUSTED;
 
     @Override
-    public boolean isSuccess(){
+    public boolean isSuccess() {
         return this == SUCCESS_INVITED || this == SUCCESS_TRUSTED;
     }
 }
