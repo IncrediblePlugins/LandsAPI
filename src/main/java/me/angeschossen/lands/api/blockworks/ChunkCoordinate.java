@@ -40,6 +40,11 @@ public class ChunkCoordinate implements me.angeschossen.lands.api.land.ChunkCoor
     }
 
     @Override
+    public long getClaimedAtMillis() {
+        return 0;
+    }
+
+    @Override
     public int hashCode() {
         return hashcode;
     }

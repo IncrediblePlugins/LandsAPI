@@ -64,6 +64,7 @@ public abstract class PlayerEvent extends PlayerNullableEvent {
      */
     @Override
     @NotNull
+    @Deprecated
     public UUID getPlayerUID() {
         return getPlayerUUID();
     }

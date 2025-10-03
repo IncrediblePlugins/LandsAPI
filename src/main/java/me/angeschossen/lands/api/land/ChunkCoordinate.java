@@ -33,4 +33,11 @@ public interface ChunkCoordinate {
      * @return Chunk z
      */
     int getZ();
+
+    /**
+     * Get milliseconds timestamp when chunk was claimed.
+     *
+     * @return millis
+     */
+    long getClaimedAtMillis();
 }

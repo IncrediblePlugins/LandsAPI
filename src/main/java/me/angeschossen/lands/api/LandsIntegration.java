@@ -245,6 +245,7 @@ public interface LandsIntegration {
      * @deprecated Use {@link #getNationByULID(ULID)} instead
      */
     @Nullable
+    @Deprecated
     Nation getNationById(int id);
 
     /**
