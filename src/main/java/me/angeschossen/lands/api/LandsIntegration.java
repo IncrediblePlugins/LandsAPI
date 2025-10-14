@@ -7,6 +7,7 @@ import me.angeschossen.lands.api.flags.FlagRegistry;
 import me.angeschossen.lands.api.handler.APIHandler;
 import me.angeschossen.lands.api.inbox.InboxMessageProvider;
 import me.angeschossen.lands.api.land.Area;
+import me.angeschossen.lands.api.land.Container;
 import me.angeschossen.lands.api.land.Land;
 import me.angeschossen.lands.api.land.LandWorld;
 import me.angeschossen.lands.api.levels.LevelsHandler;

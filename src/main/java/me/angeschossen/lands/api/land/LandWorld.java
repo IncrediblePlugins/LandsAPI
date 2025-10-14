@@ -49,6 +49,16 @@ public interface LandWorld {
     Area getArea(@NotNull Location location);
 
     /**
+     * Get information about world related claim data of a land that claimed a specific chunk.
+     *
+     * @param chunkX chunk X
+     * @param chunkZ chunk Z
+     * @return null, if the chunk isn't claimed
+     */
+    @Nullable
+    Container getContainer(int chunkX, int chunkZ);
+
+    /**
      * Get land claimed land from a loaded chunk.
      * This shouldn't be used, if you want to check flag states. Use {@link #getArea(Location)} instead.
      *
@@ -96,7 +106,6 @@ public interface LandWorld {
      */
     @Nullable
     Area getArea(int x, int y, int z);
-
 
     /**
      * Check if a player has a role flag set through their role.

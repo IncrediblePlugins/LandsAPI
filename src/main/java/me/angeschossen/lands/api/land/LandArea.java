@@ -13,6 +13,7 @@ public interface LandArea extends Area {
 
     /**
      * Get the world.
+     *
      * @return The world in which this sub area is located in
      */
     @Nullable
@@ -27,7 +28,18 @@ public interface LandArea extends Area {
     BoundingBox getBoundingBox();
 
     /**
+     * Check if the subarea contains a specific chunk.
+     *
+     * @param chunkX            chunk X
+     * @param chunkZ            chunk Z
+     * @param allowIntersection if true, the chunk can be overlapped and doesn't need to be contained fully
+     * @return false, if the area doesn't contain the chunk
+     */
+    boolean containsChunk(int chunkX, int chunkZ, boolean allowIntersection);
+
+    /**
      * Set a name for this area.
+     *
      * @param name The new land. You can include color codes
      * @return false, if the land already has an area witht that name
      */
@@ -35,6 +47,7 @@ public interface LandArea extends Area {
 
     /**
      * Use {@link #getBoundingBox()} instead.
+     *
      * @param x Block x
      * @param y Block y
      * @param z Block z
@@ -45,12 +58,14 @@ public interface LandArea extends Area {
 
     /**
      * Check if this area has both corners set.
+     *
      * @return false, if the area isn't setup yet
      */
     boolean isSetup();
 
     /**
      * Get the claim information of this area.
+     *
      * @return null, if {@link #isSetup()} returns false
      */
     @Nullable Container getContainer();
