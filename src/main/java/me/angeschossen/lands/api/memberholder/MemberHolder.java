@@ -175,6 +175,10 @@ public interface MemberHolder extends BalanceHolder, ExpressionEntity, CMDTarget
      */
     int getMembersAmount();
 
+    @Nullable String getTag();
+
+    @Nullable String getColorTag();
+
     /**
      * Get the name without colors codes. To have color codes included use {@link #getColorName()}.
      *

@@ -106,6 +106,15 @@ public interface Land extends MemberHolder, SystemFlagStatesHolder {
     void delete(@Nullable Player deleter);
 
     /**
+     * Get all areas of a land.
+     * If you want to get only areas of a specific world. Use {@link #getContainer(World)} first.
+     *
+     * @return this also includes the default area (non sub area)
+     */
+    @NotNull
+    Collection<? extends Area> getAllAreas();
+
+    /**
      * Get area by its name.
      *
      * @param name Not case sensitive. Chat colors will be removed for the lookup
