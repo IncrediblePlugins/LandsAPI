@@ -43,8 +43,7 @@ public interface LandsIntegrationFactory {
     @NotNull
     Role roleOf(@NotNull RoleHolder roleHolder, @NotNull String name) throws IllegalArgumentException, IllegalStateException;
 
-    @NotNull
-    CompletableFuture<? extends Land> landOf(@NotNull String name, @NotNull LandType landType, @NotNull Location location, @NotNull LandPlayer owner, boolean claim, boolean msg);
+    @NotNull CompletableFuture<? extends Land> landOf(@NotNull String name, @Nullable String tag, @NotNull LandType landType, @NotNull Location location, @NotNull LandPlayer owner, boolean claim, boolean msg);
 
     LandMainBlock landMainBlockOf(@Nullable LandPlayer landPlayer, @NotNull BlockPosition blockPosition);
 

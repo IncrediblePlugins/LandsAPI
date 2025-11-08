@@ -35,10 +35,29 @@ public interface Land extends MemberHolder, SystemFlagStatesHolder {
      * @param claim    If true, the new land creation will claim an initial area depending on your servers configuration.
      * @param msg      If true, sends the owner failure and success messages during creation
      * @return the result of the future is null, if the land creation failed at this location
+     * @deprecated Use {@link #of(String, String, LandType, Location, LandPlayer, boolean, boolean)} instead.
      */
+    @Deprecated
     static CompletableFuture<? extends Land> of(@NotNull String name, @NotNull LandType landType, @NotNull Location location, @NotNull LandPlayer owner, boolean claim, boolean msg) {
-        return APIHandler.getLandsIntegrationFactory().landOf(name, landType, location, owner, claim, msg);
+        return of(name, null, landType, location, owner, claim, msg);
     }
+
+    /**
+     * Create a new land.
+     *
+     * @param name     The name. Depending on the servers settings, this may not include numbers or other non alphabetical characters
+     * @param tag      The tag of the land. A tag can be the short version of the land name
+     * @param landType The type
+     * @param location The location of the new land. Should be located in a loaded chunk
+     * @param owner    Owner of this new land
+     * @param claim    If true, the new land creation will claim an initial area depending on your servers configuration.
+     * @param msg      If true, sends the owner failure and success messages during creation
+     * @return the result of the future is null, if the land creation failed at this location
+     */
+    static CompletableFuture<? extends Land> of(@NotNull String name, @Nullable String tag, @NotNull LandType landType, @NotNull Location location, @NotNull LandPlayer owner, boolean claim, boolean msg) {
+        return APIHandler.getLandsIntegrationFactory().landOf(name, tag, landType, location, owner, claim, msg);
+    }
+
 
     /**
      * Get information about claims and sub areas inside a specific world.
