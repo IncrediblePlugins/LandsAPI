@@ -43,4 +43,10 @@ public class LandUnclaimAllEvent extends LandEvent implements Cancellable {
     public void setCancelled(boolean b)  {
         this.cancelled = b;
     }
+
+    @Override
+    public String toString() {
+        return "LandUnclaimAllEvent{land=" + land.toString() +
+                "}";
+    }
 }

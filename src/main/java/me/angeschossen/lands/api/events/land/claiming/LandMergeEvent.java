@@ -44,4 +44,10 @@ public class LandMergeEvent extends LandCancellableEvent {
         return handlerList;
     }
 
+    @Override
+    public String toString() {
+        return "LandMergeEvent{requester=" + land.toString() +
+                ",toMerge=" + toMerge.toString() +
+                "}";
+    }
 }

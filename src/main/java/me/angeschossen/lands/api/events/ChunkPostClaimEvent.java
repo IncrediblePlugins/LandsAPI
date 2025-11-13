@@ -64,4 +64,13 @@ public class ChunkPostClaimEvent extends LandEvent {
     public @NotNull HandlerList getHandlers() {
         return handlerList;
     }
+
+    @Override
+    public String toString() {
+        return "ChunkPostClaimEvent{land=" + land.toString() +
+                ",world=" + world.toString() +
+                ",x=" + x +
+                ",z=" + z +
+                "}";
+    }
 }

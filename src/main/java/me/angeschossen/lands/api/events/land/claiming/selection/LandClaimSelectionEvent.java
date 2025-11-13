@@ -37,4 +37,11 @@ public class LandClaimSelectionEvent extends SelectionEvent {
     public @NotNull HandlerList getHandlers() {
         return handlerList;
     }
+
+    @Override
+    public String toString() {
+        return "LandClaimSelectionEvent{land=" + land.toString() +
+                ",selection=" + selection.toString() +
+                "}";
+    }
 }

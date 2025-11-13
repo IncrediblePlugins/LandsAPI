@@ -87,4 +87,13 @@ public class ChunkPreClaimEvent extends LandEvent implements Cancellable {
     public @NotNull HandlerList getHandlers() {
         return handlerList;
     }
+
+    @Override
+    public String toString() {
+        return "ChunkPreClaimEvent{land=" + land.toString() +
+                ",world=" + world.toString() +
+                ",x=" + x +
+                ",z=" + z +
+                "}";
+    }
 }

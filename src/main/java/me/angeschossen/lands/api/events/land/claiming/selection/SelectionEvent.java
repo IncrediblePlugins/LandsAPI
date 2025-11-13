@@ -14,7 +14,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Set;
 
 public abstract class SelectionEvent extends LandEvent implements Cancellable {
-    private final Selection selection;
+    protected final Selection selection;
     private boolean cancelled;
     private final Set<? extends ChunkCoordinate> affectedChunks;
 
