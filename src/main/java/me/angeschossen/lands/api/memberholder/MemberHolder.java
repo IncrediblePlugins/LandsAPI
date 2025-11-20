@@ -391,13 +391,14 @@ public interface MemberHolder extends BalanceHolder, ExpressionEntity, CMDTarget
     /**
      * Update the progress of a cached level requirement.
      *
-     * @param requirement   The identification of the requirement
-     * @param modify        Can be negative
-     * @param allowNegative Allow the result to be negative?
+     * @param requirement        the identification of the requirement
+     * @param modify             can be negative
+     * @param allowNegative      allow the result to be negative?
+     * @param levelRecalculation should the level be recalculated, if the requirement is met or no longer met
      * @return The result / progress value
      */
     @NotNull
-    CompletableFuture<@Nullable Float> modifyRequirementCache(@NotNull String requirement, float modify, boolean allowNegative);
+    CompletableFuture<@Nullable Float> modifyRequirementCache(@NotNull String requirement, float modify, boolean allowNegative, boolean levelRecalculation);
 
     /**
      * Remove an inbox message from the inbox.
@@ -448,6 +449,5 @@ public interface MemberHolder extends BalanceHolder, ExpressionEntity, CMDTarget
      * @param levelCalc   If the level should be recalculated after updating this requirement
      * @throws IllegalArgumentException If this requirement doesn't exist
      */
-    @Deprecated
     void updateRequirementCache(@NotNull String requirement, float val, boolean levelCalc) throws IllegalArgumentException;
 }

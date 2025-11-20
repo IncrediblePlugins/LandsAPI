@@ -51,6 +51,7 @@ public abstract class Requirement implements me.angeschossen.lands.api.levels.Re
 
     /**
      * Get the plugin that provides this requirement.
+     *
      * @return plugin that provides this requirement
      */
     @Override
@@ -60,6 +61,7 @@ public abstract class Requirement implements me.angeschossen.lands.api.levels.Re
 
     /**
      * Get the required value.
+     *
      * @return example: 4 hoppers placed
      */
     @Override
@@ -69,6 +71,7 @@ public abstract class Requirement implements me.angeschossen.lands.api.levels.Re
 
     /**
      * Get the progress percentage.
+     *
      * @param memberHolder land or nation
      * @return example: 50 because 2/4 required hoppers placed
      */
@@ -80,6 +83,7 @@ public abstract class Requirement implements me.angeschossen.lands.api.levels.Re
 
     /**
      * Get the progress in a numerical value.
+     *
      * @param memberHolder land or nation
      * @return numerical progress
      */
@@ -88,8 +92,17 @@ public abstract class Requirement implements me.angeschossen.lands.api.levels.Re
         return (getValue(memberHolder) / required) * 100;
     }
 
+    public final boolean shouldRecalculateLevel(float previousValue, float currentValue) {
+        if (previousValue < required) {
+            return currentValue >= required;
+        } else {
+            return currentValue < required;
+        }
+    }
+
     /**
      * Check if this land or nation already fullfills this requirement.
+     *
      * @param memberHolder land or nation
      * @return true, if the land or nation already fullfills this requirement
      */
@@ -100,6 +113,7 @@ public abstract class Requirement implements me.angeschossen.lands.api.levels.Re
 
     /**
      * Get the description of this requirement.
+     *
      * @return used for menus
      */
     @Override
@@ -109,6 +123,7 @@ public abstract class Requirement implements me.angeschossen.lands.api.levels.Re
 
     /**
      * Get the unique name of this requirement. For display name, use {@link #getTitle()} instead.
+     *
      * @return unique name
      */
     @Override
@@ -119,6 +134,7 @@ public abstract class Requirement implements me.angeschossen.lands.api.levels.Re
 
     /**
      * Get the title of this requirement.
+     *
      * @return might include parsed color
      */
     @Override
