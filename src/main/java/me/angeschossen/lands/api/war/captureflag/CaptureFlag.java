@@ -14,6 +14,14 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.CompletableFuture;
 
 public interface CaptureFlag extends ExpressionEntity {
+
+    /**
+     * Get the type of capture flag.
+     *
+     * @return never null
+     */
+    @NotNull CaptureFlagType getType();
+
     /**
      * Get the position of this capture flag.
      *

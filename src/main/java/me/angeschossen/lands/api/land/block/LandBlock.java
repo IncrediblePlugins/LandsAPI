@@ -46,7 +46,7 @@ public interface LandBlock {
      *
      * @return type of the block
      */
-    @NotNull LandBlockType getType();
+    @NotNull LandBlockType getLandBlockType();
 
     /**
      * @param done       will be executed once all blocks are removed

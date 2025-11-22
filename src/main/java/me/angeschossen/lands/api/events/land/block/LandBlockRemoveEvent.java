@@ -61,7 +61,7 @@ public class LandBlockRemoveEvent extends LandBlockEvent {
             throw new IllegalStateException("Can't cancel landblock removal with reason " + reason.toString());
         }
 
-        if (landBlock.getType() == LandBlockType.RENTAL) {
+        if (landBlock.getLandBlockType() == LandBlockType.RENTAL) {
             throw new IllegalStateException("Can't cancel removal of rental landblock");
         }
 

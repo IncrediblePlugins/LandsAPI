@@ -41,7 +41,7 @@ public class LandBlockPlaceEvent extends LandBlockEvent {
      */
     @Override
     public void setCancelled(boolean cancel) {
-        if (landBlock.getType() == LandBlockType.RENTAL) {
+        if (landBlock.getLandBlockType() == LandBlockType.RENTAL) {
             throw new IllegalStateException("Can't cancel landblock placement of type " + LandBlockType.RENTAL.toString());
         }
         super.setCancelled(cancel);
