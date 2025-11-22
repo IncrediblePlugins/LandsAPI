@@ -14,7 +14,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.UUID;
 
 /**
- * A world contain claim information for the specific world.
+ * A world contains claim information for the specific world.
  */
 public interface LandWorld {
     /**
