@@ -394,7 +394,7 @@ public interface MemberHolder extends BalanceHolder, ExpressionEntity, CMDTarget
      * @param requirement        the identification of the requirement
      * @param modify             can be negative
      * @param allowNegative      allow the result to be negative?
-     * @param levelRecalculation should the level be recalculated, if the requirement is met or no longer met
+     * @param levelRecalculation should the level be recalculated? Alternatively you can call {@link #calculateLevel(boolean)}
      * @return The result / progress value
      */
     @NotNull
@@ -444,9 +444,9 @@ public interface MemberHolder extends BalanceHolder, ExpressionEntity, CMDTarget
     /**
      * Update the level requirement progress
      *
-     * @param requirement Identification of the requirement
-     * @param val         The new value
-     * @param levelCalc   If the level should be recalculated after updating this requirement
+     * @param requirement identification of the requirement
+     * @param val         the new value
+     * @param levelCalc   if the level should be recalculated after updating this requirement. Alternatively you can call {@link #calculateLevel(boolean)}
      * @throws IllegalArgumentException If this requirement doesn't exist
      */
     void updateRequirementCache(@NotNull String requirement, float val, boolean levelCalc) throws IllegalArgumentException;
