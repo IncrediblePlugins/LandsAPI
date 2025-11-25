@@ -30,6 +30,13 @@ public interface CaptureFlag extends ExpressionEntity {
     @NotNull BlockPosition getPosition();
 
     /**
+     * Get the area that can be captured.
+     *
+     * @return the capture area will never be null, but can be empty if the flag hasn't been initialized yet after a server restart
+     */
+    @NotNull CaptureArea getCaptureArea();
+
+    /**
      * Set the seconds between each firework spawned. This is an approximate value as fireworks only spawn when the flag is ticked.
      *
      * @param interval if smaller than 1, disabled firework spawning
@@ -58,12 +65,6 @@ public interface CaptureFlag extends ExpressionEntity {
      */
     @NotNull WarTeam getCapturingTeam();
 
-    /**
-     * Get the area to capture.
-     *
-     * @return bounding box that defines the capture area
-     */
-    @NotNull BoundingBox getBoundingBox();
 
     /**
      * Get the amount of seconds this capture flag was captured by {@link #getCapturingTeam()}.
