@@ -16,6 +16,10 @@ public enum ItemType {
      */
     CAPTURE_FLAG,
     /**
+     * Item that creates a capture flag for the KoTH gamemode.
+     */
+    CAPTURE_FLAG_KOTH,
+    /**
      * Block that creates a temporary land.
      */
     CAMP {

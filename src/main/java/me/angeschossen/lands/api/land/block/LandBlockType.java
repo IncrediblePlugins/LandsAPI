@@ -14,6 +14,10 @@ public enum LandBlockType {
      */
     CAPTURE_FLAG,
     /**
+     * Capture flag for the KoTH gamemode.
+     */
+    CAPTURE_FLAG_KOTH,
+    /**
      * Rental sign or rental hologram
      */
     RENTAL
