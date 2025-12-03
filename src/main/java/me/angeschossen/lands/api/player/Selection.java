@@ -95,7 +95,7 @@ public interface Selection {
      *
      * @return The amount of blocks in this selection.
      */
-    int getSize();
+    int getChunksAmount();
 
     /**
      * Check if the selection contains any part of a chunk.
