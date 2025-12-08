@@ -6,7 +6,6 @@ import me.angeschossen.lands.api.land.Land;
 import me.angeschossen.lands.api.memberholder.MemberHolder;
 import me.angeschossen.lands.api.player.LandPlayer;
 import me.angeschossen.lands.api.war.captureflag.CaptureFlag;
-import me.angeschossen.lands.api.war.enums.WarTeam;
 import me.angeschossen.lands.api.war.player.WarPlayer;
 import org.bukkit.Material;
 import org.jetbrains.annotations.NotNull;
@@ -16,7 +15,7 @@ import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.concurrent.CompletableFuture;
 
-public interface War extends ExpressionEntity, WarState {
+public interface War extends ExpressionEntity, WarState, TeamGiver {
 
     void updateStats(@NotNull ActiveWarStats statsAtt,@NotNull  ActiveWarStats statsDef);
 
@@ -89,7 +88,7 @@ public interface War extends ExpressionEntity, WarState {
      * @param warTeam the team
      * @return all capture flags placed by a specific team
      */
-    @Nullable Collection<? extends CaptureFlag> getPlacedByTeam(@NotNull WarTeam warTeam);
+    @Nullable Collection<? extends CaptureFlag> getPlacedByTeam(@NotNull me.angeschossen.lands.api.war.enums.WarTeam warTeam);
 
     /**
      * @param winner The assumed winner
@@ -104,7 +103,7 @@ public interface War extends ExpressionEntity, WarState {
      * @return stats of a specific team
      */
     @NotNull
-    WarStats getStats(@NotNull WarTeam warTeam);
+    WarStats getStats(@NotNull me.angeschossen.lands.api.war.enums.WarTeam warTeam);
 
     /**
      * Get milliseconds when of date at which the war started

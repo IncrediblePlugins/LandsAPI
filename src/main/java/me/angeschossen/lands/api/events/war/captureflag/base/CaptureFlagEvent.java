@@ -1,8 +1,10 @@
 package me.angeschossen.lands.api.events.war.captureflag.base;
 
 import com.google.common.collect.ImmutableMap;
+import me.angeschossen.lands.api.events.plugin.LandsEvent;
 import me.angeschossen.lands.api.events.war.WarEvent;
 import me.angeschossen.lands.api.player.LandPlayer;
+import me.angeschossen.lands.api.war.TeamGiver;
 import me.angeschossen.lands.api.war.captureflag.CaptureFlag;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -13,7 +15,7 @@ import java.util.UUID;
 /**
  * Used for events that effect a capture flag.
  */
-public abstract class CaptureFlagEvent extends WarEvent {
+public abstract class CaptureFlagEvent extends LandsEvent {
     protected final @Nullable LandPlayer player;
     protected final @NotNull CaptureFlag captureFlag;
 
@@ -24,8 +26,6 @@ public abstract class CaptureFlagEvent extends WarEvent {
      * @param player      if null, no player is involved in triggering this event
      */
     public CaptureFlagEvent(@NotNull CaptureFlag captureFlag, @Nullable LandPlayer player) {
-        super(captureFlag.getWar());
-
         this.player = player;
         this.captureFlag = captureFlag;
     }
@@ -51,8 +51,6 @@ public abstract class CaptureFlagEvent extends WarEvent {
 
     @Override
     public void setAffectedPlayers(ImmutableMap.@NotNull Builder<String, Collection<UUID>> builder) {
-        super.setAffectedPlayers(builder);
-
         if (player != null) {
             player.setAffectedPlayers("placer_", builder);
         }
@@ -60,8 +58,6 @@ public abstract class CaptureFlagEvent extends WarEvent {
 
     @Override
     public void setExpressionVariables(ImmutableMap.@NotNull Builder<String, Object> builder) {
-        super.setExpressionVariables(builder);
-
         if (player != null) {
             final UUID uuid = player.getUID();
             player.setExpressionVariables("placer_", builder, uuid);

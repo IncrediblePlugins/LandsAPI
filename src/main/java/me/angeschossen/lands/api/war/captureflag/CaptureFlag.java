@@ -2,10 +2,9 @@ package me.angeschossen.lands.api.war.captureflag;
 
 import com.github.angeschossen.pluginframework.api.blockutil.BlockPosition;
 import com.github.angeschossen.pluginframework.api.events.ExpressionEntity;
-import me.angeschossen.lands.api.blockworks.BoundingBox;
 import me.angeschossen.lands.api.events.war.captureflag.CaptureFlagBreakEvent;
 import me.angeschossen.lands.api.player.LandPlayer;
-import me.angeschossen.lands.api.war.War;
+import me.angeschossen.lands.api.war.TeamGiver;
 import me.angeschossen.lands.api.war.enums.WarTeam;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -53,17 +52,17 @@ public interface CaptureFlag extends ExpressionEntity {
     /**
      * Get the team that placed the flag.
      *
-     * @return either {@link WarTeam#ATTACKER} or {@link WarTeam#DEFENDER}
+     * @return either {@link me.angeschossen.lands.api.war.enums.WarTeam#ATTACKER} or {@link me.angeschossen.lands.api.war.enums.WarTeam#DEFENDER}
      */
     @NotNull
-    WarTeam getPlacedByTeam();
+    me.angeschossen.lands.api.war.enums.WarTeam getPlacedByTeam();
 
     /**
      * Get the team that is currently capturing.
      *
-     * @return if returns {@link WarTeam#NEUTRAL}, no team is capturing
+     * @return if returns {@link me.angeschossen.lands.api.war.enums.WarTeam#NEUTRAL}, no team is capturing
      */
-    @NotNull WarTeam getCapturingTeam();
+    @NotNull me.angeschossen.lands.api.war.enums.WarTeam getCapturingTeam();
 
 
     /**
@@ -140,5 +139,5 @@ public interface CaptureFlag extends ExpressionEntity {
      *
      * @return The war to which this capture flag belongs
      */
-    @NotNull War getWar();
+    @NotNull TeamGiver getTeamGiver();
 }
