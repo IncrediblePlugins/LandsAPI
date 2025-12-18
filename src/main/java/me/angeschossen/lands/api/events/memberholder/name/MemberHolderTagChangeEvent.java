@@ -1,9 +1,7 @@
 package me.angeschossen.lands.api.events.memberholder.name;
 
 import com.google.common.collect.ImmutableMap;
-import me.angeschossen.lands.api.events.land.LandEvent;
 import me.angeschossen.lands.api.events.memberholder.MemberHolderEvent;
-import me.angeschossen.lands.api.land.Land;
 import me.angeschossen.lands.api.memberholder.MemberHolder;
 import me.angeschossen.lands.api.player.LandPlayer;
 import org.bukkit.event.Cancellable;

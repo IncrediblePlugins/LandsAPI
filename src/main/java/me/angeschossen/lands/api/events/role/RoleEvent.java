@@ -4,11 +4,7 @@ import com.github.angeschossen.pluginframework.api.utils.Checks;
 import com.google.common.collect.ImmutableMap;
 import me.angeschossen.lands.api.events.plugin.LandsEvent;
 import me.angeschossen.lands.api.role.Role;
-import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Collection;
-import java.util.UUID;
 
 public abstract class RoleEvent extends LandsEvent {
     protected final @NotNull Role role;

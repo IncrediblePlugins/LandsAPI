@@ -1,6 +1,5 @@
 package me.angeschossen.lands.api.war.captureflag;
 
-import me.angeschossen.lands.api.land.LandArea;
 import me.angeschossen.lands.api.land.LandWorld;
 import org.jetbrains.annotations.NotNull;
 

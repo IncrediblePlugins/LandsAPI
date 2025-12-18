@@ -2,9 +2,7 @@ package me.angeschossen.lands.api.events.war.captureflag.base;
 
 import com.google.common.collect.ImmutableMap;
 import me.angeschossen.lands.api.events.plugin.LandsEvent;
-import me.angeschossen.lands.api.events.war.WarEvent;
 import me.angeschossen.lands.api.player.LandPlayer;
-import me.angeschossen.lands.api.war.TeamGiver;
 import me.angeschossen.lands.api.war.captureflag.CaptureFlag;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
