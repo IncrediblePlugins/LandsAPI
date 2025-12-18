@@ -14,6 +14,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Collection;
 import java.util.Set;
+import java.util.concurrent.CompletableFuture;
 
 public interface LandPlayer extends OfflinePlayer, ExpressionEntity, PlayerData {
 
@@ -49,6 +50,16 @@ public interface LandPlayer extends OfflinePlayer, ExpressionEntity, PlayerData 
      * @return true, if the flag is set
      */
     boolean hasFlag(@NotNull PlayerFlag flag);
+
+    /**
+     * Modify a limitation of a online player.
+     *
+     * @param limit  the limitation to modify
+     * @param modify value can be negative to remove from limit. Negative only works, if the player does not inherit a related permission through groups.
+     * @return false, if player already reached the max amount or already has 0 if value is negative
+     * @throws IllegalStateException if the player is offline
+     */
+    boolean modifyLimitation(@NotNull PlayerLimit limit, int modify) throws IllegalStateException;
 
     /**
      * Get the current combat tag.
@@ -106,6 +117,14 @@ public interface LandPlayer extends OfflinePlayer, ExpressionEntity, PlayerData 
     @Deprecated
     @Nullable
     Land getLand(@NotNull String landName);
+
+    /**
+     * Get the value of a limitation.
+     *
+     * @param limit the limit to look for
+     * @return if the limit is not cached yet and is backed by a permission, it will be requested from your permissions plugin
+     */
+    @NotNull CompletableFuture<Integer> getLimitation(@NotNull PlayerLimit limit);
 
     /**
      * Get a random land, which the player owns.
