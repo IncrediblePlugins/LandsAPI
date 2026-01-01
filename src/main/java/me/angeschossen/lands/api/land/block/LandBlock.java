@@ -50,9 +50,8 @@ public interface LandBlock {
 
     /**
      * @param done       will be executed once all blocks are removed
-     * @param delayTicks remove a block each x ticks. So if the landblock
-     *                   consists of 5 blocks it will take 5 * x ticks to remove the complete landblock.
+     * @param delayTicks remove each block with a delay to make it seem like they are broken in a more natural way
      * @return false, if a 3rd party plugin cancelled the removal of the landblock
      */
-    boolean remove(@Nullable Runnable done, int delayTicks);
+    boolean remove(@Nullable Runnable done, boolean delayTicks);
 }
