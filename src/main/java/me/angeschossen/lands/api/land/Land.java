@@ -210,6 +210,8 @@ public interface Land extends MemberHolder, SystemFlagStatesHolder {
     @Nullable
     War getWar();
 
+    int getMaxMembers(boolean countAdditinal);
+
     /**
      * Get the nation that this land belongs to.
      *

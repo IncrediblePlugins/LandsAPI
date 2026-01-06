@@ -6,26 +6,28 @@ import org.bukkit.ChatColor;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Rewards additional claims for /lands claim.
+ * Rewards things like additional claims for /lands claim.
  */
-public class ChunksAttribute extends LevelAttribute {
+public class IntegerAttribute extends LevelAttribute {
     private final int value;
 
     /**
      * Create instance.
-     * @param name Name of the level attribute
+     *
+     * @param name        Name of the level attribute
      * @param description Description of the attribute
-     * @param value Amount of chunks to reward
+     * @param value       Amount of chunks, members etc. to reward
      */
-    public ChunksAttribute(@NotNull String name, @NotNull String description, int value) {
+    public IntegerAttribute(@NotNull String name, @NotNull String description, int value) {
         super(name, description.replace("{value}", (value >= 0 ? ChatColor.GREEN + "+ " : ChatColor.RED + "- ") + Math.abs(value)));
 
         this.value = value;
     }
 
     /**
-     * Get the amount of additional claims.
-     * @return Additional claims
+     * Get the additional amount.
+     *
+     * @return Additional chunks or members etc.
      */
     public int getValue() {
         return value;
@@ -33,8 +35,9 @@ public class ChunksAttribute extends LevelAttribute {
 
     /**
      * Check if this attribute can be applied.
-     * @param memberHolder Land or nation
-     * @return Always true, since it can be applied to a land or nation
+     *
+     * @param memberHolder land or nation
+     * @return always true, since it can be applied to a land or nation
      */
     @Override
     public boolean shouldApply(@NotNull MemberHolder memberHolder) {

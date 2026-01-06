@@ -10,6 +10,7 @@ import me.angeschossen.lands.api.holders.BalanceHolder;
 import me.angeschossen.lands.api.inbox.InboxCategory;
 import me.angeschossen.lands.api.inbox.InboxMessage;
 import me.angeschossen.lands.api.levels.Level;
+import me.angeschossen.lands.api.levels.requirement.Requirement;
 import me.angeschossen.lands.api.player.LandPlayer;
 import me.angeschossen.lands.api.relations.Relation;
 import me.angeschossen.lands.api.war.War;
@@ -22,6 +23,7 @@ import org.jetbrains.annotations.Nullable;
 import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
@@ -74,12 +76,12 @@ public interface MemberHolder extends BalanceHolder, ExpressionEntity, CMDTarget
 
     /**
      * Get progress (not percentage) of the cached requirement.
-     * See {@link me.angeschossen.lands.api.levels.requirement.CachedRequirement}
      *
-     * @param requirement The identification of the cached requirement
-     * @return The progress (not percentage) of the cached requirement
+     * @param requirement the requirement to look up
+     * @return null, if not cached yet or the progress (not percentage) of the cached requirement
      */
-    float getCachedRequirement(@NotNull String requirement);
+    @Nullable
+    Float getCachedRequirement(@NotNull Requirement requirement);
 
     /**
      * Get the amount of chunks.
@@ -349,10 +351,10 @@ public interface MemberHolder extends BalanceHolder, ExpressionEntity, CMDTarget
     /**
      * Check if an level requirement is already calculated and cached.
      *
-     * @param requirement The identification of the requirement
+     * @param requirement the requirement
      * @return false, if the requirement progress isn't cached
      */
-    boolean isRequirementCached(@NotNull String requirement);
+    boolean isRequirementCached(@NotNull Requirement requirement);
 
     /**
      * Use {@link #isTrusted(UUID)} instead.
@@ -390,14 +392,14 @@ public interface MemberHolder extends BalanceHolder, ExpressionEntity, CMDTarget
     /**
      * Update the progress of a cached level requirement.
      *
-     * @param requirement        the identification of the requirement
+     * @param requirement        the requirement
      * @param modify             can be negative
      * @param allowNegative      allow the result to be negative?
      * @param levelRecalculation should the level be recalculated? Alternatively you can call {@link #calculateLevel(boolean)}
      * @return The result / progress value
      */
     @NotNull
-    CompletableFuture<@Nullable Float> modifyRequirementCache(@NotNull String requirement, float modify, boolean allowNegative, boolean levelRecalculation);
+    CompletableFuture<@Nullable Float> modifyRequirementCache(@NotNull Requirement requirement, float modify, boolean allowNegative, boolean levelRecalculation);
 
     /**
      * Remove an inbox message from the inbox.
@@ -432,13 +434,21 @@ public interface MemberHolder extends BalanceHolder, ExpressionEntity, CMDTarget
     void setWarShield(long seconds);
 
     /**
+     * Get and cache all requirement value for a specific level.
+     *
+     * @param requirements the requirements to check
+     * @return never null
+     */
+    @NotNull CompletableFuture<Map<Requirement, Float>> getRequirementsCacheOrRetrieve(@NotNull Requirement... requirements);
+
+    /**
      * Update the level requirement progress
      *
      * @param requirement Identification of the requirement
      * @param val         The new value
      * @throws IllegalArgumentException If this requirement doesn't exist
      */
-    void updateRequirementCache(@NotNull String requirement, float val) throws IllegalArgumentException;
+    void updateRequirementCache(@NotNull Requirement requirement, float val) throws IllegalArgumentException;
 
     /**
      * Update the level requirement progress
@@ -448,5 +458,5 @@ public interface MemberHolder extends BalanceHolder, ExpressionEntity, CMDTarget
      * @param levelCalc   if the level should be recalculated after updating this requirement. Alternatively you can call {@link #calculateLevel(boolean)}
      * @throws IllegalArgumentException If this requirement doesn't exist
      */
-    void updateRequirementCache(@NotNull String requirement, float val, boolean levelCalc) throws IllegalArgumentException;
+    void updateRequirementCache(@NotNull Requirement requirement, float val, boolean levelCalc) throws IllegalArgumentException;
 }

@@ -2,11 +2,13 @@ package me.angeschossen.lands.api.levels;
 
 import com.github.angeschossen.pluginframework.api.events.ExpressionEntity;
 import me.angeschossen.lands.api.levels.attribute.LevelAttribute;
+import me.angeschossen.lands.api.levels.requirement.Requirement;
 import me.angeschossen.lands.api.memberholder.MemberHolder;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Collection;
+import java.util.concurrent.CompletableFuture;
 
 /**
  * Represents a level.
@@ -84,5 +86,5 @@ public interface Level extends ExpressionEntity {
      * @param memberHolder land or nation
      * @return true, if this level can be applied to the land or nation
      */
-    boolean matches(@NotNull MemberHolder memberHolder);
+    CompletableFuture<Boolean> matches(@NotNull MemberHolder memberHolder);
 }
