@@ -1,5 +1,5 @@
 group = "com.github.angeschossen"
-version = "7.23.0"
+version = "7.23.1"
 description = "LandsAPI"
 
 plugins {
