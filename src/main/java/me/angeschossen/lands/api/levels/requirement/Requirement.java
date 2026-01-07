@@ -1,8 +1,8 @@
 package me.angeschossen.lands.api.levels.requirement;
 
+import me.angeschossen.lands.api.LandsIntegration;
 import me.angeschossen.lands.api.memberholder.HolderType;
 import me.angeschossen.lands.api.memberholder.MemberHolder;
-import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -11,33 +11,35 @@ import java.util.concurrent.CompletableFuture;
 
 /**
  * Requirements define which requirements a land or nation needs to fullfil in order to progress to the next level.
- * There can only be one requirement with the name from {@link #getName()}.
+ * There can only be one requirement with the name from {@link #getId()}.
  */
 public interface Requirement {
 
     /**
-     * Get the unique name of this requirement. For display name, use {@link #getTitle()} instead.
+     * Get the unique ID of this requirement. For display name, use {@link #getTitle()} instead.
      *
-     * @return unique name
+     * @return unique and never null
      */
     @NotNull
-    String getName();
+    String getId();
 
     /**
      * Get the target of the requirement.
      *
-     * @return must be either {@link HolderType#LAND} or {@link HolderType#NATION}
+     * @return either {@link HolderType#LAND} or {@link HolderType#NATION}
      */
     @NotNull
     HolderType getTarget();
 
     /**
      * Should the requirement apply to the land or nation?
+     * Overriding this method allows you to exclude specific lands or nations
+     * from the requirement.
      *
      * @param memberHolder land or nation
      * @return false, if should not apply
      */
-    default boolean shouldApply(@NotNull MemberHolder memberHolder){
+    default boolean shouldApply(@NotNull MemberHolder memberHolder) {
         return true;
     }
 
@@ -65,7 +67,7 @@ public interface Requirement {
      * @return never null
      */
     default @NotNull CompletableFuture<Float> getCachedValueOrRetrieve(@NotNull MemberHolder memberHolder) {
-        Float cachedValue = getCachedValue(memberHolder);
+        @Nullable Float cachedValue = getCachedValue(memberHolder);
         if (cachedValue != null) {
             return CompletableFuture.completedFuture(cachedValue);
         }
@@ -128,16 +130,16 @@ public interface Requirement {
      *
      * @return plugin that provides this requirement
      */
-    @NotNull Plugin getPlugin();
+    @NotNull LandsIntegration getIntegration();
 
     /**
-     * Check if this land or nation already fullfills this requirement.
+     * Check if this land or nation already fulfills this requirement.
      *
      * @param memberHolder land or nation
      * @param value        the current value
-     * @return true, if the land or nation already fullfills this requirement
+     * @return true, if the land or nation already fulfills this requirement
      */
-    default boolean matches(@NotNull MemberHolder memberHolder, float value) {
+    default boolean fulfillsRequirement(@NotNull MemberHolder memberHolder, float value) {
         return value >= getRequired();
     }
 }

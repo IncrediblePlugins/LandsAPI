@@ -80,11 +80,11 @@ public interface Level extends ExpressionEntity {
     @NotNull Collection<? extends Requirement> getRequirements();
 
     /**
-     * Check if this level can be applied to the land or nation.
-     * Usually this just differentiates between land or nation.
+     * Check if the land or nation fulfills the requirements of this level.
      *
      * @param memberHolder land or nation
-     * @return true, if this level can be applied to the land or nation
+     * @return true, if the land or nation fulfills all requirements
      */
-    CompletableFuture<Boolean> matches(@NotNull MemberHolder memberHolder);
+    @NotNull
+    CompletableFuture<Boolean> fulfillsRequirements(@NotNull MemberHolder memberHolder);
 }

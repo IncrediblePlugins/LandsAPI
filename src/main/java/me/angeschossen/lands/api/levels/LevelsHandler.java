@@ -53,6 +53,7 @@ public interface LevelsHandler {
     /**
      * Get all registered requirements.
      *
+     * @param target either {@link HolderType#LAND} or {@link HolderType#NATION}
      * @return all registred requirements
      */
     @NotNull Collection<Requirement> getRegisteredRequirements(@NotNull HolderType target);
@@ -60,7 +61,8 @@ public interface LevelsHandler {
     /**
      * Get a requirement by its name.
      *
-     * @param name the name to look for. Case insensitive
+     * @param name   the name to look for. Case insensitive
+     * @param target either {@link HolderType#LAND} or {@link HolderType#NATION}
      * @return null, if none found with that name
      */
     @Nullable Requirement getRequirementByName(@NotNull HolderType target, @NotNull String name);
