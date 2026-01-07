@@ -14,7 +14,7 @@ import java.util.Objects;
  */
 public abstract class Requirement implements me.angeschossen.lands.api.levels.requirement.Requirement {
 
-    protected final @NotNull String name, title;
+    protected final @NotNull String id, title;
     protected final @NotNull List<String> description;
     protected final float required;
     protected final @NotNull LandsIntegration plugin;
@@ -25,16 +25,16 @@ public abstract class Requirement implements me.angeschossen.lands.api.levels.re
      *
      * @param plugin          plugin that provides this requirement
      * @param holderType      either {@link HolderType#LAND} or {@link HolderType#NATION}
-     * @param name            the unique name of this requirement
+     * @param id              the unique ID of this requirement
      * @param title           title of this requirement. Used in menus
      * @param description     description of this requirement. Used in menus
      * @param required        required value (not percentage) to consider this requirement as fulfilled
      * @param requiredDisplay displayed as the required value in menus
      */
-    public Requirement(@NotNull LandsIntegration plugin, @NotNull HolderType holderType, @NotNull String name, @NotNull String title, @NotNull List<String> description, float required, @NotNull String requiredDisplay) {
+    public Requirement(@NotNull LandsIntegration plugin, @NotNull HolderType holderType, @NotNull String id, @NotNull String title, @NotNull List<String> description, float required, @NotNull String requiredDisplay) {
         Objects.requireNonNull(plugin);
         Objects.requireNonNull(holderType);
-        Objects.requireNonNull(name);
+        Objects.requireNonNull(id);
         Objects.requireNonNull(title);
         Objects.requireNonNull(description);
         Objects.requireNonNull(requiredDisplay);
@@ -44,7 +44,7 @@ public abstract class Requirement implements me.angeschossen.lands.api.levels.re
 
         this.plugin = plugin;
         this.holderType = holderType;
-        this.name = StringUtils.toLowerCase(name);
+        this.id = StringUtils.toLowerCase(id);
         this.required = required;
         this.title = title.replace("{req}", requiredDisplay);
         this.description = description;
@@ -93,7 +93,7 @@ public abstract class Requirement implements me.angeschossen.lands.api.levels.re
     @Override
     @NotNull
     public final String getId() {
-        return name;
+        return id;
     }
 
     /**

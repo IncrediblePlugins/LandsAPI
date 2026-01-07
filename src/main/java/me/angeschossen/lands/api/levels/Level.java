@@ -72,6 +72,8 @@ public interface Level extends ExpressionEntity {
      */
     float getProgress(@NotNull MemberHolder memberHolder);
 
+    @Nullable Requirement getRequirementById(String name);
+
     /**
      * Get all requirements.
      *

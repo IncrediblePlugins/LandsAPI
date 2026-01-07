@@ -65,5 +65,5 @@ public interface LevelsHandler {
      * @param target either {@link HolderType#LAND} or {@link HolderType#NATION}
      * @return null, if none found with that name
      */
-    @Nullable Requirement getRequirementByName(@NotNull HolderType target, @NotNull String name);
+    @Nullable Requirement getRequirementById(@NotNull HolderType target, @NotNull String name);
 }

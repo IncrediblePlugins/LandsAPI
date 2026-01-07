@@ -77,11 +77,11 @@ public interface MemberHolder extends BalanceHolder, ExpressionEntity, CMDTarget
     /**
      * Get progress (not percentage) of the cached requirement.
      *
-     * @param requirement the requirement to look up
+     * @param requirementId ID of the requirement
      * @return null, if not cached yet or the progress (not percentage) of the cached requirement
      */
     @Nullable
-    Float getCachedRequirement(@NotNull Requirement requirement);
+    Float getCachedRequirement(@NotNull String requirementId);
 
     /**
      * Get the amount of chunks.
@@ -351,10 +351,10 @@ public interface MemberHolder extends BalanceHolder, ExpressionEntity, CMDTarget
     /**
      * Check if an level requirement is already calculated and cached.
      *
-     * @param requirement the requirement
+     * @param requirementId ID of the requirement
      * @return false, if the requirement progress isn't cached
      */
-    boolean isRequirementCached(@NotNull Requirement requirement);
+    boolean isRequirementCached(@NotNull String requirementId);
 
     /**
      * Use {@link #isTrusted(UUID)} instead.
@@ -392,14 +392,14 @@ public interface MemberHolder extends BalanceHolder, ExpressionEntity, CMDTarget
     /**
      * Update the progress of a cached level requirement.
      *
-     * @param requirement        the requirement
+     * @param requirementId      ID of the requirement
      * @param modify             can be negative
      * @param allowNegative      allow the result to be negative?
      * @param levelRecalculation should the level be recalculated? Alternatively you can call {@link #calculateLevel(boolean)}
-     * @return The result / progress value
+     * @return float will be null if the current level does not have the requirement
      */
     @NotNull
-    CompletableFuture<@Nullable Float> modifyRequirementCache(@NotNull Requirement requirement, float modify, boolean allowNegative, boolean levelRecalculation);
+    CompletableFuture<@Nullable Float> modifyRequirementCache(@NotNull String requirementId, float modify, boolean allowNegative, boolean levelRecalculation);
 
     /**
      * Remove an inbox message from the inbox.
@@ -444,19 +444,19 @@ public interface MemberHolder extends BalanceHolder, ExpressionEntity, CMDTarget
     /**
      * Update the level requirement progress
      *
-     * @param requirement Identification of the requirement
-     * @param val         The new value
+     * @param requirementId ID of the requirement
+     * @param val           The new value
      * @throws IllegalArgumentException If this requirement doesn't exist
      */
-    void updateRequirementCache(@NotNull Requirement requirement, float val) throws IllegalArgumentException;
+    void updateRequirementCache(@NotNull String requirementId, float val) throws IllegalArgumentException;
 
     /**
      * Update the level requirement progress
      *
-     * @param requirement identification of the requirement
-     * @param val         the new value
-     * @param levelCalc   if the level should be recalculated after updating this requirement. Alternatively you can call {@link #calculateLevel(boolean)}
+     * @param requirementId ID of the requirement
+     * @param val           the new value
+     * @param levelCalc     if the level should be recalculated after updating this requirement. Alternatively you can call {@link #calculateLevel(boolean)}
      * @throws IllegalArgumentException If this requirement doesn't exist
      */
-    void updateRequirementCache(@NotNull Requirement requirement, float val, boolean levelCalc) throws IllegalArgumentException;
+    void updateRequirementCache(@NotNull String requirementId, float val, boolean levelCalc) throws IllegalArgumentException;
 }

@@ -73,7 +73,7 @@ public interface Requirement {
         }
 
         return retrieveValue(memberHolder).thenApply(res -> {
-            memberHolder.updateRequirementCache(this, res);
+            memberHolder.updateRequirementCache(getId(), res);
             return res;
         });
     }
@@ -85,7 +85,7 @@ public interface Requirement {
      * @return null, if not cached
      */
     default @Nullable Float getCachedValue(@NotNull MemberHolder memberHolder) {
-        return memberHolder.getCachedRequirement(this);
+        return memberHolder.getCachedRequirement(getId());
     }
 
     /**
