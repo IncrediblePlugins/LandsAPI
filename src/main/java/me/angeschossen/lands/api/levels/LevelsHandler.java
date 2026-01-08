@@ -14,6 +14,7 @@ import java.util.Map;
  * Used to handle levels and their progression.
  */
 public interface LevelsHandler {
+
     /**
      * Get all levels that can be applied to lands ({@link me.angeschossen.lands.api.land.Land}).
      *
@@ -31,14 +32,14 @@ public interface LevelsHandler {
     /**
      * Get the land configuration section from the "levels.yml" configuration file.
      *
-     * @return land level configuration section
+     * @return null, if land levels are disabled
      */
     @Nullable Map<Level, ConfigurationSection> getLandSection();
 
     /**
      * Get the nation configuration section from the "levels.yml" configuration file.
      *
-     * @return nation level configuration section
+     * @return null, if nation levels are disabled
      */
     @Nullable Map<Level, ConfigurationSection> getNationSection();
 

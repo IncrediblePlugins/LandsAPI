@@ -63,6 +63,7 @@ public final class Flags {
     public static NaturalFlag SNOW_MELT;
     public static NaturalFlag WITHER_ATTACK_ANIMAL;
     public static NaturalFlag BLOCK_SPREADING;
+    public static NaturalFlag COPPER_GOLEM;
 
     public static NaturalFlag EXPIRATION_SHIELD;
     public static NaturalFlag PEACEFUL;
