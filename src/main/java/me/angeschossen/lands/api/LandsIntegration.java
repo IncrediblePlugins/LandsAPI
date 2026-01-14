@@ -314,7 +314,8 @@ public interface LandsIntegration {
      *
      * @param landPlayer The player
      * @param world      The destination world
-     * @return
+     * @return location the player got teleported to
      */
+    @NotNull
     CompletableFuture<Location> randomTeleport(@NotNull LandPlayer landPlayer, @NotNull World world);
 }

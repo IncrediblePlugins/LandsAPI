@@ -401,7 +401,7 @@ public class LandsIntegration implements LandsIntegrator, me.angeschossen.lands.
     }
 
     @Override
-    public CompletableFuture<Location> randomTeleport(@NotNull LandPlayer landPlayer, @NotNull World world) {
+    public @NotNull CompletableFuture<Location> randomTeleport(@NotNull LandPlayer landPlayer, @NotNull World world) {
         APIHandler.getInstance().getLegacySupport().randomTeleport(landPlayer, world);
         return null;
     }
