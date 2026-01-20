@@ -7,6 +7,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * Enums represent the permission nodes to limit certain aspects of the plugin.
@@ -19,7 +20,12 @@ public enum PlayerLimit {
     /**
      * Limits the maximum amount of chunks the player can claim for each land they own.
      */
-    LAND_CHUNKS("lands.chunks", "chunks", true),
+    LAND_CHUNKS("lands.chunks", "chunks", true) {
+        @Override
+        public boolean isLandRelated() {
+            return getMode() == PlayerLimitMode.PERMISSION;
+        }
+    },
     /**
      * Limits the maximum amount of trusted players the player can trust to each land they own.
      */
@@ -49,6 +55,7 @@ public enum PlayerLimit {
     private final @Nullable String oldName;
     private final boolean isLand;
     private static Map<String, PlayerLimit> permissionToLimitMap = new HashMap<>(), oldNameToLimitMap = new HashMap<>();
+    private PlayerLimitMode mode = PlayerLimitMode.PERMISSION;
 
     static {
         for (PlayerLimit value : PlayerLimit.values()) {
@@ -110,5 +117,14 @@ public enum PlayerLimit {
      */
     public @NotNull String getPermission() {
         return permission;
+    }
+
+    @NotNull
+    public final PlayerLimitMode getMode() {
+        return mode;
+    }
+
+    public final void setMode(@NotNull PlayerLimitMode mode) {
+        this.mode = Objects.requireNonNull(mode);
     }
 }

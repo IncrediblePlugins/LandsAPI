@@ -27,7 +27,7 @@ public interface Nation extends MemberHolder {
      *
      * @param deleter The player that initiates the deletion.
      *                If provided: This is mainly used to prevent the player from receiving a message from your plugin and additionally a inbox message in lands of the nation. Just to prevent spam.
-     * @return false, if a 3rd party plugin cancelled the deletion.
+     * @return false, if a 3rd party plugin canceled the deletion.
      */
     CompletableFuture<Boolean> delete(@Nullable LandPlayer deleter);
 
