@@ -4,6 +4,7 @@ import com.github.angeschossen.pluginframework.api.events.ExpressionEntity;
 import com.github.angeschossen.pluginframework.api.player.PlayerData;
 import me.angeschossen.lands.api.flags.type.PlayerFlag;
 import me.angeschossen.lands.api.land.Land;
+import me.angeschossen.lands.api.limits.Limitation;
 import me.angeschossen.lands.api.player.chat.ChatMode;
 import me.angeschossen.lands.api.player.combat.CombatTag;
 import me.angeschossen.lands.api.player.invite.Invite;
@@ -14,7 +15,6 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Collection;
 import java.util.Set;
-import java.util.concurrent.CompletableFuture;
 
 public interface LandPlayer extends OfflinePlayer, ExpressionEntity, PlayerData {
 
@@ -59,7 +59,7 @@ public interface LandPlayer extends OfflinePlayer, ExpressionEntity, PlayerData 
      * @return false, if player already reached the max amount or already has 0 if value is negative
      * @throws IllegalStateException if the player is offline
      */
-    boolean modifyLimitation(@NotNull PlayerLimit limit, int modify) throws IllegalStateException;
+    boolean modifyLimitation(@NotNull Limitation limit, int modify) throws IllegalStateException;
 
     /**
      * Get the current combat tag.
@@ -117,14 +117,6 @@ public interface LandPlayer extends OfflinePlayer, ExpressionEntity, PlayerData 
     @Deprecated
     @Nullable
     Land getLand(@NotNull String landName);
-
-    /**
-     * Get the value of a limitation.
-     *
-     * @param limit the limit to look for
-     * @return if the limit is not cached yet and is backed by a permission, it will be requested from your permissions plugin
-     */
-    @NotNull CompletableFuture<Integer> getLimitation(@NotNull PlayerLimit limit);
 
     /**
      * Get a random land, which the player owns.

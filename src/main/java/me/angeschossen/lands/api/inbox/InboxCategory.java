@@ -1,6 +1,6 @@
 package me.angeschossen.lands.api.inbox;
 
-import me.angeschossen.lands.api.handler.APIHandler;
+import com.github.angeschossen.pluginframework.api.handler.APIHandler;
 import me.angeschossen.lands.api.player.LandPlayer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

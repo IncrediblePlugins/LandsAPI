@@ -22,7 +22,6 @@ public class APIHandler {
     private final @NotNull ModuleConfig warsConfig, nationsConfig;
     private final @NotNull Plugin plugin;
     private static LandsIntegrationFactory landsIntegrationFactory;
-    private final @NotNull MessageHandler messages;
     private final @NotNull LevelsHandler levelsHandler;
     private final @NotNull LandsIntegration legacySupport;
     private static FlagRegistry flagRegistry;
@@ -61,7 +60,6 @@ public class APIHandler {
     private APIHandler(@NotNull Plugin plugin,
                        @NotNull Configuration config,
                        @NotNull ModuleConfig warsConfig, @NotNull ModuleConfig nationsConfig,
-                       @NotNull MessageHandler messages,
                        @NotNull LevelsHandler levelsHandler,
                        @NotNull LandsIntegration legacySupport,
                        @NotNull FlagRegistry flagRegistry,
@@ -73,7 +71,6 @@ public class APIHandler {
         this.warsConfig = warsConfig;
         this.nationsConfig = nationsConfig;
         this.plugin = plugin;
-        this.messages = messages;
         APIHandler.flagRegistry = flagRegistry;
         this.levelsHandler = levelsHandler;
         this.stringUtils = stringUtils;
@@ -90,10 +87,6 @@ public class APIHandler {
 
     public @NotNull Plugin getPlugin() {
         return plugin;
-    }
-
-    public @NotNull MessageHandler getLocaleHandler() {
-        return messages;
     }
 
     public @NotNull PlayerUtils getPlayerUtils() {
@@ -119,7 +112,6 @@ public class APIHandler {
     public static void init(@NotNull Plugin plugin,
                             @NotNull Configuration config,
                             @NotNull ModuleConfig warsConfig, @NotNull ModuleConfig nationsConfig,
-                            @NotNull MessageHandler messages,
                             @NotNull LevelsHandler levelsHandler,
                             @NotNull LandsIntegration legacySupport,
                             @NotNull FlagRegistry flagRegistry,
@@ -135,7 +127,6 @@ public class APIHandler {
 
         instance = new APIHandler(plugin,
                 config, warsConfig, nationsConfig,
-                messages,
                 levelsHandler,
                 legacySupport,
                 flagRegistry,

@@ -1,5 +1,6 @@
 package me.angeschossen.lands.api.player;
 
+import com.github.angeschossen.pluginframework.api.limits.LimitationHolder;
 import me.angeschossen.lands.api.land.Land;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -10,7 +11,7 @@ import java.util.UUID;
 /**
  * Data for offline players.
  */
-public interface OfflinePlayer {
+public interface OfflinePlayer extends LimitationHolder {
 
     /**
      * Get the last known name.

@@ -1,6 +1,7 @@
 package me.angeschossen.lands.api.land;
 
 import com.github.angeschossen.pluginframework.api.blockutil.UnloadedPosition;
+import com.github.angeschossen.pluginframework.api.limits.LimitationHolder;
 import me.angeschossen.lands.api.events.land.DeleteReason;
 import me.angeschossen.lands.api.events.land.LandConvertEvent;
 import me.angeschossen.lands.api.handler.APIHandler;
@@ -24,7 +25,7 @@ import java.util.concurrent.CompletableFuture;
 /**
  * A land can be of different types ({@link #getLandType()}).
  */
-public interface Land extends MemberHolder, SystemFlagStatesHolder {
+public interface Land extends MemberHolder, SystemFlagStatesHolder, LimitationHolder {
     /**
      * Create a new land.
      *
