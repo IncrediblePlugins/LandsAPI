@@ -25,7 +25,7 @@ import java.util.concurrent.CompletableFuture;
 /**
  * A land can be of different types ({@link #getLandType()}).
  */
-public interface Land extends MemberHolder, SystemFlagStatesHolder, LimitationHolder {
+public interface Land extends MemberHolder, SystemFlagStatesHolder {
     /**
      * Create a new land.
      *
