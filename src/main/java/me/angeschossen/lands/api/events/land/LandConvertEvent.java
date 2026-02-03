@@ -38,7 +38,7 @@ public class LandConvertEvent extends LandEvent implements Cancellable {
     }
 
     @Override
-    public HandlerList getHandlers() {
+    public @NotNull HandlerList getHandlers() {
         return handlerList;
     }
 

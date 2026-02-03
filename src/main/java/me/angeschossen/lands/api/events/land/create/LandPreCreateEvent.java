@@ -1,5 +1,6 @@
-package me.angeschossen.lands.api.events;
+package me.angeschossen.lands.api.events.land.create;
 
+import com.github.angeschossen.pluginframework.api.utils.Checks;
 import me.angeschossen.lands.api.events.land.LandEvent;
 import me.angeschossen.lands.api.events.land.create.LandPostCreateEvent;
 import me.angeschossen.lands.api.land.Land;
@@ -12,10 +13,12 @@ import org.jetbrains.annotations.Nullable;
 import java.util.UUID;
 
 /**
- * @deprecated Use {@link me.angeschossen.lands.api.events.LandPreCreateEvent} instead.
+ * This event is fired when a player attempts to create land.
+ * The land may not be created if the server configured to automatically claim chunks at land creation.
+ * If the claiming of the chunks fails, the land won't actually be created. Use {@link LandPostCreateEvent} if you
+ * want to make sure that the land actually is being created.
  */
-@Deprecated
-public class LandCreateEvent extends LandEvent implements Cancellable {
+public class LandPreCreateEvent extends LandEvent implements Cancellable {
 
     public static HandlerList handlerList = new HandlerList();
     private boolean cancelled;
@@ -26,8 +29,8 @@ public class LandCreateEvent extends LandEvent implements Cancellable {
      * @param landPlayer The player that initiated the creation. If null, the creation wasn't initiated by a player.
      * @param land       the land that is being created
      */
-    public LandCreateEvent(@Nullable LandPlayer landPlayer, @NotNull Land land) {
-        super(land, landPlayer);
+    public LandPreCreateEvent(@NotNull Land land, @NotNull LandPlayer landPlayer) {
+        super(land, Checks.requireNonNull(landPlayer, "landPlayer"));
     }
 
     public static HandlerList getHandlerList() {
