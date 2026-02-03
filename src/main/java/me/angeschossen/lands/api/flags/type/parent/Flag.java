@@ -19,6 +19,21 @@ import java.util.List;
 public interface Flag<T> {
 
     /**
+     * Check if this flag is set to be automatically be disabled for each land whenever they're read from the database.
+     *
+     * @return true, if the flag should not be parsed
+     */
+    boolean isAutoDisable();
+
+    /**
+     * Automatically disable flags when a area is read from the database.
+     *
+     * @param isAutoDisable true if the flag should be disabled for existing lands
+     */
+    @NotNull
+    T setAutoDisable(boolean isAutoDisable);
+
+    /**
      * The plugin that provides this flag.
      *
      * @return never null

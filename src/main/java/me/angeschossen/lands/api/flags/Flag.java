@@ -73,6 +73,17 @@ public abstract class Flag<T> implements me.angeschossen.lands.api.flags.type.pa
         return self();
     }
 
+    @Override
+    @NotNull
+    public T setAutoDisable(boolean isAutoDisable) {
+        return self();
+    }
+
+    @Override
+    public boolean isAutoDisable() {
+        return false;
+    }
+
     @NotNull
     public abstract String getTogglePerm();
 
