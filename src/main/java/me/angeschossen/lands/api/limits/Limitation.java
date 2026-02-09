@@ -1,71 +1,64 @@
 package me.angeschossen.lands.api.limits;
 
+import com.github.angeschossen.pluginframework.api.limit.Limit;
+import com.github.angeschossen.pluginframework.api.limit.LimitModifier;
+import com.github.angeschossen.pluginframework.api.limit.holder.LimitHolder;
+import com.github.angeschossen.pluginframework.api.limit.holder.LimitTarget;
 import com.github.angeschossen.pluginframework.api.utils.Checks;
 import com.github.angeschossen.pluginframework.api.utils.StringUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Enums represent the permission nodes to limit certain aspects of the plugin.
  */
-public enum Limitation implements com.github.angeschossen.pluginframework.api.limits.Limitation {
+public enum Limitation implements Limit {
     /**
      * Limits the maximum amount of lands the player can own.
      */
-    OWN_LANDS("lands.ownlands", "ownlands", false, LimitationTarget.PLAYER),
+    OWN_LANDS("lands.ownlands", "ownlands", LimitationTarget.PLAYER),
+    OWN_LANDS_FREE("lands.free.lands", null, LimitationTarget.PLAYER),
+    OWN_CAMPS("lands.camps", null, LimitationTarget.PLAYER),
     /**
      * Limits the maximum amount of chunks the player can claim for each land they own.
      */
-    LAND_CHUNKS("lands.chunks", "chunks", true, LimitationTarget.PLAYER, LimitationTarget.LAND) {
-        @Override
-        public boolean isLandRelated() {
-            return getMode() == LimitationMode.PERMISSION;
-        }
-    },
+    LAND_CHUNKS("lands.chunks", "chunks", LimitationTarget.PLAYER, LimitationTarget.LAND),
     /**
      * Limits the maximum amount of trusted players the player can trust to each land they own.
      */
-    LAND_MEMBERS("lands.members", "members", true, LimitationTarget.LAND),
+    LAND_MEMBERS("lands.members", "members", LimitationTarget.LAND),
     /**
      * Limits the maximum amount of disconnected parts the player can claim for each land they own.
      */
-    LAND_PARTS("lands.parts", "parts", true, LimitationTarget.LAND),
+    LAND_PARTS("lands.parts", "parts", LimitationTarget.LAND),
     /**
      * Limits the maximum amount of sub areas for each land the player owns.
      */
-    LAND_AREAS("lands.areas", "areas", true, LimitationTarget.LAND),
+    LAND_AREAS("lands.areas", "areas", LimitationTarget.LAND),
+    LAND_ROLES("lands.roles", null, LimitationTarget.LAND),
+    LAND_CHUNKS_FREE("lands.free.chunks", null, LimitationTarget.PLAYER),
+    LAND_ALLIES("lands.allies", null, LimitationTarget.LAND, LimitationTarget.NATION),
+    LAND_ENEMIES("lands.enemies", null, LimitationTarget.LAND, LimitationTarget.NATION),
     /**
      * Limits the maximum amount of lands the player can be trusted in. This does not include lands that the player owns.
      */
-    TRUSTED_LANDS("lands.lands", "lands", false, LimitationTarget.PLAYER),
-    /**
-     * Sets the amount of chunks that the player contributes to each land they are trusted to.
-     */
-    SUPPORT_CHUNKS("lands.chunks.support", null, false, LimitationTarget.PLAYER),
+    TRUSTED_LANDS("lands.lands", "lands", LimitationTarget.PLAYER),
     /**
      * Sets the amount of areas a player can rent in each land they're trusted in.
      */
-    RENTALS("lands.rentals", null, false, LimitationTarget.PLAYER),
-    LAND_ROLES("lands.roles", null, true, LimitationTarget.LAND),
-    LAND_CHUNKS_FREE("lands.free.chunks", null, false, LimitationTarget.PLAYER),
-    OWN_LANDS_FREE("lands.free.lands", null, false, LimitationTarget.PLAYER),
-    OWN_CAMPS("lands.camps", null, false, LimitationTarget.PLAYER),
-    LAND_ALLIES("lands.allies", null, false, LimitationTarget.LAND, LimitationTarget.NATION),
-    LAND_ENEMIES("lands.enemies", null, false, LimitationTarget.LAND, LimitationTarget.NATION),
-    NATION_LANDS("nations.lands", null, false, LimitationTarget.NATION);
+    RENTALS("lands.rentals", null, LimitationTarget.PLAYER),
+    PLAYER_CHUNKS("lands.player.chunnks", null, LimitationTarget.PLAYER),
+    NATION_LANDS("nations.lands", null, LimitationTarget.NATION);
 
     private final @NotNull String permission;
     private final @Nullable String oldName;
-    private final boolean isLand;
     private static final Map<String, Limitation> permissionToLimitMap = new HashMap<>();
     private static final Map<String, Limitation> oldNameToLimitMap = new HashMap<>();
-    private LimitationMode mode = LimitationMode.PERMISSION;
-    private final Set<com.github.angeschossen.pluginframework.api.limits.LimitationTarget> targets;
+    private LimitationMode mode = LimitationMode.DATABASE;
+    private final Set<LimitTarget> targets;
+    private final Map<String, LimitModifier> modifiers = new HashMap<>();
 
     static {
         for (Limitation value : Limitation.values()) {
@@ -94,17 +87,39 @@ public enum Limitation implements com.github.angeschossen.pluginframework.api.li
      *
      * @param permission permission node associated with the limit
      * @param oldName    previous name of the limit
-     * @param isLand     if the limit can be related to specific lands
      */
-    Limitation(@NotNull String permission, @Nullable String oldName, boolean isLand, @NotNull LimitationTarget... targets) {
+    Limitation(@NotNull String permission, @Nullable String oldName, @NotNull LimitationTarget... targets) {
         this.permission = Checks.requireNonNull(permission, "permission");
-        this.isLand = isLand;
         this.oldName = oldName;
         this.targets = Set.of(Checks.requireNonNull(targets, "targets"));
     }
 
-    public final boolean hasTarget(@NotNull com.github.angeschossen.pluginframework.api.limits.LimitationTarget target) {
+    public final boolean hasTarget(@NotNull LimitTarget target) {
         return targets.contains(target);
+    }
+
+    @Override
+    public int applyModifiers(@NotNull LimitHolder limitHolder, int limit) {
+        for (LimitModifier modifier : modifiers.values()) {
+            limit += modifier.getModifier(limitHolder);
+        }
+
+        return limit;
+    }
+
+    @Override
+    public void registerModifier(@NotNull LimitModifier limitModifier) {
+        modifiers.put(StringUtils.toLowerCase(limitModifier.getId()), limitModifier);
+    }
+
+    @Override
+    public void unregisterModifier(@NotNull LimitModifier limitModifier) {
+        modifiers.remove(StringUtils.toLowerCase(limitModifier.getId()));
+    }
+
+    @Override
+    public @NotNull Collection<@NotNull LimitModifier> getModifiers() {
+        return modifiers.values();
     }
 
     @Override
@@ -120,15 +135,6 @@ public enum Limitation implements com.github.angeschossen.pluginframework.api.li
     @Deprecated
     public @Nullable String getOldName() {
         return oldName;
-    }
-
-    /**
-     * Check if the limit can be related to specific lands.
-     *
-     * @return false, if the limit is to be associated with a specific player and not a specific land.
-     */
-    public boolean isLandRelated() {
-        return isLand;
     }
 
     /**

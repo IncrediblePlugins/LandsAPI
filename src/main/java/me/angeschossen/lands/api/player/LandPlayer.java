@@ -1,7 +1,7 @@
 package me.angeschossen.lands.api.player;
 
 import com.github.angeschossen.pluginframework.api.events.ExpressionEntity;
-import com.github.angeschossen.pluginframework.api.limits.LimitationHolder;
+import com.github.angeschossen.pluginframework.api.limit.holder.LimitHolder;
 import com.github.angeschossen.pluginframework.api.player.PlayerData;
 import me.angeschossen.lands.api.flags.type.PlayerFlag;
 import me.angeschossen.lands.api.land.Land;
@@ -17,7 +17,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Collection;
 import java.util.Set;
 
-public interface LandPlayer extends OfflinePlayer, ExpressionEntity, PlayerData, LimitationHolder {
+public interface LandPlayer extends OfflinePlayer, ExpressionEntity, PlayerData, LimitHolder {
 
     Object sendMessage(String key, String[] p, String[] v);
 
@@ -51,16 +51,6 @@ public interface LandPlayer extends OfflinePlayer, ExpressionEntity, PlayerData,
      * @return true, if the flag is set
      */
     boolean hasFlag(@NotNull PlayerFlag flag);
-
-    /**
-     * Modify a limitation of a online player.
-     *
-     * @param limit  the limitation to modify
-     * @param modify value can be negative to remove from limit. Negative only works, if the player does not inherit a related permission through groups.
-     * @return false, if player already reached the max amount or already has 0 if value is negative
-     * @throws IllegalStateException if the player is offline
-     */
-    boolean modifyLimitation(@NotNull Limitation limit, int modify) throws IllegalStateException;
 
     /**
      * Get the current combat tag.

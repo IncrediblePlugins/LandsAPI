@@ -39,5 +39,9 @@ public enum DeleteReason {
      * A land with no claims was automatically deleted.
      * Servers can disable this in config.
      */
-    NO_CLAIMS
+    NO_CLAIMS,
+    /**
+     * A land member that claimed chunks left the land and the land owner can't claim any more chunks.
+     */
+    MEMBER_LEAVE
 }

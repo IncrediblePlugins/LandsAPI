@@ -4,7 +4,7 @@ import com.github.angeschossen.applicationframework.api.util.ULID;
 import com.github.angeschossen.pluginframework.api.events.ExpressionEntity;
 import com.github.angeschossen.pluginframework.api.exceptions.NameAlreadyTakenException;
 import com.github.angeschossen.pluginframework.api.holder.Changeable;
-import com.github.angeschossen.pluginframework.api.limits.LimitationHolder;
+import com.github.angeschossen.pluginframework.api.limit.holder.LimitHolder;
 import com.github.angeschossen.pluginframework.api.player.PlayerDataBase;
 import me.angeschossen.lands.api.events.LandChatEvent;
 import me.angeschossen.lands.api.holders.BalanceHolder;
@@ -28,7 +28,7 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
-public interface MemberHolder extends BalanceHolder, ExpressionEntity, CMDTarget, Changeable, LimitationHolder {
+public interface MemberHolder extends BalanceHolder, ExpressionEntity, CMDTarget, Changeable, LimitHolder {
     /**
      * Add an amount of seconds to the warshiled.
      *

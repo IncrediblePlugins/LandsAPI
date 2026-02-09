@@ -1,5 +1,7 @@
 package me.angeschossen.lands.api.limits;
 
-public enum LimitationTarget implements com.github.angeschossen.pluginframework.api.limits.LimitationTarget {
+import com.github.angeschossen.pluginframework.api.limit.holder.LimitTarget;
+
+public enum LimitationTarget implements LimitTarget {
     PLAYER, LAND, NATION
 }
