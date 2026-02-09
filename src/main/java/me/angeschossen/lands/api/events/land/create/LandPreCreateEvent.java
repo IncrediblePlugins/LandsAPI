@@ -2,15 +2,11 @@ package me.angeschossen.lands.api.events.land.create;
 
 import com.github.angeschossen.pluginframework.api.utils.Checks;
 import me.angeschossen.lands.api.events.land.LandEvent;
-import me.angeschossen.lands.api.events.land.create.LandPostCreateEvent;
 import me.angeschossen.lands.api.land.Land;
 import me.angeschossen.lands.api.player.LandPlayer;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.UUID;
 
 /**
  * This event is fired when a player attempts to create land.

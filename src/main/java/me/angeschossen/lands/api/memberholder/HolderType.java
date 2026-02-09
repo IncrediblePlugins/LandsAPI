@@ -1,26 +1,26 @@
 package me.angeschossen.lands.api.memberholder;
 
 import com.github.angeschossen.pluginframework.api.utils.Checks;
-import me.angeschossen.lands.api.limits.LimitationTarget;
+import me.angeschossen.lands.api.limits.LimitTarget;
 import org.jetbrains.annotations.NotNull;
 
 public enum HolderType {
     /**
      * A land. See {@link me.angeschossen.lands.api.land.Land}
      */
-    LAND(LimitationTarget.LAND),
+    LAND(LimitTarget.LAND),
     /**
      * A nation. See {@link me.angeschossen.lands.api.nation.Nation}
      */
-    NATION(LimitationTarget.NATION);
+    NATION(LimitTarget.NATION);
 
-    private final @NotNull LimitationTarget limitationTarget;
+    private final @NotNull LimitTarget limitTarget;
 
-    HolderType(@NotNull LimitationTarget limitationTarget) {
-        this.limitationTarget = Checks.requireNonNull(limitationTarget, "limitationTarget");
+    HolderType(@NotNull LimitTarget limitTarget) {
+        this.limitTarget = Checks.requireNonNull(limitTarget, "limitationTarget");
     }
 
-    public @NotNull LimitationTarget getLimitationTarget() {
-        return limitationTarget;
+    public @NotNull LimitTarget getLimitationTarget() {
+        return limitTarget;
     }
 }

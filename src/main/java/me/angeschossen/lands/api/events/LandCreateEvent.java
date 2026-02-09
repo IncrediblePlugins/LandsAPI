@@ -1,15 +1,12 @@
 package me.angeschossen.lands.api.events;
 
 import me.angeschossen.lands.api.events.land.LandEvent;
-import me.angeschossen.lands.api.events.land.create.LandPostCreateEvent;
 import me.angeschossen.lands.api.land.Land;
 import me.angeschossen.lands.api.player.LandPlayer;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.UUID;
 
 /**
  * @deprecated Use {@link me.angeschossen.lands.api.events.LandPreCreateEvent} instead.

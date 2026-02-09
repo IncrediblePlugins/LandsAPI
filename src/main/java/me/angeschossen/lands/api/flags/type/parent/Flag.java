@@ -12,11 +12,27 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 /**
- * Flags are used to control what player's roles can do and which natural events should be cancelled.
+ * Flags are used to control what player's roles can do and which natural events should be canceled.
  *
  * @param <T>
  */
 public interface Flag<T> {
+
+    /**
+     * Check if the flag is disabled automatically for all lands when the land is loaded from the database.
+     *
+     * @return true, if they are auto disabled upon load
+     */
+    boolean isAutoDisable();
+
+    /**
+     * Auto disable flag upon area load.
+     *
+     * @param autoDisable true, if it should be disabled
+     * @return instance of this flag
+     */
+    @NotNull
+    T setAutoDisable(boolean autoDisable);
 
     /**
      * The plugin that provides this flag.

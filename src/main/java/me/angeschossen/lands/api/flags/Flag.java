@@ -55,6 +55,16 @@ public abstract class Flag<T> implements me.angeschossen.lands.api.flags.type.pa
         }
     }
 
+    @Override
+    public boolean isAutoDisable() {
+        return false;
+    }
+
+    @Override
+    public @NotNull T setAutoDisable(boolean autoDisable) {
+        return self();
+    }
+
     public final boolean isDisplayInWild() {
         return !alwaysAllowInWilderness;
     }

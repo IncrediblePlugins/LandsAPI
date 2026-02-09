@@ -5,7 +5,6 @@ import com.github.angeschossen.pluginframework.api.limit.holder.LimitHolder;
 import com.github.angeschossen.pluginframework.api.player.PlayerData;
 import me.angeschossen.lands.api.flags.type.PlayerFlag;
 import me.angeschossen.lands.api.land.Land;
-import me.angeschossen.lands.api.limits.Limitation;
 import me.angeschossen.lands.api.player.chat.ChatMode;
 import me.angeschossen.lands.api.player.combat.CombatTag;
 import me.angeschossen.lands.api.player.invite.Invite;

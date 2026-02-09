@@ -1,5 +1,5 @@
 package me.angeschossen.lands.api.limits;
 
-public enum LimitationMode {
+public enum LimitMode {
     PERMISSION, DATABASE
 }

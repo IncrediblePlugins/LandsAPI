@@ -107,6 +107,7 @@ public class RoleFlag extends DefaultStateFlag<me.angeschossen.lands.api.flags.t
         return "lands.role.setting." + name;
     }
 
+
     @Override
     public boolean shouldDisplay(@Nullable Area area, @Nullable LandPlayer landPlayer) {
         return false;

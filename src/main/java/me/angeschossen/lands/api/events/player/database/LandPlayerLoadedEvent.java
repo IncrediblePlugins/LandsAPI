@@ -10,7 +10,7 @@ import java.util.Objects;
 /**
  * Called once the player data of a player that just joined, is fully loaded.
  */
-public class PlayerDataLoadedEvent extends PlayerEvent {
+public class LandPlayerLoadedEvent extends PlayerEvent {
     public static final HandlerList handlerList = new HandlerList();
 
     /**
@@ -18,7 +18,7 @@ public class PlayerDataLoadedEvent extends PlayerEvent {
      *
      * @param landPlayer the joined player
      */
-    public PlayerDataLoadedEvent(@NotNull LandPlayer landPlayer) {
+    public LandPlayerLoadedEvent(@NotNull LandPlayer landPlayer) {
         super(landPlayer);
     }
 
