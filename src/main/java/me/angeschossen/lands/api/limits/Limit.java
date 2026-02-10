@@ -117,7 +117,7 @@ public enum Limit implements com.github.angeschossen.pluginframework.api.limit.L
     }
 
     public final boolean hasTarget(@NotNull com.github.angeschossen.pluginframework.api.limit.holder.LimitTarget target) {
-        return targets.contains(target);
+        return targets.contains(target); // some limits should only be saved to lands or nations
     }
 
     @Override
@@ -130,13 +130,17 @@ public enum Limit implements com.github.angeschossen.pluginframework.api.limit.L
     }
 
     @Override
-    public void registerModifier(@NotNull LimitModifier limitModifier) {
-        modifiers.put(StringUtils.toLowerCase(limitModifier.getId()), limitModifier);
+    public void registerModifier(@NotNull LimitModifier... limitModifiers) {
+        for (LimitModifier modifier : limitModifiers) {
+            modifiers.put(StringUtils.toLowerCase(modifier.getId()), modifier);
+        }
     }
 
     @Override
-    public void unregisterModifier(@NotNull LimitModifier limitModifier) {
-        modifiers.remove(StringUtils.toLowerCase(limitModifier.getId()));
+    public void unregisterModifier(@NotNull LimitModifier... limitModifiers) {
+        for (LimitModifier modifier : limitModifiers) {
+            modifiers.remove(StringUtils.toLowerCase(modifier.getId()));
+        }
     }
 
     @Override

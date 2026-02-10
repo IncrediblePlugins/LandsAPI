@@ -1,6 +1,7 @@
 package me.angeschossen.lands.api.land;
 
 import com.github.angeschossen.pluginframework.api.blockutil.UnloadedPosition;
+import com.github.angeschossen.pluginframework.api.limit.Limit;
 import me.angeschossen.lands.api.events.land.DeleteReason;
 import me.angeschossen.lands.api.events.land.LandConvertEvent;
 import me.angeschossen.lands.api.handler.APIHandler;
@@ -210,8 +211,6 @@ public interface Land extends MemberHolder, SystemFlagStatesHolder {
     @Nullable
     War getWar();
 
-    int getMaxMembers(boolean countAdditinal);
-
     /**
      * Get the nation that this land belongs to.
      *
@@ -313,7 +312,9 @@ public interface Land extends MemberHolder, SystemFlagStatesHolder {
      * lands.members.number, level and other factors.
      *
      * @return Max amount of members. Never negative
+     * @deprecated Use {@link #getLimit(Limit)} instead
      */
+    @Deprecated
     int getMaxMembers();
 
     /**
@@ -328,17 +329,10 @@ public interface Land extends MemberHolder, SystemFlagStatesHolder {
      * Get amount of claimable chunks.
      *
      * @return Max chunk claims. Never negative
-     */
-    int getMaxChunks();
-
-    /**
-     * Use {@link #getMaxChunks()} instead.
-     *
-     * @param countNation If rewards from nation level should be counted
-     * @return Never negative
+     * @deprecated Use {@link #getLimit(Limit)} instead
      */
     @Deprecated
-    int getMaxChunks(boolean countNation);
+    int getMaxChunks();
 
     /**
      * Set title message, which appears if a player enters the land.

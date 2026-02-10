@@ -20,7 +20,7 @@ public enum HolderType {
         this.limitTarget = Checks.requireNonNull(limitTarget, "limitationTarget");
     }
 
-    public @NotNull LimitTarget getLimitationTarget() {
+    public @NotNull LimitTarget getLimitTarget() {
         return limitTarget;
     }
 }
