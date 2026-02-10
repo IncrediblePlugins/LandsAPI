@@ -16,15 +16,15 @@ public enum Limit implements com.github.angeschossen.pluginframework.api.limit.L
     /**
      * Limits the maximum amount of lands the player can own.
      */
-    OWN_LANDS("lands.ownlands", "ownlands", LimitTarget.PLAYER),
+    PLAYER_LANDS_OWNED("lands.ownlands", "ownlands", LimitTarget.PLAYER),
     /**
      * Amount of lands a player can create for free.
      */
-    OWN_LANDS_FREE("lands.free.lands", null, LimitTarget.PLAYER),
+    PLAYER_LANDS_OWNED_FREE("lands.free.lands", null, LimitTarget.PLAYER),
     /**
      * Amount of temporary camps a player can have at the same time.
      */
-    OWN_CAMPS("lands.camps", null, LimitTarget.PLAYER),
+    PLAYER_CAMPS_OWNED("lands.camps", null, LimitTarget.PLAYER),
     /**
      * Limits the maximum amount of chunks the player can claim for each land they own.
      */
@@ -44,11 +44,7 @@ public enum Limit implements com.github.angeschossen.pluginframework.api.limit.L
     /**
      * Amount of roles a land owner can create for each area inside their land.
      */
-    LAND_ROLES("lands.roles", null, LimitTarget.LAND),
-    /**
-     * Amount of chunks a player can claim for free across all lands (owned and trusted).
-     */
-    LAND_CHUNKS_FREE("lands.free.chunks", null, LimitTarget.PLAYER),
+    AREA_ROLES("lands.roles", null, LimitTarget.LAND),
     /**
      * Amount of allies a land owner can add to each land they own.
      */
@@ -60,15 +56,19 @@ public enum Limit implements com.github.angeschossen.pluginframework.api.limit.L
     /**
      * Limits the maximum amount of lands the player can be trusted in. This does not include lands that the player owns.
      */
-    TRUSTED_LANDS("lands.lands", "lands", LimitTarget.PLAYER),
+    PLAYER_LANDS_TRUSTED("lands.lands", "lands", LimitTarget.PLAYER),
     /**
      * Sets the amount of areas a player can rent in each land they're trusted in.
      */
-    RENTALS("lands.rentals", null, LimitTarget.PLAYER),
+    PLAYER_RENTALS("lands.rentals", null, LimitTarget.PLAYER),
     /**
      * Total amount of chunks a player can claim across a lands (owned and trusted).
      */
     PLAYER_CHUNKS("lands.player.chunnks", null, LimitTarget.PLAYER),
+    /**
+     * Amount of chunks a player can claim for free across all lands (owned and trusted).
+     */
+    PLAYER_CHUNKS_FREE("lands.free.chunks", null, LimitTarget.PLAYER),
     /**
      * Amount of lands a player can add to each nation they own.
      */
@@ -78,7 +78,7 @@ public enum Limit implements com.github.angeschossen.pluginframework.api.limit.L
     private final @Nullable String oldName;
     private static final Map<String, Limit> permissionToLimitMap = new HashMap<>();
     private static final Map<String, Limit> oldNameToLimitMap = new HashMap<>();
-    private LimitMode mode = LimitMode.DATABASE;
+    private LimitMode mode = LimitMode.PERMISSION;
     private final Set<com.github.angeschossen.pluginframework.api.limit.holder.LimitTarget> targets;
     private final Map<String, LimitModifier> modifiers = new HashMap<>();
 
