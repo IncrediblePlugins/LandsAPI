@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * @deprecated Use {@link me.angeschossen.lands.api.events.LandPreCreateEvent} instead.
+ * @deprecated Use {@link me.angeschossen.lands.api.events.land.create.LandPreCreateEvent} instead.
  */
 @Deprecated
 public class LandCreateEvent extends LandEvent implements Cancellable {
