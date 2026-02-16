@@ -3,20 +3,96 @@ package me.angeschossen.lands.api.war;
 import com.github.angeschossen.applicationframework.api.util.ULID;
 import com.github.angeschossen.pluginframework.api.holder.Changeable;
 import com.github.angeschossen.pluginframework.api.player.PlayerDataBase;
+import me.angeschossen.lands.api.land.Land;
 import me.angeschossen.lands.api.memberholder.MemberHolder;
 import me.angeschossen.lands.api.player.LandPlayer;
 import me.angeschossen.lands.api.war.declaration.WarDeclaration;
 import me.angeschossen.lands.api.war.enums.WarSetting;
 import me.angeschossen.lands.api.war.enums.WarStatus;
 import me.angeschossen.lands.api.war.enums.WarTeam;
+import me.angeschossen.lands.api.war.player.WarPlayer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Function;
 
 public interface WarState extends Changeable {
+
+    @NotNull
+    default Collection<UUID> getDefenderPlayers() {
+        Set<UUID> players = new HashSet<>();
+        for (Land land : getDefenders()) {
+            players.addAll(land.getTrustedPlayers());
+        }
+
+        return players;
+    }
+
+    @NotNull
+    default Collection<UUID> getAttackerPlayers() {
+        Set<UUID> players = new HashSet<>();
+        for (Land land : getAttackers()) {
+            players.addAll(land.getTrustedPlayers());
+        }
+
+        return players;
+    }
+
+    /**
+     * Add an online player to this war.
+     * This is called by Lands.
+     *
+     * @param landPlayer the player to add
+     */
+    void addOnlinePlayer(@NotNull LandPlayer landPlayer);
+
+    @NotNull Collection<? extends Land> getDefenders();
+
+    @NotNull Collection<? extends Land> getAttackers();
+
+    /**
+     * Get online players of the attacker.
+     *
+     * @return Online players of the attacker
+     */
+    @NotNull Collection<? extends WarPlayer> getOnlineAttackers();
+
+    /**
+     * Get information about player in this war.
+     *
+     * @param landPlayer the player
+     * @return null, if player doesn't participate in this war
+     */
+    @Nullable
+    WarPlayer getWarPlayer(@NotNull LandPlayer landPlayer);
+
+    /**
+     * Check if a player is participating in this war.
+     *
+     * @param player the player to check
+     * @return false, if player isn't participating
+     */
+    boolean isParticipating(@NotNull LandPlayer player);
+
+    /**
+     * Remove an online player from this war.
+     *
+     * @param player  the player that is logging out
+     * @param logging related to cooldown_logging option in config.yml
+     */
+    void removeOnlinePlayer(@NotNull LandPlayer player, boolean logging);
+
+    /**
+     * Get online players of the defender.
+     *
+     * @return Online players of the defender
+     */
+    @NotNull Collection<? extends WarPlayer> getOnlineDefenders();
 
     /**
      * Check if the current server should tick this war.

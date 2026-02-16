@@ -20,14 +20,6 @@ public interface War extends ExpressionEntity, WarState, TeamGiver {
     void updateStats(@NotNull ActiveWarStats statsAtt,@NotNull  ActiveWarStats statsDef);
 
     /**
-     * Add an online player to this war.
-     * This is called by Lands.
-     *
-     * @param landPlayer the player to add
-     */
-    void addOnlinePlayer(@NotNull LandPlayer landPlayer);
-
-    /**
      * End this war.
      *
      * @return never null
@@ -53,13 +45,6 @@ public interface War extends ExpressionEntity, WarState, TeamGiver {
     ActiveWarStats getAttackerStats();
 
     /**
-     * Get online players of the attacker.
-     *
-     * @return Online players of the attacker
-     */
-    @NotNull Collection<? extends WarPlayer> getOnlineAttackers();
-
-    /**
      * Get all capture flags of this war.
      *
      * @return never null
@@ -74,13 +59,6 @@ public interface War extends ExpressionEntity, WarState, TeamGiver {
      */
     @NotNull
     ActiveWarStats getDefenderStats();
-
-    /**
-     * Get online players of the defender.
-     *
-     * @return Online players of the defender
-     */
-    @NotNull Collection<? extends WarPlayer> getOnlineDefenders();
 
     /**
      * Get all capture flags that were placed by a specific team.
@@ -110,7 +88,7 @@ public interface War extends ExpressionEntity, WarState, TeamGiver {
      *
      * @return milliseconds when of date at which the war started
      */
-    Timestamp getStarted();
+    @NotNull Timestamp getStarted();
 
     /**
      * Set started time. See {@link #getStarted()} for more info.
@@ -118,15 +96,6 @@ public interface War extends ExpressionEntity, WarState, TeamGiver {
      * @param started milliseconds
      */
     void setStarted(long started);
-
-    /**
-     * Get information about player in this war.
-     *
-     * @param landPlayer the player
-     * @return null, if player doesn't participate in this war
-     */
-    @Nullable
-    WarPlayer getWarPlayer(@NotNull LandPlayer landPlayer);
 
     /**
      * Get the current winner.
@@ -155,20 +124,4 @@ public interface War extends ExpressionEntity, WarState, TeamGiver {
      * The war will end in a matter of seconds of this method returns true
      */
     boolean isEndingSoon();
-
-    /**
-     * Check if a player is participating in this war.
-     *
-     * @param player the player to check
-     * @return false, if player isn't participating
-     */
-    boolean isParticipating(@NotNull LandPlayer player);
-
-    /**
-     * Remove an online player from this war.
-     *
-     * @param player  the player that is logging out
-     * @param logging related to cooldown_logging option in config.yml
-     */
-    void removeOnlinePlayer(@NotNull LandPlayer player, boolean logging);
 }
