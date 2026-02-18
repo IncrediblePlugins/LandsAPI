@@ -63,7 +63,7 @@ tasks {
 }
 
 dependencies {
-    shadow("com.github.IncrediblePlugins:PluginFrameworkAPI:1.1.17")
+    shadow("com.github.IncrediblePlugins:PluginFrameworkAPI:1.1.18")
     shadow("com.github.Angeschossen:ApplicationFrameworkAPI:1.0.2")
     compileOnly("org.spigotmc:spigot-api:1.21.1-R0.1-SNAPSHOT")
     compileOnly("org.realityforge.org.jetbrains.annotations:org.jetbrains.annotations:1.7.0")
