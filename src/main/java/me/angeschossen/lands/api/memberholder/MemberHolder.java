@@ -137,15 +137,6 @@ public interface MemberHolder extends BalanceHolder, ExpressionEntity, CMDTarget
     String getExpressionPrefix();
 
     /**
-     * Get numerical identification.
-     *
-     * @return ID
-     * @deprecated Use {@link #getULID()} instead.
-     */
-    @Deprecated
-    int getId();
-
-    /**
      * Get all inbox messages.
      *
      * @return All inbox messages

@@ -98,20 +98,6 @@ public interface LandsIntegrator {
     @NotNull FlagRegistry getFlagRegistry();
 
     /**
-     * Use {@link #getLand(World, int, int)} instead.
-     */
-    @Deprecated
-    Land getLand(@NotNull String worldName, @NotNull String landName);
-
-    /**
-     * Get land by its id.
-     *
-     * @param id The id of the land.
-     * @return null, if no land with this id exists.
-     */
-    Land getLand(int id);
-
-    /**
      * Get land by name
      * Name is not case sensitive
      *
@@ -195,14 +181,6 @@ public interface LandsIntegrator {
      */
     @NotNull
     String getName();
-
-    /**
-     * Get a nation by its ID.
-     *
-     * @param id ID of the nation
-     * @return null, if no nation with this id exists
-     */
-    @Nullable Nation getNation(int id);
 
     /**
      * Get a nation by its name.

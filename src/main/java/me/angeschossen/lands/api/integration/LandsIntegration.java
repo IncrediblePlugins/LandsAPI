@@ -172,24 +172,8 @@ public class LandsIntegration implements LandsIntegrator, me.angeschossen.lands.
     }
 
     @Override
-    @Deprecated
-    public Land getLand(@NotNull String worldName, @NotNull String name) {
-        return getLandByName(name);
-    }
-
-    @Override
-    public Land getLand(int id) {
-        return getLandById(id);
-    }
-
-    @Override
     public Land getLand(@NotNull String name) {
         return getLandByName(name);
-    }
-
-    @Override
-    public Land getLandById(int id) {
-        return APIHandler.getInstance().getLegacySupport().getLandById(id);
     }
 
     @Override
@@ -274,19 +258,8 @@ public class LandsIntegration implements LandsIntegrator, me.angeschossen.lands.
     }
 
     @Override
-    public @Nullable Nation getNation(int id) {
-        return getNationById(id);
-    }
-
-    @Override
     public @Nullable Nation getNation(@NotNull String name) {
         return getNationByName(name);
-    }
-
-    @Override
-    @Nullable
-    public Nation getNationById(int id) {
-        return APIHandler.getInstance().getLegacySupport().getNationById(id);
     }
 
     @Override

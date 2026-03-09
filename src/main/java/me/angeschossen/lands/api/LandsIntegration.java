@@ -146,17 +146,6 @@ public interface LandsIntegration {
     Land getLandByUnloadedChunk(@NotNull World world, int chunkX, int chunkZ);
 
     /**
-     * Get land by its id.
-     *
-     * @param id The id of the land.
-     * @return null, if no land with this id exists
-     * @deprecated Use {@link #getLandByULID(ULID)} instead
-     */
-    @Nullable
-    @Deprecated
-    Land getLandById(int id);
-
-    /**
      * Get land by its ULID.
      *
      * @param ulid ULID of the land
@@ -236,17 +225,6 @@ public interface LandsIntegration {
      */
     @NotNull
     String getName();
-
-    /**
-     * Get a nation by its ID.
-     *
-     * @param id ID of the nation
-     * @return null, if no nation with this id exists
-     * @deprecated Use {@link #getNationByULID(ULID)} instead
-     */
-    @Nullable
-    @Deprecated
-    Nation getNationById(int id);
 
     /**
      * Get nation by its ULID.

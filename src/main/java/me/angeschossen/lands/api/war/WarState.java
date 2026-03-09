@@ -157,11 +157,8 @@ public interface WarState extends Changeable {
     /**
      * Get the ID of this warstate
      *
-     * @return numerical ID
+     * @return unique ID
      */
-    @Deprecated
-    int getId();
-
     @NotNull
     ULID getULID();
 
