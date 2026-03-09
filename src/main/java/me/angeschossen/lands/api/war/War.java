@@ -6,7 +6,6 @@ import me.angeschossen.lands.api.land.Land;
 import me.angeschossen.lands.api.memberholder.MemberHolder;
 import me.angeschossen.lands.api.player.LandPlayer;
 import me.angeschossen.lands.api.war.captureflag.CaptureFlag;
-import me.angeschossen.lands.api.war.player.WarPlayer;
 import org.bukkit.Material;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
