@@ -64,7 +64,7 @@ public enum Limit implements com.github.angeschossen.pluginframework.api.limit.L
     /**
      * Total amount of chunks a player can claim across a lands (owned and trusted).
      */
-    PLAYER_CHUNKS("lands.player.chunnks", null, LimitTarget.PLAYER),
+    PLAYER_CHUNKS("lands.chunks.support", null, LimitTarget.PLAYER),
     /**
      * Amount of chunks a player can claim for free across all lands (owned and trusted).
      */
