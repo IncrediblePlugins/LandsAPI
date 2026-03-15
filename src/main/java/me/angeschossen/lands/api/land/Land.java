@@ -286,10 +286,19 @@ public interface Land extends MemberHolder, SystemFlagStatesHolder {
     UnloadedPosition getSpawnPosition();
 
     /**
+     * Set spawn position.
+     *
+     * @param position null, if you want to remove the spawn
+     */
+    void setSpawnPosition(@Nullable UnloadedPosition position);
+
+    /**
      * Set spawn location.
      *
      * @param location Location of the new spawn
+     * @deprecated use {@link #setSpawnPosition(UnloadedPosition)}
      */
+    @Deprecated
     void setSpawn(@Nullable Location location);
 
     /**

@@ -1,6 +1,7 @@
 package me.angeschossen.lands.api.land;
 
 import com.github.angeschossen.applicationframework.api.util.ULID;
+import com.github.angeschossen.pluginframework.api.blockutil.UnloadedPosition;
 import com.github.angeschossen.pluginframework.api.blockutil.impl.Position;
 import com.github.angeschossen.pluginframework.api.events.ExpressionEntity;
 import com.github.angeschossen.pluginframework.api.exceptions.PlayerUntrustedException;
@@ -66,15 +67,15 @@ public interface Area extends ExpressionEntity, TaxHolder, SystemFlagStatesHolde
      *
      * @param position new position or reset to default
      */
-    void setSpawn(@Nullable Position position);
+    void setSpawn(@Nullable UnloadedPosition position);
 
     /**
      * Get the spawn position of the area.
      *
-     * @return null, if area isn't setup yet or no spawn set manually ({@link #setSpawn(Position)}) for the default area.
+     * @return null, if area isn't setup yet or no spawn set manually
      */
     @Nullable
-    Position getSpawn();
+    UnloadedPosition getSpawn();
 
 
     /**
