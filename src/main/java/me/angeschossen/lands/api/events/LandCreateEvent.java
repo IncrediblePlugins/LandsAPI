@@ -1,6 +1,7 @@
 package me.angeschossen.lands.api.events;
 
 import me.angeschossen.lands.api.events.land.LandEvent;
+import me.angeschossen.lands.api.flags.type.NaturalFlag;
 import me.angeschossen.lands.api.land.Land;
 import me.angeschossen.lands.api.player.LandPlayer;
 import org.bukkit.event.Cancellable;

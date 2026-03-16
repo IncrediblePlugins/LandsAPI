@@ -48,5 +48,5 @@ public interface LandsIntegrationFactory {
     LandMainBlock landMainBlockOf(@Nullable LandPlayer landPlayer, @NotNull BlockPosition blockPosition);
 
     @NotNull
-    Selection selectionOf(@NotNull LandPlayer landPlayer, boolean giveTool, boolean msg, boolean visualization);
+    Selection selectionOf(@NotNull LandPlayer landPlayer, boolean giveTool, boolean msg, boolean isPassive);
 }

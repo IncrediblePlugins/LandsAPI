@@ -17,15 +17,16 @@ public interface Selection {
 
     /**
      * Get selection instance.
+     *
      * @param landPlayer The player
-     * @param giveTool Should the tool be given to the player?
-     * @param msg Should progress messages etc. be sent?
-     * @param visualization Should the selection be visualized?
+     * @param giveTool   Should the tool be given to the player?
+     * @param msg        Should progress messages etc. be sent?
+     * @param isPassive  if true, visualization is only used for calculations, not actually showing any particles
      * @return Selection instance
      */
     @NotNull
-    static Selection of(@NotNull LandPlayer landPlayer, boolean giveTool, boolean msg, boolean visualization) {
-        return APIHandler.getLandsIntegrationFactory().selectionOf(landPlayer, giveTool, msg, visualization);
+    static Selection of(@NotNull LandPlayer landPlayer, boolean giveTool, boolean msg, boolean isPassive) {
+        return APIHandler.getLandsIntegrationFactory().selectionOf(landPlayer, giveTool, msg, isPassive);
     }
 
     /**
@@ -99,6 +100,7 @@ public interface Selection {
 
     /**
      * Check if the selection contains any part of a chunk.
+     *
      * @param x Chunk x
      * @param z Chunk z
      * @return true, if the selection contains any port of the provided chunk
@@ -107,6 +109,7 @@ public interface Selection {
 
     /**
      * Get all chunks, of which at least one block is part of this selection.
+     *
      * @param predicate Filter chunks
      * @return Chunks of which at least one block is part of this selection and for which the predicate returned true
      */
