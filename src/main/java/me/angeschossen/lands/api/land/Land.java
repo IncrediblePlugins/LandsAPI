@@ -411,9 +411,19 @@ public interface Land extends MemberHolder, SystemFlagStatesHolder {
     /**
      * Set land bank balance.
      *
-     * @param balance Minimum value is 0
+     * @param balance minimum value is 0
      */
-    boolean setBalance(double balance);
+    default boolean setBalance(double balance) {
+        return setBalance(balance, true);
+    }
+
+    /**
+     * Set land bank balance.
+     *
+     * @param balance      minimum value is 0
+     * @param triggerEvent if false, it won't trigger {@link me.angeschossen.lands.api.events.land.bank.LandBankBalanceChangedEvent}
+     */
+    boolean setBalance(double balance, boolean triggerEvent);
 
     /**
      * Get the category of this land. Players can change the category of their land.
@@ -430,6 +440,16 @@ public interface Land extends MemberHolder, SystemFlagStatesHolder {
      * @param value If negative, it will remove the amount from the balance.
      * @return If value was negative and result smaller then 0, false. If false, this method has no effect.
      */
-    boolean modifyBalance(double value);
+    default boolean modifyBalance(double value) {
+        return modifyBalance(value, true);
+    }
 
+    /**
+     * Add or remove money from the bank.
+     *
+     * @param value        If negative, it will remove the amount from the balance.
+     * @param triggerEvent if false, it won't trigger {@link me.angeschossen.lands.api.events.land.bank.LandBankBalanceChangedEvent}
+     * @return If value was negative and result smaller then 0, false. If false, this method has no effect.
+     */
+    boolean modifyBalance(double value, boolean triggerEvent);
 }
