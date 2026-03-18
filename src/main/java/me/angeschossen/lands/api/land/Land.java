@@ -402,30 +402,6 @@ public interface Land extends MemberHolder, SystemFlagStatesHolder {
     boolean exists();
 
     /**
-     * Get the bank balance. Some servers might have banks disabled.
-     *
-     * @return Never negative
-     */
-    double getBalance();
-
-    /**
-     * Set land bank balance.
-     *
-     * @param balance minimum value is 0
-     */
-    default boolean setBalance(double balance) {
-        return setBalance(balance, true);
-    }
-
-    /**
-     * Set land bank balance.
-     *
-     * @param balance      minimum value is 0
-     * @param triggerEvent if false, it won't trigger {@link me.angeschossen.lands.api.events.land.bank.LandBankBalanceChangedEvent}
-     */
-    boolean setBalance(double balance, boolean triggerEvent);
-
-    /**
      * Get the category of this land. Players can change the category of their land.
      * Categories help lands to present themselves as a shop focused land etc.
      *
@@ -433,23 +409,4 @@ public interface Land extends MemberHolder, SystemFlagStatesHolder {
      */
     @Nullable
     LandCategory getCategory();
-
-    /**
-     * Add or remove money from the bank.
-     *
-     * @param value If negative, it will remove the amount from the balance.
-     * @return If value was negative and result smaller then 0, false. If false, this method has no effect.
-     */
-    default boolean modifyBalance(double value) {
-        return modifyBalance(value, true);
-    }
-
-    /**
-     * Add or remove money from the bank.
-     *
-     * @param value        If negative, it will remove the amount from the balance.
-     * @param triggerEvent if false, it won't trigger {@link me.angeschossen.lands.api.events.land.bank.LandBankBalanceChangedEvent}
-     * @return If value was negative and result smaller then 0, false. If false, this method has no effect.
-     */
-    boolean modifyBalance(double value, boolean triggerEvent);
 }
