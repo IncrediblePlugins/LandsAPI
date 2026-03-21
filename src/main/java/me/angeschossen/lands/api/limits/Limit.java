@@ -28,7 +28,12 @@ public enum Limit implements com.github.angeschossen.pluginframework.api.limit.L
     /**
      * Limits the maximum amount of chunks the player can claim for each land they own.
      */
-    LAND_CHUNKS("lands.chunks", "chunks", LimitTarget.PLAYER, LimitTarget.LAND),
+    LAND_SIZE("lands.chunks", "chunks", LimitTarget.PLAYER, LimitTarget.LAND){
+        @Override
+        public @NotNull Collection<String> getConfigAliases() {
+            return List.of("land_chunks");
+        }
+    },
     /**
      * Limits the maximum amount of trusted players the player can trust to each land they own.
      */
@@ -94,6 +99,7 @@ public enum Limit implements com.github.angeschossen.pluginframework.api.limit.L
     }
 
 
+
     @Nullable
     public static Limit getByPermission(@NotNull String permission) {
         return Limit.permissionToLimitMap.get(StringUtils.toLowerCase(Checks.requireNonNull(permission, "permission")));
@@ -155,6 +161,11 @@ public enum Limit implements com.github.angeschossen.pluginframework.api.limit.L
     }
 
     @Override
+    public @NotNull Collection<String> getConfigAliases() {
+        return Collections.emptySet();
+    }
+
+    @Override
     public @NotNull String getId() {
         return toString();
     }
@@ -177,6 +188,7 @@ public enum Limit implements com.github.angeschossen.pluginframework.api.limit.L
     public @NotNull String getPermission() {
         return permission;
     }
+
 
     @NotNull
     public final LimitMode getMode() {

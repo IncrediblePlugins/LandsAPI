@@ -164,7 +164,14 @@ public interface MemberHolder extends BalanceHolder, ExpressionEntity, CMDTarget
     /**
      * Get the amount of players.
      *
-     * @return Total amount of players
+     * @return does include owner(s)
+     */
+    int getPlayersAmount();
+
+    /**
+     * Get the amount of members.
+     *
+     * @return does not include owner(s)
      */
     int getMembersAmount();
 
