@@ -17,6 +17,7 @@ import java.util.UUID;
 public abstract class NationEditEvent extends PlayerNullableEvent {
 
 
+    /** The nation being edited by this event. */
     protected final @NotNull Nation nation;
 
     /**

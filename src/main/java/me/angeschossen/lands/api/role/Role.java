@@ -13,6 +13,9 @@ import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
 
+/**
+ * Represents a role within a land or area, defining the permissions of members assigned to it.
+ */
 public interface Role extends ExpressionEntity {
 
     /**

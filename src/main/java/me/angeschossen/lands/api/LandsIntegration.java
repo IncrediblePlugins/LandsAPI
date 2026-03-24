@@ -28,6 +28,10 @@ import java.util.Collection;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
+/**
+ * Main entry-point for third-party plugins integrating with Lands.
+ * Obtain an instance via {@link #of(Plugin)}.
+ */
 public interface LandsIntegration {
 
     /**

@@ -14,11 +14,21 @@ import org.jetbrains.annotations.Nullable;
  */
 public class ChunkPostClaimEvent extends LandEvent {
 
+    /** Handler list for this event. */
     public static HandlerList handlerList = new HandlerList();
 
     private final int x, z;
     private final @NotNull LandWorld world;
 
+    /**
+     * Create an instance of this event.
+     *
+     * @param landPlayer the player who claimed the chunk, or {@code null} if triggered by the server
+     * @param land       the land the chunk was claimed for
+     * @param landWorld  the world in which the chunk is located
+     * @param x          chunk X coordinate
+     * @param z          chunk Z coordinate
+     */
     public ChunkPostClaimEvent(@Nullable LandPlayer landPlayer, @NotNull Land land, @NotNull LandWorld landWorld, int x, int z) {
         super(land, landPlayer);
 
@@ -28,6 +38,11 @@ public class ChunkPostClaimEvent extends LandEvent {
         this.z = z;
     }
 
+    /**
+     * Returns the handler list for this event type.
+     *
+     * @return the handler list; never null
+     */
     public static HandlerList getHandlerList() {
         return handlerList;
     }

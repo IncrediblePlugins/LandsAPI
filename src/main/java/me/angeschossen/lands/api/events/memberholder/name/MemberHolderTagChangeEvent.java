@@ -13,6 +13,7 @@ import org.jetbrains.annotations.Nullable;
  * Called when a land or nation tag is being changed.
  */
 public class MemberHolderTagChangeEvent extends MemberHolderEvent implements Cancellable {
+    /** Handler list for this event. */
     public static final HandlerList handlerList = new HandlerList();
     private final @Nullable String newTag;
     private boolean cancelled = false;
@@ -32,6 +33,11 @@ public class MemberHolderTagChangeEvent extends MemberHolderEvent implements Can
         this.newTag = newTag;
     }
 
+    /**
+     * Returns the handler list for this event type.
+     *
+     * @return the handler list; never null
+     */
     public static HandlerList getHandlerList() {
         return handlerList;
     }

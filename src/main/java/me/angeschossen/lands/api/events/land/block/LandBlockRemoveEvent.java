@@ -14,6 +14,7 @@ import org.jetbrains.annotations.Nullable;
  * Landblock types: {@link me.angeschossen.lands.api.land.block.LandBlockType}
  */
 public class LandBlockRemoveEvent extends LandBlockEvent {
+    /** Handler list for this event. */
     public static final HandlerList handlerList = new HandlerList();
     private final @NotNull LandBlockRemovalReason reason;
 
@@ -40,6 +41,11 @@ public class LandBlockRemoveEvent extends LandBlockEvent {
         return reason;
     }
 
+    /**
+     * Returns the handler list for this event type.
+     *
+     * @return the handler list; never null
+     */
     public static HandlerList getHandlerList() {
         return handlerList;
     }

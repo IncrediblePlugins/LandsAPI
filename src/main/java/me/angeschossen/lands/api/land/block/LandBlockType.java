@@ -1,5 +1,8 @@
 package me.angeschossen.lands.api.land.block;
 
+/**
+ * Defines the types of special blocks that can be placed inside a land.
+ */
 public enum LandBlockType {
     /**
      * The mainblock, which opens the land menu and land storage upon interaction.

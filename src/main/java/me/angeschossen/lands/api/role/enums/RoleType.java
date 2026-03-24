@@ -5,6 +5,11 @@ import org.jetbrains.annotations.NotNull;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Defines the built-in role types available in a land or area.
+ * Each type has fixed behaviour constraints such as whether it can be deleted,
+ * can have members assigned, or can appear multiple times.
+ */
 public enum RoleType {
     /**
      * The role of this type is assigned to the owner of the land or area.
@@ -40,6 +45,11 @@ public enum RoleType {
 
     private static final Map<Integer, RoleType> map = new HashMap<>();
 
+    /**
+     * Whether this role type is used within a land (as opposed to nation-only roles).
+     *
+     * @return true if this is a land role type
+     */
     public boolean isLand() {
         return this != NATION;
     }
@@ -64,47 +74,103 @@ public enum RoleType {
         this.canHaveMembers = canHaveMembers;
     }
 
+    /**
+     * Whether the priority of this role type can be changed.
+     *
+     * @return true if the priority can be changed
+     */
     public boolean canPriorityBeChanged() {
         return canPriorityBeChanged;
     }
 
+    /**
+     * Whether this role type can be assigned to a player.
+     *
+     * @return true if the role can be assigned to members
+     */
     public boolean canBeSet() {
         return canBeSet && canHaveMembers();
     }
 
+    /**
+     * Get a {@link RoleType} by its numeric ID.
+     *
+     * @param id the numeric ID
+     * @return the matching type, or {@link #NORMAL} if not found
+     */
     @NotNull
     public static RoleType getById(int id) {
         return map.getOrDefault(id, NORMAL);
     }
 
+    /**
+     * Whether this role type can be applied to players (i.e. NORMAL or ENTRY).
+     *
+     * @return true if this role can be applied
+     */
     public boolean canApply() {
         return this == NORMAL || this == ENTRY;
     }
 
+    /**
+     * Whether this role type supports having members assigned to it.
+     *
+     * @return true if members can be assigned
+     */
     public boolean canHaveMembers() {
         return canHaveMembers;
     }
 
+    /**
+     * Whether more than one role of this type can exist in the same land or area.
+     *
+     * @return true if multiple roles of this type are allowed
+     */
     public boolean canMultiple() {
         return multiple;
     }
 
+    /**
+     * Get the numeric ID of this role type.
+     *
+     * @return numeric ID
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * Whether roles of this type can be deleted.
+     *
+     * @return true if deleteable
+     */
     public boolean isDeleteable() {
         return isDeleteable;
     }
 
+    /**
+     * Set whether roles of this type can be deleted.
+     *
+     * @param deleteable true to allow deletion
+     */
     public void setDeleteable(boolean deleteable) {
         isDeleteable = deleteable;
     }
 
+    /**
+     * Whether this is a system role type (i.e. cannot have members directly assigned).
+     *
+     * @return true if system role
+     */
     public boolean isSystem() {
         return !canHaveMembers;
     }
 
+    /**
+     * Whether members of this role type are required to pay taxes.
+     *
+     * @return true if members pay taxes
+     */
     public final boolean paysTaxes() {
         return this == NORMAL || this == ENTRY;
     }

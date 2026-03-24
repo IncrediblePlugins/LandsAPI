@@ -100,11 +100,23 @@ public enum Limit implements com.github.angeschossen.pluginframework.api.limit.L
 
 
 
+    /**
+     * Get a limit by its permission node.
+     *
+     * @param permission the permission node string
+     * @return the matching limit, or {@code null} if none found
+     */
     @Nullable
     public static Limit getByPermission(@NotNull String permission) {
         return Limit.permissionToLimitMap.get(StringUtils.toLowerCase(Checks.requireNonNull(permission, "permission")));
     }
 
+    /**
+     * Get a limit by its legacy name.
+     *
+     * @param oldName the legacy name of the limit
+     * @return the matching limit, or {@code null} if none found
+     */
     @Nullable
     public static Limit getByOldName(@NotNull String oldName) {
         return Limit.oldNameToLimitMap.get(StringUtils.toLowerCase(Checks.requireNonNull(oldName, "oldName")));
@@ -190,11 +202,21 @@ public enum Limit implements com.github.angeschossen.pluginframework.api.limit.L
     }
 
 
+    /**
+     * Get the current mode that determines how this limit's value is resolved.
+     *
+     * @return the limit mode; never null
+     */
     @NotNull
     public final LimitMode getMode() {
         return mode;
     }
 
+    /**
+     * Set the mode that determines how this limit's value is resolved.
+     *
+     * @param mode the new limit mode; must not be null
+     */
     public final void setMode(@NotNull LimitMode mode) {
         this.mode = Objects.requireNonNull(mode);
     }

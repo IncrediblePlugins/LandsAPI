@@ -15,12 +15,22 @@ import org.jetbrains.annotations.Nullable;
  */
 public class ChunkPreClaimEvent extends LandEvent implements Cancellable {
 
+    /** Handler list for this event. */
     public static HandlerList handlerList = new HandlerList();
     private final int x;
     private final int z;
     private final @NotNull LandWorld world;
     private boolean cancelled;
 
+    /**
+     * Create an instance of this event.
+     *
+     * @param land       the land the chunk is being claimed for
+     * @param landPlayer the player claiming the chunk, or {@code null} if triggered by the server
+     * @param world      the world in which the chunk is located
+     * @param x          chunk X coordinate
+     * @param z          chunk Z coordinate
+     */
     public ChunkPreClaimEvent(@NotNull Land land, @Nullable LandPlayer landPlayer, @NotNull LandWorld world, int x, int z) {
         super(land, landPlayer);
 
@@ -30,6 +40,11 @@ public class ChunkPreClaimEvent extends LandEvent implements Cancellable {
         this.z = z;
     }
 
+    /**
+     * Returns the handler list for this event type.
+     *
+     * @return the handler list; never null
+     */
     public static HandlerList getHandlerList() {
         return handlerList;
     }

@@ -15,8 +15,11 @@ import java.util.UUID;
  * Called whenever a nation modifies one of its members (lands).
  */
 public abstract class NationEditMemberEvent extends LandEvent {
+    /** The UUID of the player who initiated this action, or {@code null} if none. */
     protected final @Nullable UUID initiator;
+    /** The nation whose membership is being changed. */
     protected final @NotNull Nation nation;
+    /** The land being added to or removed from the nation. */
     protected final @NotNull Land land;
 
     /**

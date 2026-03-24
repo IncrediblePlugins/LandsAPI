@@ -9,7 +9,11 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
+/**
+ * Called when a player teleports to a land spawn.
+ */
 public class LandSpawnTeleportEvent extends LandEvent implements Cancellable {
+    /** Handler list for this event. */
     public static HandlerList handlerList = new HandlerList();
     private boolean cancelled;
 
@@ -31,6 +35,11 @@ public class LandSpawnTeleportEvent extends LandEvent implements Cancellable {
         return super.getLandPlayer();
     }
 
+    /**
+     * Returns the handler list for this event type.
+     *
+     * @return the handler list; never null
+     */
     public static HandlerList getHandlerList() {
         return handlerList;
     }

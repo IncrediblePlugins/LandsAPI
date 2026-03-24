@@ -14,6 +14,7 @@ import java.util.UUID;
  */
 public class LandUntrustPlayerEvent extends LandEditMemberCancellableEvent {
 
+    /** Handler list for this event. */
     public static HandlerList handlerList = new HandlerList();
     private final @NotNull
     UntrustReason reason;
@@ -33,6 +34,11 @@ public class LandUntrustPlayerEvent extends LandEditMemberCancellableEvent {
         this.reason = reason;
     }
 
+    /**
+     * Returns the handler list for this event type.
+     *
+     * @return the handler list; never null
+     */
     public static HandlerList getHandlerList() {
         return handlerList;
     }
@@ -61,6 +67,9 @@ public class LandUntrustPlayerEvent extends LandEditMemberCancellableEvent {
     }
 
 
+    /**
+     * Represents the reason a player was untrusted from a land or area.
+     */
     public enum UntrustReason {
         /**
          * Untrust command or untrust action in menu was triggered by a player.

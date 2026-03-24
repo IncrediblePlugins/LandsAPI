@@ -49,7 +49,9 @@ public enum PlayerCooldown {
      */
     TELEPORT_AREA("sub-area.teleport-cooldown");
 
+    /** The config key used to look up the cooldown duration. */
     public final String optionKey;
+    /** The config file that contains the cooldown setting. */
     public final ConfigType type;
     private long time;
 
@@ -93,6 +95,9 @@ public enum PlayerCooldown {
         this.time = Math.max(time, 0); // all lower than 1 disables it
     }
 
+    /**
+     * Identifies which configuration file contains the cooldown setting.
+     */
     public enum ConfigType {
         /**
          * config.yml

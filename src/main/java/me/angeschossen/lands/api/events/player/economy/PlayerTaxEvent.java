@@ -14,11 +14,19 @@ import java.util.UUID;
  * Called when a land member needs to pay taxes to a land.
  */
 public class PlayerTaxEvent extends PlayerEvent implements Cancellable {
+    /** Required by Bukkit's event system. */
     public static final HandlerList handlerList = new HandlerList();
     private final @NotNull Area area;
     private final double balance;
     private boolean cancelled = false;
 
+    /**
+     * Create instance of this event.
+     *
+     * @param area      the area that has the taxes configured
+     * @param playerUID the UUID of the player that needs to pay taxes
+     * @param balance   the player's current balance
+     */
     public PlayerTaxEvent(@NotNull Area area, @NotNull UUID playerUID, double balance) {
         super(playerUID);
 
@@ -26,6 +34,11 @@ public class PlayerTaxEvent extends PlayerEvent implements Cancellable {
         this.balance = balance;
     }
 
+    /**
+     * Returns the handler list for this event type, as required by Bukkit.
+     *
+     * @return the static handler list
+     */
     public static HandlerList getHandlerList() {
         return handlerList;
     }

@@ -16,6 +16,7 @@ import org.jetbrains.annotations.Nullable;
  * Called whenever a chunk is being unclaimed.
  */
 public class ChunkDeleteEvent extends LandEvent implements Cancellable {
+    /** Handler list for this event. */
     public static HandlerList handlerList = new HandlerList();
     private final int x, z;
     private final @NotNull World world;
@@ -44,6 +45,11 @@ public class ChunkDeleteEvent extends LandEvent implements Cancellable {
         this.reason = reason;
     }
 
+    /**
+     * Returns the handler list for this event type.
+     *
+     * @return the handler list; never null
+     */
     public static HandlerList getHandlerList() {
         return handlerList;
     }
@@ -139,6 +145,9 @@ public class ChunkDeleteEvent extends LandEvent implements Cancellable {
                 .put("type", unclaimType.toString());
     }
 
+    /**
+     * Describes the scope of the unclaim operation that triggered this event.
+     */
     public enum UnclaimType {
         /**
          * A single chunk is being unclaimed.

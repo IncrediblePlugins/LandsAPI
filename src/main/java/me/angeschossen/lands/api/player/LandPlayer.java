@@ -16,6 +16,10 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Collection;
 import java.util.Set;
 
+/**
+ * Represents an online player that has been loaded by Lands.
+ * Provides access to land-related player data such as chat mode, flags, combat state, and invites.
+ */
 public interface LandPlayer extends OfflinePlayer, ExpressionEntity, PlayerData, LimitHolder {
 
     Object sendMessage(String key, String[] p, String[] v);

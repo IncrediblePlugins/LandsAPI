@@ -1,5 +1,8 @@
 package me.angeschossen.lands.api.land.rental.offer.types;
 
+/**
+ * Describes the current state or type of a rental or purchase offer on an area or land.
+ */
 public enum RentalType {
     /**
      * The offer is to rent a sub area.

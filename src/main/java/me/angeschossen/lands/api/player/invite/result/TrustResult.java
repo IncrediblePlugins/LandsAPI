@@ -1,5 +1,8 @@
 package me.angeschossen.lands.api.player.invite.result;
 
+/**
+ * Represents the result of a trust invite action.
+ */
 public enum TrustResult implements InviteResult {
     /**
      * A player tried to trust himself.

@@ -6,6 +6,9 @@ import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+/**
+ * Represents the types of special items provided by Lands.
+ */
 public enum ItemType {
     /**
      * Block used to claim the chunk it is being placed in.

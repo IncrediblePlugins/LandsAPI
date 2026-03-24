@@ -14,8 +14,17 @@ import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.concurrent.CompletableFuture;
 
+/**
+ * Represents an active war between two lands or nations.
+ */
 public interface War extends ExpressionEntity, WarState, TeamGiver {
 
+    /**
+     * Update war stats for both teams.
+     *
+     * @param statsAtt updated stats for the attacker
+     * @param statsDef updated stats for the defender
+     */
     void updateStats(@NotNull ActiveWarStats statsAtt,@NotNull  ActiveWarStats statsDef);
 
     /**
@@ -32,6 +41,14 @@ public interface War extends ExpressionEntity, WarState, TeamGiver {
      * @param winner      Who should be the winner? {@link #getDefender()} or {@link #getAttacker()}.
      * @param surrendered If true, the other team surrendered
      * @param reward      If true and surrendered is false, rewards from wars.yml are given to the winner
+     */
+    /**
+     * End this war with a specific winner.
+     *
+     * @param winner      who should be the winner
+     * @param surrendered if true, the other team surrendered
+     * @param reward      reward amount given to the winner
+     * @return never null
      */
     CompletableFuture<Void> end(@NotNull MemberHolder winner, boolean surrendered, double reward);
 
@@ -68,6 +85,8 @@ public interface War extends ExpressionEntity, WarState, TeamGiver {
     @Nullable Collection<? extends CaptureFlag> getPlacedByTeam(@NotNull me.angeschossen.lands.api.war.enums.WarTeam warTeam);
 
     /**
+     * Get the configured robbery reward that the winner would receive.
+     *
      * @param winner The assumed winner
      * @return Configured robbery reward from wars.yml. The reward depends on the other teams balance
      */

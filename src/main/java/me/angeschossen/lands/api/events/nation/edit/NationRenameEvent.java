@@ -12,6 +12,7 @@ import org.jetbrains.annotations.NotNull;
  * Called when a nation is being renamed.
  */
 public class NationRenameEvent extends NationEditEvent implements Cancellable {
+    /** Handler list for this event. */
     public static final HandlerList handlerList = new HandlerList();
     private final @NotNull String oldName;
     private final @NotNull String newName;
@@ -34,6 +35,11 @@ public class NationRenameEvent extends NationEditEvent implements Cancellable {
         this.newName = newName;
     }
 
+    /**
+     * Returns the handler list for this event type.
+     *
+     * @return the handler list; never null
+     */
     public static HandlerList getHandlerList() {
         return handlerList;
     }

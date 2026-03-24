@@ -15,6 +15,7 @@ import org.jetbrains.annotations.Nullable;
 @Deprecated
 public class LandCreateEvent extends LandEvent implements Cancellable {
 
+    /** Required by Bukkit's event system. */
     public static HandlerList handlerList = new HandlerList();
     private boolean cancelled;
 
@@ -28,6 +29,11 @@ public class LandCreateEvent extends LandEvent implements Cancellable {
         super(land, landPlayer);
     }
 
+    /**
+     * Returns the handler list for this event type, as required by Bukkit.
+     *
+     * @return the static handler list
+     */
     public static HandlerList getHandlerList() {
         return handlerList;
     }

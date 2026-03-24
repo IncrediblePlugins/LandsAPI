@@ -13,7 +13,11 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Set;
 
+/**
+ * Base class for events that involve a chunk selection (claiming or unclaiming).
+ */
 public abstract class SelectionEvent extends LandEvent implements Cancellable {
+    /** The selection involved in this event. */
     protected final Selection selection;
     private boolean cancelled;
     private final Set<? extends ChunkCoordinate> affectedChunks;

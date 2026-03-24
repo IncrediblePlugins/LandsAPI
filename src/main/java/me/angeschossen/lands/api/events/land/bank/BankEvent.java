@@ -13,6 +13,7 @@ import org.jetbrains.annotations.Nullable;
  */
 public abstract class BankEvent extends LandEvent implements Cancellable {
     private boolean cancelled = false;
+    /** The amount being deposited or withdrawn; can be negative. */
     protected final double value;
 
     /**

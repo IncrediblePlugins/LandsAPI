@@ -12,6 +12,7 @@ import org.jetbrains.annotations.Nullable;
  * Landblock types: {@link me.angeschossen.lands.api.land.block.LandBlockType}
  */
 public class LandBlockPlaceEvent extends LandBlockEvent {
+    /** Handler list for this event. */
     public static final HandlerList handlerList = new HandlerList();
 
     /**
@@ -24,6 +25,11 @@ public class LandBlockPlaceEvent extends LandBlockEvent {
         super(landBlock.getContainer().getLand(), landPlayer, landBlock);
     }
 
+    /**
+     * Returns the handler list for this event type.
+     *
+     * @return the handler list; never null
+     */
     public static HandlerList getHandlerList() {
         return handlerList;
     }

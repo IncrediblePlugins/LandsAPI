@@ -15,6 +15,7 @@ import java.util.UUID;
  */
 public class LandBanPlayerEvent extends LandEditMemberCancellableEvent {
 
+    /** Handler list for this event. */
     public static HandlerList handlerList = new HandlerList();
 
     /**
@@ -29,6 +30,11 @@ public class LandBanPlayerEvent extends LandEditMemberCancellableEvent {
         super(land, area, initiator, targetUUID);
     }
 
+    /**
+     * Returns the handler list for this event type.
+     *
+     * @return the handler list; never null
+     */
     public static HandlerList getHandlerList() {
         return handlerList;
     }

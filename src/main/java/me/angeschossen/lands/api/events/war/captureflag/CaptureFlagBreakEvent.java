@@ -15,6 +15,7 @@ import org.jetbrains.annotations.Nullable;
 @Deprecated
 public class CaptureFlagBreakEvent extends CaptureFlagEvent {
 
+    /** Handler list for this event. */
     public static HandlerList handlerList = new HandlerList();
     private final @NotNull BreakReason breakReason;
 
@@ -73,6 +74,11 @@ public class CaptureFlagBreakEvent extends CaptureFlagEvent {
         BLOCK_INVALID
     }
 
+    /**
+     * Returns the handler list for this event type.
+     *
+     * @return the handler list; never null
+     */
     public static HandlerList getHandlerList() {
         return handlerList;
     }

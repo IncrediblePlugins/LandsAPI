@@ -15,6 +15,7 @@ import java.util.Set;
  */
 @Deprecated
 public class LandUnclaimSelectionEvent extends SelectionEvent {
+    /** Handler list for this event. */
     public static HandlerList handlerList = new HandlerList();
 
     /**
@@ -30,6 +31,11 @@ public class LandUnclaimSelectionEvent extends SelectionEvent {
         super(land, landPlayer, selection, unclaim);
     }
 
+    /**
+     * Returns the handler list for this event type.
+     *
+     * @return the handler list; never null
+     */
     public static HandlerList getHandlerList() {
         return handlerList;
     }

@@ -14,6 +14,7 @@ import java.util.UUID;
  */
 public class NationTrustLandEvent extends NationEditMemberCancellableEvent {
 
+    /** Handler list for this event. */
     public static HandlerList handlerList = new HandlerList();
 
     /**
@@ -27,6 +28,11 @@ public class NationTrustLandEvent extends NationEditMemberCancellableEvent {
         super(nation, land, initiator);
     }
 
+    /**
+     * Returns the handler list for this event type.
+     *
+     * @return the handler list; never null
+     */
     public static HandlerList getHandlerList() {
         return handlerList;
     }

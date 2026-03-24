@@ -9,6 +9,12 @@ import org.jetbrains.annotations.NotNull;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
+/**
+ * Represents a pending invite sent by a land to a player or another land.
+ * The invite can be accepted or denied by the receiver.
+ *
+ * @param <T> the result type returned when the invite is accepted
+ */
 public interface Invite<T extends InviteResult> extends Changeable {
 
     /**

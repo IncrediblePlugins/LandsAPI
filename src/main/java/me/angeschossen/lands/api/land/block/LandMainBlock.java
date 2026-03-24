@@ -6,6 +6,10 @@ import me.angeschossen.lands.api.player.LandPlayer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+/**
+ * Represents the main block of a land claim, which acts as its physical anchor.
+ * A land can have at most one main block.
+ */
 public interface LandMainBlock extends LandBlock {
 
     /**

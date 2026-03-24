@@ -11,6 +11,7 @@ import java.util.Objects;
  * Called once the player data of a player that just joined, is fully loaded.
  */
 public class LandPlayerLoadedEvent extends PlayerEvent {
+    /** Required by Bukkit's event system. */
     public static final HandlerList handlerList = new HandlerList();
 
     /**
@@ -38,6 +39,11 @@ public class LandPlayerLoadedEvent extends PlayerEvent {
         return handlerList;
     }
 
+    /**
+     * Returns the handler list for this event type, as required by Bukkit.
+     *
+     * @return the static handler list
+     */
     public static HandlerList getHandlerList() {
         return handlerList;
     }

@@ -14,7 +14,11 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 
+/**
+ * Called whenever a player sends a message in land or nation chat.
+ */
 public class LandChatEvent extends PlayerEvent implements Cancellable {
+    /** Handler list for this event. */
     public static HandlerList handlerList = new HandlerList();
     private final @NotNull String message;
     private final @NotNull Collection<LandPlayer> recipients;
@@ -44,6 +48,11 @@ public class LandChatEvent extends PlayerEvent implements Cancellable {
         this.messageSource = messageSource;
     }
 
+    /**
+     * Returns the handler list for this event type.
+     *
+     * @return the handler list; never null
+     */
     public static HandlerList getHandlerList() {
         return handlerList;
     }

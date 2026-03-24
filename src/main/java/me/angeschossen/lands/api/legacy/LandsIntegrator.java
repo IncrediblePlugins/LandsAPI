@@ -44,16 +44,44 @@ public interface LandsIntegrator {
      */
     boolean canPvP(@NotNull Player attacker, @NotNull Player target, @NotNull Location location, boolean setCombatTag, boolean sendMessage);
 
+    /**
+     * Check if the given chunk is claimed.
+     *
+     * @param w the world
+     * @param x chunk x coordinate
+     * @param z chunk z coordinate
+     * @return true if the chunk is claimed
+     */
     boolean isChunkClaimed(World w, int x, int z);
 
+    /**
+     * Check if the given chunk is claimed, including unloaded chunks.
+     *
+     * @param w the world
+     * @param x chunk x coordinate
+     * @param z chunk z coordinate
+     * @return true if the chunk is claimed
+     */
     boolean isChunkClaimedUnloaded(World w, int x, int z);
 
+    /**
+     * @deprecated No-op in the current API.
+     */
     @Deprecated
     void disable();
 
+    /**
+     * @deprecated Use {@link #disable()} instead.
+     * @param hookKey unused
+     */
     @Deprecated
     void disable(@Nullable String hookKey);
 
+    /**
+     * @deprecated Always returns {@code false} in the current API.
+     * @param hookKey unused
+     * @return false
+     */
     @Deprecated
     boolean getAccess(@NotNull String hookKey);
 
@@ -108,6 +136,9 @@ public interface LandsIntegrator {
 
     /**
      * Use {@link #getLand(World, int, int)} instead.
+     *
+     * @param location the location to look up
+     * @return the land at the given location, or null if wilderness
      */
     @Deprecated
     Land getLand(@NotNull Location location);
@@ -155,6 +186,11 @@ public interface LandsIntegrator {
     @Nullable
     LandWorld getLandWorld(@NotNull World world);
 
+    /**
+     * @deprecated Use {@link #getLandWorld(World)} instead.
+     * @param worldName the world name
+     * @return the land world, or null if not a configured claim world
+     */
     @Deprecated
     LandWorld getLandWorld(@NotNull String worldName);
 
@@ -222,18 +258,30 @@ public interface LandsIntegrator {
      */
     @Nullable SortingContext<?> getSortingContext(@NotNull String id);
 
+    /**
+     * @deprecated No-op in the current API; always returns an empty string.
+     * @return empty string
+     */
     @NotNull
     @Deprecated
     String initialize();
 
     /**
      * Use {@link #isClaimed(World, int, int)} instead.
+     *
+     * @param location the location to check
+     * @return true if the chunk at this location is claimed
      */
     @Deprecated
     boolean isClaimed(@NotNull Location location);
 
     /**
      * Use {@link #isClaimed(World, int, int)} instead.
+     *
+     * @param worldName the world name
+     * @param chunkX    chunk x coordinate
+     * @param chunkZ    chunk z coordinate
+     * @return future resolving to true if the chunk is claimed
      */
     @Deprecated
     CompletableFuture<Boolean> isClaimed(@NotNull String worldName, int chunkX, int chunkZ);
@@ -263,9 +311,17 @@ public interface LandsIntegrator {
      */
     boolean isClaimedUnloaded(@NotNull World world, int x, int z);
 
+    /**
+     * @deprecated Always returns {@code true} in the current API.
+     * @return true
+     */
     @Deprecated
     boolean isEnabled();
 
+    /**
+     * @deprecated Always returns {@code false} in the current API.
+     * @return false
+     */
     @Deprecated
     boolean isPublic();
 

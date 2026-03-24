@@ -10,6 +10,7 @@ import org.jetbrains.annotations.NotNull;
  * Called when a land or nation needs to pay upkeep.
  */
 public class MemberHolderUpkeepEvent extends MemberHolderEvent implements Cancellable {
+    /** Handler list for this event. */
     public static final HandlerList handlerList = new HandlerList();
     private final double upkeep;
     private final double balance;
@@ -28,6 +29,11 @@ public class MemberHolderUpkeepEvent extends MemberHolderEvent implements Cancel
         this.balance = balance;
     }
 
+    /**
+     * Returns the handler list for this event type.
+     *
+     * @return the handler list; never null
+     */
     public static HandlerList getHandlerList() {
         return handlerList;
     }

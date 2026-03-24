@@ -10,6 +10,12 @@ import org.jetbrains.annotations.NotNull;
 @Deprecated
 public class NationRoleFlag extends RoleFlag {
 
+    /**
+     * Create a new nation-scoped role flag.
+     *
+     * @param plugin the plugin registering this flag
+     * @param name   the unique name of the flag
+     */
     public NationRoleFlag(@NotNull Plugin plugin, @NotNull String name) {
         super(plugin, Category.MANAGEMENT, name, false, true);
     }

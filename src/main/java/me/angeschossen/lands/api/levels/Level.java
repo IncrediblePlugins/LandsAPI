@@ -72,6 +72,12 @@ public interface Level extends ExpressionEntity {
      */
     float getProgress(@NotNull MemberHolder memberHolder);
 
+    /**
+     * Get a requirement by its name.
+     *
+     * @param name the unique name of the requirement
+     * @return the requirement, or {@code null} if none with this name exists
+     */
     @Nullable Requirement getRequirementById(String name);
 
     /**

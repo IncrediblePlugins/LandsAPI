@@ -15,6 +15,7 @@ import org.jetbrains.annotations.Nullable;
  * @see LandType
  */
 public class LandConvertEvent extends LandEvent implements Cancellable {
+    /** Required by Bukkit's event system. */
     public static HandlerList handlerList = new HandlerList();
     private final @NotNull LandType landType;
     private boolean cancelled;
@@ -33,6 +34,11 @@ public class LandConvertEvent extends LandEvent implements Cancellable {
         this.landType = landType;
     }
 
+    /**
+     * Returns the handler list for this event type, as required by Bukkit.
+     *
+     * @return the static handler list
+     */
     public static HandlerList getHandlerList() {
         return handlerList;
     }

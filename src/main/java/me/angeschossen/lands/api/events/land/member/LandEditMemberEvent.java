@@ -17,8 +17,11 @@ import java.util.UUID;
  * Used for events that involve managing a member.
  */
 public abstract class LandEditMemberEvent extends PlayerNullableEvent implements TargetableEvent {
+    /** UUID of the member that this action affects. */
     protected final UUID target;
+    /** The land that manages this member. */
     protected final Land land;
+    /** The area this action is scoped to, or null if it applies to the whole land. */
     protected final @Nullable
     Area area;
 

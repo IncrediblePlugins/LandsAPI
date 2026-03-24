@@ -13,6 +13,7 @@ import org.jetbrains.annotations.Nullable;
  */
 public class PlayerLeaveLandEvent extends PlayerLandEvent {
 
+    /** Required by Bukkit's event system. */
     public static HandlerList handlerList = new HandlerList();
 
     /**
@@ -25,6 +26,11 @@ public class PlayerLeaveLandEvent extends PlayerLandEvent {
         super(land, area, landPlayer);
     }
 
+    /**
+     * Returns the handler list for this event type, as required by Bukkit.
+     *
+     * @return the static handler list
+     */
     public static HandlerList getHandlerList() {
         return handlerList;
     }

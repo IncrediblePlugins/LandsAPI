@@ -3,6 +3,9 @@ package me.angeschossen.lands.api.blockworks;
 import org.bukkit.World;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Represents an axis-aligned bounding box defined by two {@link BlockCoordinate} corners.
+ */
 public interface BoundingBox {
     /**
      * Get the upper corner.
@@ -27,6 +30,14 @@ public interface BoundingBox {
     @NotNull
     BlockCoordinate getMin();
 
+    /**
+     * Check if the bounding box contains the given block coordinates.
+     *
+     * @param x block coordinate X
+     * @param y block coordinate Y
+     * @param z block coordinate Z
+     * @return true if the coordinates are within this bounding box
+     */
     boolean contains(int x, int y, int z);
 
     /**

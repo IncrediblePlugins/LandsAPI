@@ -42,16 +42,31 @@ public class LandsIntegration implements LandsIntegrator, me.angeschossen.lands.
 
     private final Plugin plugin;
 
+    /**
+     * @deprecated Use {@link #LandsIntegration(Plugin)} instead.
+     * @param name     the plugin name
+     * @param isPublic unused
+     */
     @Deprecated
     public LandsIntegration(@NotNull String name, boolean isPublic) {
         this(Bukkit.getPluginManager().getPlugin(name));
     }
 
+    /**
+     * @deprecated Use {@link #LandsIntegration(Plugin)} instead.
+     * @param plugin   the plugin hooking into Lands
+     * @param isPublic unused
+     */
     @Deprecated
     public LandsIntegration(@NotNull Plugin plugin, boolean isPublic) {
         this(plugin);
     }
 
+    /**
+     * Create an integration for the given plugin.
+     *
+     * @param plugin the plugin hooking into Lands; must not be the Lands plugin itself
+     */
     public LandsIntegration(@NotNull Plugin plugin) {
         Objects.requireNonNull(plugin, "Plugin parameter can't be null");
 

@@ -2,6 +2,9 @@ package me.angeschossen.lands.api.land.rental.offer.types;
 
 import me.angeschossen.lands.api.land.rental.offer.base.AcceptedRentalOfferBase;
 
+/**
+ * Represents an active (accepted) rental of an area.
+ */
 public interface RentedState extends RentOffer, AcceptedRentalOfferBase {
     /**
      * Get the rented and already paid minutes.

@@ -11,6 +11,7 @@ import org.jetbrains.annotations.NotNull;
  */
 public class CaptureFlagCapturedEvent extends CaptureFlagEvent {
 
+    /** Handler list for this event. */
     public static HandlerList handlerList = new HandlerList();
 
     /**
@@ -21,6 +22,11 @@ public class CaptureFlagCapturedEvent extends CaptureFlagEvent {
         super(captureFlag, null);
     }
 
+    /**
+     * Returns the handler list for this event type.
+     *
+     * @return the handler list; never null
+     */
     public static HandlerList getHandlerList() {
         return handlerList;
     }

@@ -13,6 +13,9 @@ import java.util.Collection;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.BiPredicate;
 
+/**
+ * Represents a chunk selection made by a player, used for claiming or unclaiming land areas.
+ */
 public interface Selection {
 
     /**

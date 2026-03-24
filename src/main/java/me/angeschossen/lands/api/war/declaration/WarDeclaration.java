@@ -7,6 +7,9 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.CompletableFuture;
 
+/**
+ * Represents a pending war declaration that has not yet started.
+ */
 public interface WarDeclaration extends WarState {
 
     /**

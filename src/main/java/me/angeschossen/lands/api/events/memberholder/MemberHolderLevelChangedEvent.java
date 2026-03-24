@@ -11,6 +11,7 @@ import org.jetbrains.annotations.NotNull;
  * Called on level up and down of a land or nation.
  */
 public class MemberHolderLevelChangedEvent extends MemberHolderEvent {
+    /** Handler list for this event. */
     public static final HandlerList handlerList = new HandlerList();
 
     private final @NotNull Level previous;
@@ -28,6 +29,11 @@ public class MemberHolderLevelChangedEvent extends MemberHolderEvent {
         this.previous = previous;
     }
 
+    /**
+     * Returns the handler list for this event type.
+     *
+     * @return the handler list; never null
+     */
     public static HandlerList getHandlerList() {
         return handlerList;
     }

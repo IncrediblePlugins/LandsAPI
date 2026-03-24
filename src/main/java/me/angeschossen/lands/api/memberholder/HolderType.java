@@ -4,6 +4,9 @@ import com.github.angeschossen.pluginframework.api.utils.Checks;
 import me.angeschossen.lands.api.limits.LimitTarget;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Describes the type of a {@link MemberHolder} — either a land or a nation.
+ */
 public enum HolderType {
     /**
      * A land. See {@link me.angeschossen.lands.api.land.Land}
@@ -20,6 +23,11 @@ public enum HolderType {
         this.limitTarget = Checks.requireNonNull(limitTarget, "limitationTarget");
     }
 
+    /**
+     * Get the limit target that corresponds to this holder type.
+     *
+     * @return the limit target; never null
+     */
     public @NotNull LimitTarget getLimitTarget() {
         return limitTarget;
     }

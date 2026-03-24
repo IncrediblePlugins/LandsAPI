@@ -14,8 +14,14 @@ import java.util.UUID;
  */
 public abstract class WarEvent extends LandsEvent {
 
+    /** The war involved in this event. */
     protected final @NotNull War war;
 
+    /**
+     * Create instance.
+     *
+     * @param war the war involved in this event
+     */
     public WarEvent(@NotNull War war) {
         Checks.requireNonNull(war, "war");
         this.war = war;

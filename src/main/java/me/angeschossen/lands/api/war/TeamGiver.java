@@ -6,6 +6,9 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
 
+/**
+ * Provides access to team-related information for an ongoing war.
+ */
 public interface TeamGiver {
     /**
      * Get the team the player belongs to.

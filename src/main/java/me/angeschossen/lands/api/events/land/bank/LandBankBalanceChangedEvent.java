@@ -14,6 +14,7 @@ import org.jetbrains.annotations.NotNull;
  */
 public class LandBankBalanceChangedEvent extends LandEvent {
 
+    /** Handler list for this event. */
     public static final HandlerList handlerList = new HandlerList();
     private final double prev, now;
 
@@ -54,6 +55,11 @@ public class LandBankBalanceChangedEvent extends LandEvent {
                 .put("now", now);
     }
 
+    /**
+     * Returns the handler list for this event type.
+     *
+     * @return the handler list; never null
+     */
     public static HandlerList getHandlerList() {
         return handlerList;
     }

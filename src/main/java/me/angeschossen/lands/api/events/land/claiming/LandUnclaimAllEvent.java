@@ -13,6 +13,7 @@ import org.jetbrains.annotations.Nullable;
  * Usually the case when a player executes "/lands unclaim all".
  */
 public class LandUnclaimAllEvent extends LandEvent implements Cancellable {
+    /** Handler list for this event. */
     public static HandlerList handlerList = new HandlerList();
     private boolean cancelled;
 
@@ -25,6 +26,11 @@ public class LandUnclaimAllEvent extends LandEvent implements Cancellable {
         super(land, landPlayer);
     }
 
+    /**
+     * Returns the handler list for this event type.
+     *
+     * @return the handler list; never null
+     */
     public static HandlerList getHandlerList() {
         return handlerList;
     }

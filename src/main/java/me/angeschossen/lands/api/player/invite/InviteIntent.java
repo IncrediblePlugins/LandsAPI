@@ -1,5 +1,8 @@
 package me.angeschossen.lands.api.player.invite;
 
+/**
+ * Describes the intention behind an invite sent by a land.
+ */
 public enum InviteIntent {
     /**
      * The land wants to trust a player.

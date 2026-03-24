@@ -2,6 +2,10 @@ package me.angeschossen.lands.api.holders;
 
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Represents an entity that holds a monetary balance, such as a {@link me.angeschossen.lands.api.land.Land} or
+ * {@link me.angeschossen.lands.api.nation.Nation}.
+ */
 public interface BalanceHolder {
 
     /**

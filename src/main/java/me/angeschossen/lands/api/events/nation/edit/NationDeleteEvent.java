@@ -15,6 +15,7 @@ import org.jetbrains.annotations.Nullable;
  */
 public class NationDeleteEvent extends NationEditEvent implements Cancellable {
 
+    /** Handler list for this event. */
     public static HandlerList handlerList = new HandlerList();
     private final @NotNull DeleteReason reason;
     private boolean cancelled;
@@ -40,10 +41,20 @@ public class NationDeleteEvent extends NationEditEvent implements Cancellable {
         builder.put("reason", reason);
     }
 
+    /**
+     * Returns the handler list for this event type.
+     *
+     * @return the handler list; never null
+     */
     public static HandlerList getHandlerList() {
         return handlerList;
     }
 
+    /**
+     * Get the nation that is being deleted.
+     *
+     * @return the nation; never null
+     */
     @NotNull
     public Nation getNation() {
         return nation;

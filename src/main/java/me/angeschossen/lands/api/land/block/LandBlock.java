@@ -49,6 +49,8 @@ public interface LandBlock {
     @NotNull LandBlockType getLandBlockType();
 
     /**
+     * Remove this land block from the world.
+     *
      * @param done       will be executed once all blocks are removed
      * @param delayTicks remove each block with a delay to make it seem like they are broken in a more natural way
      * @return false, if a 3rd party plugin cancelled the removal of the landblock

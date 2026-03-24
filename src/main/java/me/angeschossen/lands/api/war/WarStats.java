@@ -2,6 +2,9 @@ package me.angeschossen.lands.api.war;
 
 import me.angeschossen.lands.api.war.captureflag.CaptureFlag;
 
+/**
+ * Tracks war statistics for one team (attacker or defender) in an active war.
+ */
 public interface WarStats {
 
     /**

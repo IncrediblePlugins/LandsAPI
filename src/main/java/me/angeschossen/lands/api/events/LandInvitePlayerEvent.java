@@ -13,6 +13,7 @@ import java.util.UUID;
  * Called whenver a land invites a player to the whole land or a specific area inside that land.
  */
 public class LandInvitePlayerEvent extends LandEditMemberCancellableEvent {
+    /** Required by Bukkit's event system. */
     public static HandlerList handlerList = new HandlerList();
 
     /**
@@ -27,6 +28,11 @@ public class LandInvitePlayerEvent extends LandEditMemberCancellableEvent {
         super(land, area, initiator, targetUUID);
     }
 
+    /**
+     * Returns the handler list for this event type, as required by Bukkit.
+     *
+     * @return the static handler list
+     */
     public static HandlerList getHandlerList() {
         return handlerList;
     }

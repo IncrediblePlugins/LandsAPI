@@ -14,6 +14,13 @@ public class PlayerAreaEnterEvent extends PlayerAreaEvent implements Cancellable
     private final Area from;
     private boolean cancelled;
 
+    /**
+     * Create instance of this event.
+     *
+     * @param from       the area the player is entering from, or null if from wilderness
+     * @param area       the area the player is entering
+     * @param landPlayer the player entering the area
+     */
     public PlayerAreaEnterEvent(@Nullable Area from, Area area, LandPlayer landPlayer) {
         super(area, landPlayer);
 

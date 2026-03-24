@@ -17,6 +17,7 @@ import java.util.UUID;
  */
 public class MemberHolderRelationChangeEvent extends MemberHolderEvent implements Cancellable {
 
+    /** Handler list for this event. */
     public static final HandlerList handlerList = new HandlerList();
 
     private final @NotNull MemberHolder target;
@@ -74,6 +75,11 @@ public class MemberHolderRelationChangeEvent extends MemberHolderEvent implement
         return target;
     }
 
+    /**
+     * Returns the handler list for this event type.
+     *
+     * @return the handler list; never null
+     */
     public static HandlerList getHandlerList() {
         return handlerList;
     }

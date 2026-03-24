@@ -15,6 +15,7 @@ import org.jetbrains.annotations.Nullable;
  */
 public class LandDeleteEvent extends LandEvent implements Cancellable {
 
+    /** Required by Bukkit's event system. */
     public static HandlerList handlerList = new HandlerList();
     private final @NotNull DeleteReason reason;
     private boolean cancelled;
@@ -32,6 +33,11 @@ public class LandDeleteEvent extends LandEvent implements Cancellable {
         this.reason = reason;
     }
 
+    /**
+     * Returns the handler list for this event type, as required by Bukkit.
+     *
+     * @return the static handler list
+     */
     public static HandlerList getHandlerList() {
         return handlerList;
     }

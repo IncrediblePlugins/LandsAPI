@@ -11,6 +11,7 @@ import org.jetbrains.annotations.Nullable;
  * Called whenever a player deposits money in the land bank.
  */
 public class LandBankDepositEvent extends BankEvent implements Cancellable {
+    /** Handler list for this event. */
     public static final HandlerList handlerList = new HandlerList();
 
     /**
@@ -24,6 +25,11 @@ public class LandBankDepositEvent extends BankEvent implements Cancellable {
         super(land, landPlayer, value);
     }
 
+    /**
+     * Returns the handler list for this event type.
+     *
+     * @return the handler list; never null
+     */
     public static HandlerList getHandlerList() {
         return handlerList;
     }

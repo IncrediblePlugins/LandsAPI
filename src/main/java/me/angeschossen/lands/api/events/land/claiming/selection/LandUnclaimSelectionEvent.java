@@ -14,6 +14,7 @@ import java.util.Set;
  * This usally involves a player executing entering the selection mode ({@link Selection}) and selecting a rectangle of chunks.
  */
 public class LandUnclaimSelectionEvent extends SelectionEvent {
+    /** Handler list for this event. */
     public static HandlerList handlerList = new HandlerList();
 
     /**
@@ -29,6 +30,11 @@ public class LandUnclaimSelectionEvent extends SelectionEvent {
         super(land, landPlayer, selection, unclaim);
     }
 
+    /**
+     * Returns the handler list for this event type.
+     *
+     * @return the handler list; never null
+     */
     public static HandlerList getHandlerList() {
         return handlerList;
     }

@@ -1,5 +1,8 @@
 package me.angeschossen.lands.api.war.enums;
 
+/**
+ * Represents the outcome of a war.
+ */
 public enum WarResult {
     /**
      * One team surrendered during the war or already in the preparation phase.

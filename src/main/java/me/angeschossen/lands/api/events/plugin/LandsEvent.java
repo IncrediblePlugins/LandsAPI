@@ -8,4 +8,10 @@ import com.github.angeschossen.pluginframework.api.events.PluginEvent;
  */
 public abstract class LandsEvent extends PluginEvent {
 
+    /**
+     * Create a new Lands event.
+     */
+    protected LandsEvent() {
+        super();
+    }
 }

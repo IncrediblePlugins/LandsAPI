@@ -20,25 +20,46 @@ import java.util.Objects;
 
 /**
  * Use {@link me.angeschossen.lands.api.flags.type.parent.Flag} instead.
+ *
+ * @param <T> the concrete flag type returned by builder-style setter methods
  */
 @Deprecated
 public abstract class Flag<T> implements me.angeschossen.lands.api.flags.type.parent.Flag<T> {
 
+    /** Default icon used for flags that have not been assigned a custom icon. */
     public static final ItemStack ICON_DEFAULT = new ItemStack(Material.NAME_TAG);
 
+    /** The target audience of this flag. */
     public final FlagTarget target;
+    /** The unique name of this flag. */
     protected final String name;
+    /** The plugin that registered this flag. */
     protected final @NotNull Plugin plugin;
     private final int hashCode;
     private boolean applyInSubAreas, alwaysAllowInWilderness;
+    /** The icon displayed for this flag in menus. */
     protected ItemStack icon = ICON_DEFAULT;
     private @Nullable List<String> description;
     private @Nullable String displayName;
     private boolean warState;
     private boolean display;
 
+    /**
+     * Returns this instance cast to the concrete subtype, used for builder-style chaining.
+     *
+     * @return this instance
+     */
     protected abstract T self();
 
+    /**
+     * Create a new flag.
+     *
+     * @param plugin                  the plugin registering this flag
+     * @param target                  the target audience for this flag
+     * @param name                    unique name of the flag
+     * @param applyInSubAreas         whether this flag applies inside sub-areas
+     * @param alwaysAllowInWilderness whether this flag is always enabled in the wilderness
+     */
     public Flag(@NotNull Plugin plugin, @NotNull Flag.Target target, @NotNull String name, boolean applyInSubAreas, boolean alwaysAllowInWilderness) {
         Preconditions.checkNotNull(name, "Name cannot be null");
         Preconditions.checkNotNull(plugin, "Plugin cannot be null");
@@ -65,33 +86,75 @@ public abstract class Flag<T> implements me.angeschossen.lands.api.flags.type.pa
         return self();
     }
 
+    /**
+     * Use {@link #isDisplayInWilderness()} instead.
+     *
+     * @return true if this flag displays in the wilderness admin menu
+     */
     public final boolean isDisplayInWild() {
         return !alwaysAllowInWilderness;
     }
 
+    /**
+     * Use {@link #isAlwaysAllowInWilderness()} instead.
+     *
+     * @return true if this flag is always enabled in the wilderness
+     */
     public final boolean isAlwaysAllowInWild() {
         return alwaysAllowInWilderness;
     }
 
+    /**
+     * Use {@link #isActiveInWar()} instead.
+     *
+     * @return true if this flag is enabled during wars
+     */
     public boolean getWarState() {
         return warState;
     }
 
+    /**
+     * Use {@link #setActiveInWar(boolean)} instead.
+     *
+     * @param state true if this flag should be enabled during wars
+     * @return this instance
+     */
     @NotNull
     public T setWarState(boolean state) {
         this.warState = state;
         return self();
     }
 
+    /**
+     * Use {@link #getTogglePermission()} instead.
+     *
+     * @return the permission node needed to toggle this flag
+     */
     @NotNull
     public abstract String getTogglePerm();
 
+    /**
+     * Defines who this flag targets.
+     */
     public enum Target {
-        PLAYER, ADMIN, SYSTEM
+        /** Regular players. */
+        PLAYER,
+        /** Server administrators. */
+        ADMIN,
+        /** Internal system use. */
+        SYSTEM
     }
 
+    /**
+     * Defines which plugin module this flag belongs to.
+     */
     public enum Module {
-        LAND, WAR, NATION
+        /** Belongs to the land module. */
+        LAND,
+        /** Belongs to the war module. */
+        WAR,
+        /** Belongs to the nation module. */
+        NATION
     }
 
 
@@ -180,6 +243,14 @@ public abstract class Flag<T> implements me.angeschossen.lands.api.flags.type.pa
         return self();
     }
 
+    /**
+     * Splits a description string into lines of at most {@code maxLength} characters each,
+     * preserving chat color codes across line breaks.
+     *
+     * @param input     the raw description string, may include color codes
+     * @param maxLength maximum number of characters per line
+     * @return list of lines; never null
+     */
     protected static List<String> makeLore(String input, int maxLength) {
         List<String> lore = new ArrayList<>();
         int current = -1;

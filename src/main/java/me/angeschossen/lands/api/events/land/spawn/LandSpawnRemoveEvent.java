@@ -16,6 +16,7 @@ import org.jetbrains.annotations.Nullable;
  * If you want to handle this case too, just listen to {@link LandDeleteEvent}.
  */
 public class LandSpawnRemoveEvent extends LandEvent {
+    /** Handler list for this event. */
     public static HandlerList handlerList = new HandlerList();
     private final UnloadedPosition current;
 
@@ -33,6 +34,11 @@ public class LandSpawnRemoveEvent extends LandEvent {
         this.current = current;
     }
 
+    /**
+     * Returns the handler list for this event type.
+     *
+     * @return the handler list; never null
+     */
     public static HandlerList getHandlerList() {
         return handlerList;
     }

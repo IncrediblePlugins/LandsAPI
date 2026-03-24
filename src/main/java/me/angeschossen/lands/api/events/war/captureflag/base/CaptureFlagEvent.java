@@ -14,7 +14,9 @@ import java.util.UUID;
  * Used for events that effect a capture flag.
  */
 public abstract class CaptureFlagEvent extends LandsEvent {
+    /** The player involved in this event, or {@code null} if no player is involved. */
     protected final @Nullable LandPlayer player;
+    /** The capture flag affected by this event. */
     protected final @NotNull CaptureFlag captureFlag;
 
     /**

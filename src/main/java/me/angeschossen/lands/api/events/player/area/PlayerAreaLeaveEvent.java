@@ -10,6 +10,12 @@ import org.bukkit.event.Cancellable;
 public class PlayerAreaLeaveEvent extends PlayerAreaEvent implements Cancellable {
     private boolean cancelled;
 
+    /**
+     * Create instance of this event.
+     *
+     * @param area       the area the player is leaving
+     * @param landPlayer the player leaving the area
+     */
     public PlayerAreaLeaveEvent(Area area, LandPlayer landPlayer) {
         super(area, landPlayer);
     }

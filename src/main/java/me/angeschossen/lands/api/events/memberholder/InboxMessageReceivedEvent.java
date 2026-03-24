@@ -12,6 +12,7 @@ import java.util.Objects;
  * Called whenever a land or nation receives an inbox message.
  */
 public class InboxMessageReceivedEvent extends MemberHolderEvent {
+    /** Handler list for this event. */
     public static final HandlerList handlerList = new HandlerList();
 
     private final @NotNull InboxMessage inboxMessage;
@@ -29,6 +30,11 @@ public class InboxMessageReceivedEvent extends MemberHolderEvent {
         this.inboxMessage = inboxMessage;
     }
 
+    /**
+     * Returns the handler list for this event type.
+     *
+     * @return the handler list; never null
+     */
     public static HandlerList getHandlerList() {
         return handlerList;
     }

@@ -7,8 +7,14 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
+/**
+ * Represents an attribute that is rewarded to a land or nation upon reaching a level.
+ * Subclasses define the actual behavior triggered when the attribute is applied.
+ */
 public abstract class LevelAttribute {
+    /** Human-readable description of what this attribute does. */
     protected final @NotNull String description;
+    /** Unique identifier name of this attribute (lowercase, no spaces). */
     protected final @NotNull String name;
 
     /**

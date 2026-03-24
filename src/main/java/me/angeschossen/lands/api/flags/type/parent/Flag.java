@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Flags are used to control what player's roles can do and which natural events should be canceled.
  *
- * @param <T>
+ * @param <T> the concrete flag type returned by builder-style setter methods
  */
 public interface Flag<T> {
 

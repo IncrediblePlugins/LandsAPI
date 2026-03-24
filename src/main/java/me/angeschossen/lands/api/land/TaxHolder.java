@@ -5,6 +5,9 @@ import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+/**
+ * Represents an entity (land or area) that has configurable tax settings.
+ */
 public interface TaxHolder extends ChangeSaveable {
 
     /**
@@ -47,8 +50,9 @@ public interface TaxHolder extends ChangeSaveable {
     String getColorName();
 
     /**
-     * Same as {@link #getName()}, but with colors codes included.
+     * Same as {@link #getName()}, but with color codes included.
      *
+     * @param sender the command sender used for per-player language lookup, or {@code null} for the default language
      * @return Name with color codes
      */
     @NotNull

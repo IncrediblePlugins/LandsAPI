@@ -6,6 +6,9 @@ import me.angeschossen.lands.api.memberholder.MemberHolder;
 import org.bukkit.ChatColor;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * A level attribute that modifies the upkeep cost of a land or nation.
+ */
 public class UpkeepAttribute extends LevelAttribute {
     private final double value;
 

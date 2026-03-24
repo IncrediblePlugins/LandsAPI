@@ -9,8 +9,12 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Collection;
 import java.util.UUID;
 
+/**
+ * Base class for events that involve a land or nation ({@link MemberHolder}).
+ */
 public abstract class MemberHolderEvent extends LandsEvent {
 
+    /** The land or nation involved in this event. */
     protected final @NotNull MemberHolder memberHolder;
 
     /**

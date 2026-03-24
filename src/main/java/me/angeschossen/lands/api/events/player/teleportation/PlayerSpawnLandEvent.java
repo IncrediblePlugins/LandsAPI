@@ -17,16 +17,28 @@ import java.util.UUID;
  */
 @Deprecated
 public class PlayerSpawnLandEvent extends PlayerEvent implements Cancellable {
+    /** Required by Bukkit's event system. */
     public static final HandlerList handlerList = new HandlerList();
     private final @NotNull Land land;
     private boolean cancelled = false;
 
+    /**
+     * Create instance of this event.
+     *
+     * @param land       the land spawn the player is teleporting to
+     * @param landPlayer the player that is teleporting
+     */
     public PlayerSpawnLandEvent(@NotNull Land land, LandPlayer landPlayer) {
         super(landPlayer);
 
         this.land = land;
     }
 
+    /**
+     * Returns the handler list for this event type, as required by Bukkit.
+     *
+     * @return the static handler list
+     */
     public static HandlerList getHandlerList() {
         return handlerList;
     }
@@ -50,6 +62,11 @@ public class PlayerSpawnLandEvent extends PlayerEvent implements Cancellable {
         return handlerList;
     }
 
+    /**
+     * Get the land whose spawn the player is teleporting to.
+     *
+     * @return never null
+     */
     @NotNull
     public Land getLand() {
         return land;

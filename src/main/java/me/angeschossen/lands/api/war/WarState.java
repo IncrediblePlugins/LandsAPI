@@ -21,8 +21,16 @@ import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Function;
 
+/**
+ * Represents the shared state of a war or war declaration, including participants and configuration.
+ */
 public interface WarState extends Changeable {
 
+    /**
+     * Get all player UUIDs that are members of defending lands.
+     *
+     * @return UUIDs of all defending players
+     */
     @NotNull
     default Collection<UUID> getDefenderPlayers() {
         Set<UUID> players = new HashSet<>();
@@ -33,6 +41,11 @@ public interface WarState extends Changeable {
         return players;
     }
 
+    /**
+     * Get all player UUIDs that are members of attacking lands.
+     *
+     * @return UUIDs of all attacking players
+     */
     @NotNull
     default Collection<UUID> getAttackerPlayers() {
         Set<UUID> players = new HashSet<>();
@@ -51,8 +64,18 @@ public interface WarState extends Changeable {
      */
     void addOnlinePlayer(@NotNull LandPlayer landPlayer);
 
+    /**
+     * Get all defending lands.
+     *
+     * @return never null
+     */
     @NotNull Collection<? extends Land> getDefenders();
 
+    /**
+     * Get all attacking lands.
+     *
+     * @return never null
+     */
     @NotNull Collection<? extends Land> getAttackers();
 
     /**

@@ -16,14 +16,26 @@ import java.util.UUID;
  * Used for events that affect a land and might as well affect a player.
  */
 public abstract class PlayerNullableEvent extends LandsEvent implements PlayerEvent {
+    /** UUID of the player involved in this event, or null if no player is involved. */
     protected final @Nullable UUID playerUUID;
+    /** The online player involved in this event, or null if the player is offline or not involved. */
     protected @Nullable LandPlayer landPlayer;
 
+    /**
+     * Create instance with an online player.
+     *
+     * @param landPlayer the involved player, or null if no player is involved
+     */
     public PlayerNullableEvent(@Nullable LandPlayer landPlayer) {
         this.landPlayer = landPlayer;
         this.playerUUID = landPlayer == null ? null : landPlayer.getUID();
     }
 
+    /**
+     * Create instance with a player UUID (may be offline).
+     *
+     * @param playerUUID UUID of the involved player, or null if no player is involved
+     */
     public PlayerNullableEvent(@Nullable UUID playerUUID) {
         this.landPlayer = playerUUID == null ? null : APIHandler.getInstance().getLegacySupport().getLandPlayer(playerUUID);
         this.playerUUID = playerUUID;

@@ -4,6 +4,9 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;
 
+/**
+ * Utility methods for player-related operations.
+ */
 public interface PlayerUtils {
 
     /**

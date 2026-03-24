@@ -16,6 +16,7 @@ import java.util.UUID;
  * Called whenver the owner of a land or specific area inside that land changes.
  */
 public class LandOwnerChangeEvent extends LandEditMemberCancellableEvent {
+    /** Required by Bukkit's event system. */
     public static final HandlerList handlerList = new HandlerList();
     private final @NotNull Reason reason;
 
@@ -37,6 +38,11 @@ public class LandOwnerChangeEvent extends LandEditMemberCancellableEvent {
         this.reason = reason;
     }
 
+    /**
+     * Returns the handler list for this event type, as required by Bukkit.
+     *
+     * @return the static handler list
+     */
     public static HandlerList getHandlerList() {
         return handlerList;
     }
@@ -83,6 +89,9 @@ public class LandOwnerChangeEvent extends LandEditMemberCancellableEvent {
         builder.put("reason", reason);
     }
 
+    /**
+     * The reason for an ownership change of a land or area.
+     */
     public enum Reason {
         /**
          * A player just started renting an area.

@@ -11,6 +11,7 @@ import java.util.Objects;
  */
 public class FlagConflictException extends RuntimeException {
 
+    /** The flag that is already registered with the conflicting name. */
     private final @NotNull Flag<?> existing;
 
     /**

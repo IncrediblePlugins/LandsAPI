@@ -11,6 +11,7 @@ import org.jetbrains.annotations.NotNull;
  * Called after a land is actually created.
  */
 public class LandPostCreateEvent extends LandEvent {
+    /** Required by Bukkit's event system. */
     public static HandlerList handlerList = new HandlerList();
 
     /**
@@ -23,6 +24,11 @@ public class LandPostCreateEvent extends LandEvent {
         super(land, Checks.requireNonNull(landPlayer, "landPlayer"));
     }
 
+    /**
+     * Returns the handler list for this event type, as required by Bukkit.
+     *
+     * @return the static handler list
+     */
     public static HandlerList getHandlerList() {
         return handlerList;
     }

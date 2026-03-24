@@ -2,11 +2,24 @@ package me.angeschossen.lands.api.blockworks;
 
 import java.util.Objects;
 
+/**
+ * Immutable value object representing a chunk coordinate (chunk X and Z).
+ * Implements {@link me.angeschossen.lands.api.land.ChunkCoordinate} for use within the Lands API.
+ */
 public class ChunkCoordinate implements me.angeschossen.lands.api.land.ChunkCoordinate {
 
-    public final int x, z;
+    /** Chunk X coordinate. */
+    public final int x;
+    /** Chunk Z coordinate. */
+    public final int z;
     private final int hashcode;
 
+    /**
+     * Create a new chunk coordinate.
+     *
+     * @param x chunk X coordinate
+     * @param z chunk Z coordinate
+     */
     public ChunkCoordinate(int x, int z) {
         this.x = x;
         this.z = z;

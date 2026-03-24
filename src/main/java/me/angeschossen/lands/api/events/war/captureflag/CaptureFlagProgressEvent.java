@@ -11,6 +11,7 @@ import org.jetbrains.annotations.NotNull;
  * Called whenever a team makes progress at capturing a flag or capturing it back from the attackers.
  */
 public class CaptureFlagProgressEvent extends CaptureFlagCancellableEvent {
+    /** Handler list for this event. */
     public static HandlerList handlerList = new HandlerList();
 
     private @NotNull WarTeam progressor;
@@ -36,6 +37,11 @@ public class CaptureFlagProgressEvent extends CaptureFlagCancellableEvent {
         return progressor;
     }
 
+    /**
+     * Returns the handler list for this event type.
+     *
+     * @return the handler list; never null
+     */
     public static HandlerList getHandlerList() {
         return handlerList;
     }

@@ -28,6 +28,10 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
+/**
+ * Represents an entity that can own land or lead a nation — either a {@link me.angeschossen.lands.api.land.Land} or a {@link me.angeschossen.lands.api.nation.Nation}.
+ * Provides common functionality for members, balance, levels, and war.
+ */
 public interface MemberHolder extends BalanceHolder, ExpressionEntity, CMDTarget, Changeable, LimitHolder {
     /**
      * Add an amount of seconds to the warshiled.
@@ -175,8 +179,18 @@ public interface MemberHolder extends BalanceHolder, ExpressionEntity, CMDTarget
      */
     int getMembersAmount();
 
+    /**
+     * Get the short tag of this land or nation, without color codes.
+     *
+     * @return the tag, or {@code null} if none set
+     */
     @Nullable String getTag();
 
+    /**
+     * Get the short tag of this land or nation, with color codes applied.
+     *
+     * @return the colored tag, or {@code null} if none set
+     */
     @Nullable String getColorTag();
 
     /**
@@ -419,7 +433,8 @@ public interface MemberHolder extends BalanceHolder, ExpressionEntity, CMDTarget
     /**
      * Set a new name.
      *
-     * @param name The new name. Can include color codes.
+     * @param landPlayer the player initiating the rename, or {@code null} if triggered by the server
+     * @param name       the new name; can include color codes
      * @return false, if a 3rd party plugin cancelled this name update.
      * @throws NameAlreadyTakenException If the name is already taken
      */

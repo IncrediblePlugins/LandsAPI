@@ -1,5 +1,8 @@
 package me.angeschossen.lands.api.player;
 
+/**
+ * Represents a particle or block-based visualization shown to a player (e.g. for land borders).
+ */
 public interface Visualization {
 
     /**

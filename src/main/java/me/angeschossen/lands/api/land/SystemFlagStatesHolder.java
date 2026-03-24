@@ -6,6 +6,9 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;
 
+/**
+ * Implemented by entities (such as lands and areas) that support system flag state overrides for players.
+ */
 public interface SystemFlagStatesHolder {
     /**
      * Set system flag states for a player. System flag states can only be applied

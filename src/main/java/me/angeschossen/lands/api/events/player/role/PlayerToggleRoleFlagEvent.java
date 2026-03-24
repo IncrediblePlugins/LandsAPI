@@ -17,6 +17,7 @@ import java.util.UUID;
  * Called whenever a player toggles a role flag.
  */
 public class PlayerToggleRoleFlagEvent extends RoleEvent implements Cancellable {
+    /** Required by Bukkit's event system. */
     public static final HandlerList handlerList = new HandlerList();
     private final @NotNull LandPlayer landPlayer;
     private final @NotNull RoleFlag roleFlag;
@@ -26,6 +27,7 @@ public class PlayerToggleRoleFlagEvent extends RoleEvent implements Cancellable 
      * Create instance of this event.
      *
      * @param role       role for which the flag is changed
+     * @param roleFlag   the flag that is being toggled
      * @param landPlayer the player that changes the state
      */
     public PlayerToggleRoleFlagEvent(@NotNull Role role, @NotNull RoleFlag roleFlag, @NotNull LandPlayer landPlayer) {
@@ -35,6 +37,11 @@ public class PlayerToggleRoleFlagEvent extends RoleEvent implements Cancellable 
         this.landPlayer = Checks.requireNonNull(landPlayer, "landPlayer");
     }
 
+    /**
+     * Get the flag that is being toggled.
+     *
+     * @return never null
+     */
     public @NotNull RoleFlag getFlag() {
         return roleFlag;
     }
@@ -53,6 +60,11 @@ public class PlayerToggleRoleFlagEvent extends RoleEvent implements Cancellable 
         return handlerList;
     }
 
+    /**
+     * Returns the handler list for this event type, as required by Bukkit.
+     *
+     * @return the static handler list
+     */
     public static HandlerList getHandlerList() {
         return handlerList;
     }

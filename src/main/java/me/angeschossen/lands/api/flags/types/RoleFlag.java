@@ -22,6 +22,7 @@ import java.util.function.Predicate;
 @Deprecated
 public class RoleFlag extends DefaultStateFlag<me.angeschossen.lands.api.flags.type.RoleFlag> implements me.angeschossen.lands.api.flags.type.RoleFlag {
 
+    /** The category of this flag (ACTION or MANAGEMENT). */
     protected final RoleFlagCategory category;
     private Predicate<@Nullable Role> predicate;
     private boolean toggleableByNation = false;
@@ -46,6 +47,15 @@ public class RoleFlag extends DefaultStateFlag<me.angeschossen.lands.api.flags.t
         this.predicate = predicate;
     }
 
+    /**
+     * @deprecated Use {@link #RoleFlag(Plugin, Flag.Target, Category, String, boolean, boolean, Predicate)} instead.
+     * @param plugin                  your plugin
+     * @param category                the flag category
+     * @param name                    the flag name
+     * @param applyInSubAreas         whether the flag applies in sub-areas
+     * @param alwaysAllowInWilderness whether this flag is always allowed in wilderness
+     * @param predicate               predicate used to determine which roles receive this flag by default
+     */
     @Deprecated
     public RoleFlag(@NotNull Plugin plugin, @NotNull Category category, @NotNull String name, boolean applyInSubAreas, boolean alwaysAllowInWilderness, @NotNull Predicate<Role> predicate) {
         super(plugin, Target.PLAYER, name, applyInSubAreas, alwaysAllowInWilderness);
@@ -54,15 +64,38 @@ public class RoleFlag extends DefaultStateFlag<me.angeschossen.lands.api.flags.t
         this.predicate = predicate;
     }
 
+    /**
+     * Look up an existing role flag by name and wrap it as a {@link RoleFlag}.
+     *
+     * @param name the flag name
+     * @return the wrapped flag, never null
+     * @throws NullPointerException if no flag with the given name exists
+     */
     public static RoleFlag of(String name) {
         me.angeschossen.lands.api.flags.type.RoleFlag flag = Objects.requireNonNull(APIHandler.getFlagRegistry().getRole(name), "legacy flag: " + name);
         return new RoleFlag(flag.getPlugin(), Flag.Target.valueOf(flag.getTarget().toString()), Category.valueOf(flag.getCategory().toString()), flag.getName(), flag.isApplyInSubareas(), flag.isAlwaysAllowInWilderness(), flag.getUpdatePredicate());
     }
 
+    /**
+     * Create a role flag that applies to player lands.
+     *
+     * @param plugin                  your plugin
+     * @param category                the flag category
+     * @param name                    the flag name
+     * @param applyInSubAreas         whether the flag applies in sub-areas
+     * @param alwaysAllowInWilderness whether this flag is always allowed in wilderness
+     */
     public RoleFlag(@NotNull Plugin plugin, @NotNull Category category, @NotNull String name, boolean applyInSubAreas, boolean alwaysAllowInWilderness) {
         this(plugin, Target.PLAYER, category, name, applyInSubAreas, alwaysAllowInWilderness, role -> true);
     }
 
+    /**
+     * Create a role flag that applies to player lands and all sub-areas, with wilderness always allowed.
+     *
+     * @param plugin   your plugin
+     * @param category the flag category
+     * @param name     the flag name
+     */
     public RoleFlag(@NotNull Plugin plugin, @NotNull Category category, @NotNull String name) {
         this(plugin, Target.PLAYER, category, name, true, false, role -> true);
     }
@@ -92,6 +125,11 @@ public class RoleFlag extends DefaultStateFlag<me.angeschossen.lands.api.flags.t
 
     }
 
+    /**
+     * Get the predicate used to determine which roles should have this flag enabled by default.
+     *
+     * @return never null
+     */
     @NotNull
     public Predicate<Role> getPredicate() {
         return predicate;
@@ -133,6 +171,11 @@ public class RoleFlag extends DefaultStateFlag<me.angeschossen.lands.api.flags.t
         return "lands.bypass.wilderness." + name;
     }
 
+    /**
+     * Get the permission node that allows a player to bypass this flag.
+     *
+     * @return bypass permission node
+     */
     @NotNull
     public String getBypassPerm() {
         return "lands.bypass." + name;
@@ -144,6 +187,10 @@ public class RoleFlag extends DefaultStateFlag<me.angeschossen.lands.api.flags.t
         return FlagModule.LAND;
     }
 
+    /**
+     * @deprecated Use {@link #getBypassPermissionWilderness()} instead.
+     * @return wilderness bypass permission node
+     */
     @Deprecated
     @NotNull
     public String getBypassPermWild() {
@@ -155,7 +202,13 @@ public class RoleFlag extends DefaultStateFlag<me.angeschossen.lands.api.flags.t
         return category;
     }
 
+    /**
+     * The category of a role flag, determining whether it is used for physical actions or administrative management.
+     */
     public enum Category {
-        ACTION, MANAGEMENT
+        /** Physical actions such as block breaking, placing, etc. */
+        ACTION,
+        /** Administrative actions such as trusting players, managing roles, etc. */
+        MANAGEMENT
     }
 }

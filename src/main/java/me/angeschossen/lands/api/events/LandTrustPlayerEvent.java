@@ -16,6 +16,7 @@ import java.util.UUID;
  * If invites are disabled, players are trusted directly and the event is called at the command execution or menu action that trusts the player.
  */
 public class LandTrustPlayerEvent extends LandEditMemberCancellableEvent {
+    /** Handler list for this event. */
     public static HandlerList handlerList = new HandlerList();
 
     /**
@@ -29,6 +30,11 @@ public class LandTrustPlayerEvent extends LandEditMemberCancellableEvent {
         super(land, area, initiator, targetUUID);
     }
 
+    /**
+     * Returns the handler list for this event type.
+     *
+     * @return the handler list; never null
+     */
     public static HandlerList getHandlerList() {
         return handlerList;
     }

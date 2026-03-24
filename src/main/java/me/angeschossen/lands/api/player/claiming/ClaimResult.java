@@ -1,5 +1,8 @@
 package me.angeschossen.lands.api.player.claiming;
 
+/**
+ * Describes the outcome of a chunk claiming operation.
+ */
 public enum ClaimResult {
     /**
      * Claiming was successful.
@@ -19,6 +22,7 @@ public enum ClaimResult {
      */
     INVALID(true);
 
+    /** Whether the claiming process should be aborted after this result. */
     public final boolean shouldStop;
 
     ClaimResult(boolean shouldStop) {

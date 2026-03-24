@@ -115,12 +115,18 @@ public interface Land extends MemberHolder, SystemFlagStatesHolder {
 
     /**
      * Deprecated. Use {@link #delete(LandPlayer)} instead.
+     *
+     * @param landPlayer the player initiating the deletion, or {@code null} if triggered by the server
+     * @param reason     the reason for the deletion
+     * @return a future resolving to {@code false} if a third-party plugin cancelled the deletion
      */
     @Deprecated
     CompletableFuture<Boolean> delete(@Nullable LandPlayer landPlayer, @NotNull DeleteReason reason);
 
     /**
      * Deprecated. Use {@link #delete(LandPlayer)} instead.
+     *
+     * @param deleter the player initiating the deletion, or {@code null} if triggered by the server
      */
     @Deprecated
     void delete(@Nullable Player deleter);
@@ -312,6 +318,7 @@ public interface Land extends MemberHolder, SystemFlagStatesHolder {
     /**
      * Trust a player to the whole land.
      *
+     * @param playerUID the UUID of the player to trust
      * @return false, if the player was already trusted in the whole land
      */
     boolean trustPlayer(@NotNull UUID playerUID);

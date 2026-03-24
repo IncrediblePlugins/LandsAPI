@@ -12,6 +12,7 @@ import org.jetbrains.annotations.NotNull;
  * Called when a land is renamed.
  */
 public class LandRenameEvent extends LandEvent implements Cancellable {
+    /** Required by Bukkit's event system. */
     public static final HandlerList handlerList = new HandlerList();
     private final @NotNull String oldName;
     private final @NotNull String newName;
@@ -32,6 +33,11 @@ public class LandRenameEvent extends LandEvent implements Cancellable {
         this.newName = newName;
     }
 
+    /**
+     * Returns the handler list for this event type, as required by Bukkit.
+     *
+     * @return the static handler list
+     */
     public static HandlerList getHandlerList() {
         return handlerList;
     }

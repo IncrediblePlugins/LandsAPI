@@ -12,6 +12,11 @@ import org.jetbrains.annotations.Nullable;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CompletableFuture;
 
+/**
+ * Represents a capture flag placed during a war.
+ * Capture flags are placed by the attacking team within enemy territory.
+ * The attacking team must hold the flag to capture it; defenders can break it to reclaim their territory.
+ */
 public interface CaptureFlag extends ExpressionEntity {
 
     /**
@@ -122,6 +127,8 @@ public interface CaptureFlag extends ExpressionEntity {
      * @param player   if a player broke that flag
      * @param reward   should the team be rewarded
      * @param captured was it captured?
+     * @param end      whether the war has ended, which triggered the removal
+     * @param explosion whether the flag was destroyed by an explosion
      * @param reason   reason of removal
      * @return false, if a 3rd party plugin cancelled the removal
      */

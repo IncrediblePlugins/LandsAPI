@@ -20,6 +20,7 @@ import java.util.stream.Collectors;
  * This might exlude a few specific players, to prevent them getting two messages about the same topic.
  */
 public class BroadcastEvent extends LandsEvent {
+    /** Handler list for this event. */
     public static HandlerList handlerList = new HandlerList();
 
     private final @Nullable String messageKey;
@@ -31,6 +32,7 @@ public class BroadcastEvent extends LandsEvent {
      * Create an instance of this event.
      *
      * @param recipients   all recipients
+     * @param category     the category that describes what triggered this broadcast
      * @param messageKey   Message key in the Lands language file. Use null if the message isn't from Lands
      * @param parseMessage parses the message for a specific player. Lands supports per player language
      */
@@ -41,6 +43,11 @@ public class BroadcastEvent extends LandsEvent {
         this.parseMessage = parseMessage;
     }
 
+    /**
+     * Returns the handler list for this event type.
+     *
+     * @return the handler list; never null
+     */
     public static HandlerList getHandlerList() {
         return handlerList;
     }
@@ -61,10 +68,18 @@ public class BroadcastEvent extends LandsEvent {
         return "deprecated";
     }
 
+    /**
+     * Get the category that describes what triggered this broadcast.
+     *
+     * @return the broadcast category; never null
+     */
     public @NotNull Category getCategory() {
         return category;
     }
 
+    /**
+     * Categorises server-wide broadcast messages by the event that triggered them.
+     */
     public enum Category {
         /**
          * Sent when a land was deleted.
@@ -92,19 +107,39 @@ public class BroadcastEvent extends LandsEvent {
         UPKEEP_COLLECTED
     }
 
+    /**
+     * Carries the context needed to parse a broadcast message for a specific recipient.
+     * Lands supports per-player language, so the message must be parsed individually for each player.
+     */
     public static final class MessageParseRequest {
         private final @NotNull Environment environment;
         private final @Nullable PlayerData recipient;
 
+        /**
+         * Create a parse request.
+         *
+         * @param environment the locale environment used to resolve the message text
+         * @param recipient   the player this message will be sent to, or {@code null} for a generic parse
+         */
         public MessageParseRequest(@NotNull Environment environment, @Nullable PlayerData recipient) {
             this.environment = Checks.requireNonNull(environment, "environment");
             this.recipient = recipient;
         }
 
+        /**
+         * Get the locale environment.
+         *
+         * @return the environment used for message resolution; never null
+         */
         public @NotNull Environment getEnvironment() {
             return environment;
         }
 
+        /**
+         * Get the recipient of the message.
+         *
+         * @return the recipient, or {@code null} if no specific player is targeted
+         */
         public @Nullable PlayerData getRecipient() {
             return recipient;
         }

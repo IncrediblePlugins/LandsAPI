@@ -23,6 +23,7 @@ public enum LandType {
 
     private static final LandType[] map = new LandType[]{LAND, ADMIN, CAMP};
 
+    /** Numeric identifier used for database storage. */
     public final int id;
 
     LandType(int id) {

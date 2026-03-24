@@ -11,6 +11,9 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
+/**
+ * Base interface for all rental and purchase offers on areas or lands.
+ */
 public interface RentalBase {
     /**
      * Get the type of rental or purchase.

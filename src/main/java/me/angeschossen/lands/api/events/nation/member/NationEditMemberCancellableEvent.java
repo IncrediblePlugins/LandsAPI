@@ -12,8 +12,16 @@ import java.util.UUID;
  */
 public abstract class NationEditMemberCancellableEvent extends NationEditMemberEvent implements Cancellable {
 
+    /** Whether this event has been cancelled. */
     protected boolean cancelled;
 
+    /**
+     * Create an instance of this event.
+     *
+     * @param nation    the nation whose membership is being modified
+     * @param land      the land being added or removed
+     * @param initiator the UUID of the player who initiated the action, or {@code null}
+     */
     public NationEditMemberCancellableEvent(@NotNull Nation nation,@NotNull  Land land, UUID initiator) {
         super(nation, land, initiator);
     }

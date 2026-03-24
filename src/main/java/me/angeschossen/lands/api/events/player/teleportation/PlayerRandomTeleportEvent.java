@@ -13,6 +13,7 @@ import org.jetbrains.annotations.NotNull;
  * initiated by a 3rd party plugin.
  */
 public class PlayerRandomTeleportEvent extends PlayerEvent implements Cancellable {
+    /** Required by Bukkit's event system. */
     public static final HandlerList handlerList = new HandlerList();
     private final @NotNull Location destination;
     private boolean cancelled = false;
@@ -28,6 +29,11 @@ public class PlayerRandomTeleportEvent extends PlayerEvent implements Cancellabl
         this.destination = location;
     }
 
+    /**
+     * Returns the handler list for this event type, as required by Bukkit.
+     *
+     * @return the static handler list
+     */
     public static HandlerList getHandlerList() {
         return handlerList;
     }

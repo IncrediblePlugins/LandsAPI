@@ -14,6 +14,7 @@ import java.util.UUID;
  */
 public class NationCreateEvent extends NationEditEvent implements Cancellable {
 
+    /** Handler list for this event. */
     public static HandlerList handlerList = new HandlerList();
     private boolean cancelled;
 
@@ -37,6 +38,11 @@ public class NationCreateEvent extends NationEditEvent implements Cancellable {
         super(nation, playerUUID);
     }
 
+    /**
+     * Returns the handler list for this event type.
+     *
+     * @return the handler list; never null
+     */
     public static HandlerList getHandlerList() {
         return handlerList;
     }

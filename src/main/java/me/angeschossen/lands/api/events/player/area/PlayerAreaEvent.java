@@ -14,21 +14,40 @@ import java.util.UUID;
  * Used for events where a player interacts with an area.
  */
 public abstract class PlayerAreaEvent extends PlayerEvent {
+    /** Required by Bukkit's event system. */
     public static HandlerList handlerList = new HandlerList();
+    /** The area involved in this event. */
     protected final Area area;
 
+    /**
+     * Create instance with an online player.
+     *
+     * @param area       the involved area
+     * @param landPlayer the involved player
+     */
     public PlayerAreaEvent(@NotNull Area area, LandPlayer landPlayer) {
         super(landPlayer);
 
         this.area = area;
     }
 
+    /**
+     * Create instance with a player UUID (may be offline).
+     *
+     * @param area   the involved area
+     * @param player UUID of the involved player
+     */
     public PlayerAreaEvent(@NotNull Area area, UUID player) {
         super(player);
 
         this.area = area;
     }
 
+    /**
+     * Returns the handler list for this event type, as required by Bukkit.
+     *
+     * @return the static handler list
+     */
     public static HandlerList getHandlerList() {
         return handlerList;
     }

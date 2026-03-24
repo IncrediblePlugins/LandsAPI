@@ -5,6 +5,9 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;
 
+/**
+ * Represents a player that is trusted in one or more areas of a land.
+ */
 public interface TrustedPlayer {
 
     /**

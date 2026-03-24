@@ -15,6 +15,7 @@ import java.util.Objects;
  * This even is called each time the spawn of a land changes.
  */
 public class LandSpawnSetEvent extends LandCancellableEvent {
+    /** Handler list for this event. */
     public static HandlerList handlerList = new HandlerList();
     private final @NotNull UnloadedPosition location;
 
@@ -53,6 +54,11 @@ public class LandSpawnSetEvent extends LandCancellableEvent {
         return land.getSpawnPosition();
     }
 
+    /**
+     * Returns the handler list for this event type.
+     *
+     * @return the handler list; never null
+     */
     public static HandlerList getHandlerList() {
         return handlerList;
     }

@@ -4,6 +4,9 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;
 
+/**
+ * Represents a player's request to join a land as a member.
+ */
 public interface LandMemberShipRequest {
 
     /**

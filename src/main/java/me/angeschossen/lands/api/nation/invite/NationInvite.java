@@ -6,6 +6,9 @@ import me.angeschossen.lands.api.land.Land;
 import me.angeschossen.lands.api.nation.Nation;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Represents an invitation sent by a nation to a land to join it.
+ */
 public interface NationInvite extends Changeable {
 
     /**

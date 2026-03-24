@@ -16,6 +16,7 @@ import java.util.UUID;
  */
 public abstract class LandEvent extends PlayerNullableEvent {
 
+    /** The land involved in this event. */
     protected final @NotNull Land land;
 
     /**

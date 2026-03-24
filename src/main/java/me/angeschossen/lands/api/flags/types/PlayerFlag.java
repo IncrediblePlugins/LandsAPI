@@ -17,6 +17,12 @@ import java.util.Objects;
 @Deprecated
 public class PlayerFlag extends DefaultStateFlag<me.angeschossen.lands.api.flags.type.PlayerFlag> implements me.angeschossen.lands.api.flags.type.PlayerFlag {
 
+    /**
+     * Create a new personal player flag.
+     *
+     * @param plugin your plugin
+     * @param name   the flag name
+     */
     public PlayerFlag(@NotNull Plugin plugin, @NotNull String name) {
         super(plugin, Target.PLAYER, name, true, false);
     }
@@ -31,6 +37,13 @@ public class PlayerFlag extends DefaultStateFlag<me.angeschossen.lands.api.flags
         return this;
     }
 
+    /**
+     * Look up an existing player flag by name and wrap it as a {@link PlayerFlag}.
+     *
+     * @param name the flag name
+     * @return the wrapped flag, never null
+     * @throws NullPointerException if no flag with the given name exists
+     */
     public static PlayerFlag of(String name) {
         me.angeschossen.lands.api.flags.type.PlayerFlag flag = Objects.requireNonNull(APIHandler.getFlagRegistry().getPlayer(name), "legacy flag: " + name);
         return new PlayerFlag(flag.getPlugin(), flag.getName());

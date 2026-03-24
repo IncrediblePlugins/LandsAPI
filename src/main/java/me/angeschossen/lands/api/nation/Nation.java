@@ -10,6 +10,9 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Collection;
 import java.util.concurrent.CompletableFuture;
 
+/**
+ * Represents a nation — a political group of lands that cooperate and share resources.
+ */
 public interface Nation extends MemberHolder {
 
     /**
@@ -42,6 +45,7 @@ public interface Nation extends MemberHolder {
     /**
      * Check if a land is part of this nation.
      *
+     * @param land the land to check
      * @return false if land, is not a member of this nation
      */
     boolean isMember(@NotNull Land land);

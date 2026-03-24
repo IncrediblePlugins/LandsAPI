@@ -51,7 +51,9 @@ public enum InboxCategory {
         }
     }
 
+    /** The unique numeric ID of this category. */
     public final int id;
+    /** The priority used for cycling through categories. */
     public final int priority;
     private boolean enabled = true;
 

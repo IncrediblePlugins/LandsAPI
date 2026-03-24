@@ -4,6 +4,9 @@ import me.angeschossen.lands.api.configuration.modules.NationsConfig;
 import me.angeschossen.lands.api.configuration.modules.WarsConfig;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Provides access to the Lands plugin configuration modules.
+ */
 public interface Configuration {
     /**
      * Get configuration options for wars.

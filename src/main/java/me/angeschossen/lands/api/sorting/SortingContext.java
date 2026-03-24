@@ -6,6 +6,11 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * Provides a set of sortings for a specific type of target (e.g. lands or nations).
+ *
+ * @param <T> the type of entity being sorted
+ */
 public interface SortingContext<T> {
     /**
      * Add a sorting to this sorting context.

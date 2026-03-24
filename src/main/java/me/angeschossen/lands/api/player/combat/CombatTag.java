@@ -5,6 +5,11 @@ import me.angeschossen.lands.api.handler.APIHandler;
 import me.angeschossen.lands.api.player.LandPlayer;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Represents an active combat tag between two players.
+ * A combat tag prevents players from escaping combat by leaving the server or teleporting.
+ * Combat tags are applied to both the attacker and the target for the duration of the tag.
+ */
 public interface CombatTag {
     /**
      * Create an combat tag and apply it to both players.

@@ -17,6 +17,7 @@ import java.util.UUID;
  */
 public class WarDeclareEvent extends PlayerEvent implements Cancellable {
 
+    /** Required by Bukkit's event system. */
     public static HandlerList handlerList = new HandlerList();
     private final @NotNull MemberHolder attacker, defender;
     private boolean cancelled;
@@ -38,6 +39,11 @@ public class WarDeclareEvent extends PlayerEvent implements Cancellable {
         this.defender = defender;
     }
 
+    /**
+     * Returns the handler list for this event type, as required by Bukkit.
+     *
+     * @return the static handler list
+     */
     public static HandlerList getHandlerList() {
         return handlerList;
     }

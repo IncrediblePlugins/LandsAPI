@@ -4,6 +4,10 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
+/**
+ * Represents an entity whose name can be used as a command parameter.
+ * Spaces in names are replaced with underscores to make them usable in commands.
+ */
 public interface CMDTarget {
     /**
      * Replaces spaces with an underscore to make names useable as command parameters.

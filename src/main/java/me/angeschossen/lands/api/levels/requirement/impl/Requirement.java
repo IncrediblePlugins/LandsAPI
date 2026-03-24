@@ -14,10 +14,15 @@ import java.util.Objects;
  */
 public abstract class Requirement implements me.angeschossen.lands.api.levels.requirement.Requirement {
 
+    /** Unique identifier and display title of this requirement. */
     protected final @NotNull String id, title;
+    /** Human-readable description lines shown in menus. */
     protected final @NotNull List<String> description;
+    /** The required value to consider this requirement fulfilled. */
     protected final float required;
+    /** The plugin that registered this requirement. */
     protected final @NotNull LandsIntegration plugin;
+    /** Whether this requirement applies to lands or nations. */
     protected final @NotNull HolderType holderType;
 
     /**
