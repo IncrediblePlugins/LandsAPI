@@ -1,3 +1,4 @@
+// test
 plugins {
     `java-library`
     id("com.gradleup.shadow").version("9.2.2")
