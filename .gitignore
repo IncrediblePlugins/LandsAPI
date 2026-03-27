@@ -1,0 +1,7 @@
+# Project exclude paths
+/target/
+/.idea/
+/build
+/src/main/java/me/angeschossen/lands/api/events/PlayerLanguageChangeEvent.java
+CLAUDE.md
+gradle.properties
