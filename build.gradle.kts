@@ -110,6 +110,7 @@ publishing {
             version = project.version.toString()
 
             artifact(tasks.named("shadowJar"))
+            artifact(tasks.named("javadocJar"))
         }
     }
 
