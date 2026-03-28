@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * A sorting evaluates the place of an land or nation on the leaderboard.
+ * A sorting evaluates the place of a land or nation on the leaderboard.
  * Default sortings: balance, chunks, members, level, ratio_kd (kills/deaths in wars ratio) or ratio_wl (won/lost wars ratio)
  *
  * @param <T> the type of entity being sorted (e.g. a land or nation)
