@@ -1,8 +1,8 @@
 plugins {
-    id("com.github.incredibleplugins.base") version "1.0.23-SNAPSHOT"
+    id("com.incredibleplugins.base") version "1.0.26-SNAPSHOT"
 }
 
-group = "com.github.angeschossen"
+group = "com.incredibleplugins"
 version = "7.25.8"
 description = "LandsAPI"
 
