@@ -34,7 +34,7 @@ tasks {
 }
 
 dependencies {
-    shadow("com.incredibleplugins:pluginframework-api:1.1.48")
+    shadow("com.incredibleplugins:pluginframework-api:${property("pluginframeworkVersion")}")
 
     compileOnly("org.realityforge.org.jetbrains.annotations:org.jetbrains.annotations")
     compileOnly("org.spigotmc:spigot-api:1.21.1-R0.1-SNAPSHOT")

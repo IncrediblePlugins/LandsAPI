@@ -26,9 +26,24 @@ public enum Limit implements com.github.angeschossen.pluginframework.api.limit.L
      */
     PLAYER_CAMPS_OWNED("lands.camps", null, LimitTarget.PLAYER),
     /**
+     * Max amount of chunks the player can select at once when creating a selection.
+     */
+    PLAYER_SELECTION_SIZE("lands.selection", null, LimitTarget.PLAYER),
+    /**
      * Limits the maximum amount of chunks the player can claim for each land they own.
      */
-    LAND_SIZE("lands.chunks", "chunks", LimitTarget.PLAYER, LimitTarget.LAND){
+    LAND_SIZE("lands.chunks", "chunks", LimitTarget.PLAYER, LimitTarget.LAND) {
+
+        private int increasePerMember;
+
+        public void setIncreasePerMember(int increasePerMember) {
+            this.increasePerMember = increasePerMember;
+        }
+
+        public int getIncreasePerMember() {
+            return increasePerMember;
+        }
+
         @Override
         public @NotNull Collection<String> getConfigAliases() {
             return List.of("land_chunks");
@@ -99,7 +114,6 @@ public enum Limit implements com.github.angeschossen.pluginframework.api.limit.L
     }
 
 
-
     /**
      * Get a limit by its permission node.
      *
@@ -134,8 +148,9 @@ public enum Limit implements com.github.angeschossen.pluginframework.api.limit.L
         this.targets = Set.of(Checks.requireNonNull(targets, "targets"));
     }
 
+    @Override
     public final boolean hasTarget(@NotNull com.github.angeschossen.pluginframework.api.limit.holder.LimitTarget target) {
-        return targets.contains(target); // some limits should only be saved to lands or nations
+        return target == LimitTarget.PLAYER || targets.contains(target); // some limits should only be saved to lands or nations, but if the target is player it should always be saved or merged since player should be point of truth
     }
 
     @Override
