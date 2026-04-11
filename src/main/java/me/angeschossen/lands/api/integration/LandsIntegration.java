@@ -207,6 +207,11 @@ public class LandsIntegration implements LandsIntegrator, me.angeschossen.lands.
         return APIHandler.getInstance().getLegacySupport().getLandByName(name);
     }
 
+    @Override
+    public @Nullable MemberHolder getMemberHolderByTag(@NotNull String tag) {
+        return null;
+    }
+
     @Deprecated
     @Override
     public Land getLand(@NotNull Location location) {

@@ -1,9 +1,9 @@
 plugins {
-    id("com.incredibleplugins.base") version "1.0.26-SNAPSHOT"
+    id("com.incredibleplugins.base") version "1.0.30-SNAPSHOT"
 }
 
 group = "com.incredibleplugins"
-version = "7.25.8"
+version = "7.25.11"
 description = "LandsAPI"
 
 basePlugin {
