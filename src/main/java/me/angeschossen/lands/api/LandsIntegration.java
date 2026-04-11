@@ -177,6 +177,14 @@ public interface LandsIntegration {
     Land getLandByName(@NotNull String name);
 
     /**
+     * Get {@link Land} or {@link Nation} by tag.
+     *
+     * @param tag case-insensitive without color codes and formatting
+     * @return null, if there is no land or nation with this tag
+     */
+    @Nullable MemberHolder getMemberHolderByTag(@NotNull String tag);
+
+    /**
      * Get cached player data.
      *
      * @param playerUUID UUID of the player

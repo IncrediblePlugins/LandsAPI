@@ -3,7 +3,7 @@ plugins {
 }
 
 group = "com.incredibleplugins"
-version = "7.25.8"
+version = "7.25.9"
 description = "LandsAPI"
 
 basePlugin {
