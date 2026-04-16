@@ -154,8 +154,8 @@ public enum Limit implements com.github.angeschossen.pluginframework.api.limit.L
     }
 
     @Override
-    public int applyModifiers(@NotNull LimitHolder limitHolder, final int limit) {
-        long value = limit;
+    public int getModifierValue(@NotNull LimitHolder limitHolder) {
+        long value = 0;
 
         for (LimitModifier modifier : modifiers.values()) {
             value += modifier.getModifier(limitHolder);
