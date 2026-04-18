@@ -142,6 +142,7 @@ public interface LandPlayer extends OfflinePlayer, ExpressionEntity, PlayerData,
      *
      * @return Max amount of support claims
      */
+    @Deprecated
     int getSupportClaimsPerLand();
 
     /**
