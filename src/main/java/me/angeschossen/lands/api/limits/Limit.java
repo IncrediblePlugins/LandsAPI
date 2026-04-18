@@ -33,17 +33,6 @@ public enum Limit implements com.github.angeschossen.pluginframework.api.limit.L
      * Limits the maximum amount of chunks the player can claim for each land they own.
      */
     LAND_SIZE("lands.chunks", "chunks", LimitTarget.PLAYER, LimitTarget.LAND) {
-
-        private int increasePerMember;
-
-        public void setIncreasePerMember(int increasePerMember) {
-            this.increasePerMember = increasePerMember;
-        }
-
-        public int getIncreasePerMember() {
-            return increasePerMember;
-        }
-
         @Override
         public @NotNull Collection<String> getConfigAliases() {
             return List.of("land_chunks");
@@ -140,7 +129,8 @@ public enum Limit implements com.github.angeschossen.pluginframework.api.limit.L
      * Constructor
      *
      * @param permission permission node associated with the limit
-     * @param oldName    previous name of the limit
+     * @param oldName    previous name of the limit, or {@code null} if none
+     * @param targets    the holder types this limit applies to
      */
     Limit(@NotNull String permission, @Nullable String oldName, @NotNull LimitTarget... targets) {
         this.permission = Checks.requireNonNull(permission, "permission");
@@ -148,11 +138,25 @@ public enum Limit implements com.github.angeschossen.pluginframework.api.limit.L
         this.targets = Set.of(Checks.requireNonNull(targets, "targets"));
     }
 
+    /**
+     * Check whether this limit applies to the given target type.
+     * Player is always considered a valid target since it is the source of truth for merging limits.
+     *
+     * @param target the target type to check; must not be null
+     * @return {@code true} if this limit applies to the given target
+     */
     @Override
     public final boolean hasTarget(@NotNull com.github.angeschossen.pluginframework.api.limit.holder.LimitTarget target) {
         return target == LimitTarget.PLAYER || targets.contains(target); // some limits should only be saved to lands or nations, but if the target is player it should always be saved or merged since player should be point of truth
     }
 
+    /**
+     * Apply all registered modifiers to the given base limit value for the specified holder.
+     *
+     * @param limitHolder the holder whose context is used by modifiers; must not be null
+     * @param limit       the base limit value before modifiers are applied
+     * @return the adjusted limit, capped at {@link Integer#MAX_VALUE}
+     */
     @Override
     public int applyModifiers(@NotNull LimitHolder limitHolder, final int limit) {
         long value = limit;
@@ -168,6 +172,11 @@ public enum Limit implements com.github.angeschossen.pluginframework.api.limit.L
         return (int) value;
     }
 
+    /**
+     * Register one or more modifiers that adjust this limit's value at runtime.
+     *
+     * @param limitModifiers the modifiers to register; must not be null
+     */
     @Override
     public void registerModifier(@NotNull LimitModifier... limitModifiers) {
         for (LimitModifier modifier : limitModifiers) {
@@ -175,6 +184,11 @@ public enum Limit implements com.github.angeschossen.pluginframework.api.limit.L
         }
     }
 
+    /**
+     * Unregister one or more previously registered modifiers from this limit.
+     *
+     * @param limitModifiers the modifiers to remove; must not be null
+     */
     @Override
     public void unregisterModifier(@NotNull LimitModifier... limitModifiers) {
         for (LimitModifier modifier : limitModifiers) {
@@ -182,6 +196,11 @@ public enum Limit implements com.github.angeschossen.pluginframework.api.limit.L
         }
     }
 
+    /**
+     * Get all modifiers currently registered to this limit.
+     *
+     * @return an unmodifiable view of the registered modifiers; never null
+     */
     @Override
     public @NotNull Collection<@NotNull LimitModifier> getModifiers() {
         return modifiers.values();
