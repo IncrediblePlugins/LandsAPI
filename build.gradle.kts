@@ -3,7 +3,7 @@ plugins {
 }
 
 group = "com.incredibleplugins"
-version = "7.25.11"
+version = property("version") as String
 description = "LandsAPI"
 
 basePlugin {
