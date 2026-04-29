@@ -1,8 +1,8 @@
 package me.angeschossen.lands.api.land.rental.offer.base;
 
 /**
- * Provides information about a accepted offer.
- * */
+ * Provides information about an accepted (active) rental or purchase offer.
+ */
 public interface AcceptedRentalOfferBase extends RentalBase {
 
     /**

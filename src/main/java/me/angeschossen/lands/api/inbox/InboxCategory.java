@@ -73,7 +73,7 @@ public enum InboxCategory {
 
     /**
      * Disable this category from being selectable in the menu.
-     * Messages of this category will still display, if {@link #ALL} is seleted.
+     * Messages of this category will still display if {@link #ALL} is selected.
      *
      * @param enabled false, to disable this category
      * @throws IllegalStateException The {@link #ALL} category can't be disabled
@@ -104,10 +104,10 @@ public enum InboxCategory {
     }
 
     /**
-     * Get a category by it's priority
+     * Get a category by its priority.
      *
      * @param prio The priority
-     * @return never null. Will return {@link #ALL} if there's no category with this priority
+     * @return never null; falls back to {@link #ALL} if no category with this priority exists
      */
     @NotNull
     public static InboxCategory getByPriority(int prio) {

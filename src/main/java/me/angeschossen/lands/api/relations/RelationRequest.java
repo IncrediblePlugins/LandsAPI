@@ -8,9 +8,9 @@ import org.jetbrains.annotations.NotNull;
  */
 public interface RelationRequest extends Changeable {
     /**
-     * Get the result of this request.
+     * Get the type of diplomatic relation that was requested (e.g. ally or enemy).
      *
-     * @return never null
+     * @return the requested relation; never null
      */
     @NotNull Relation getIntent();
 }

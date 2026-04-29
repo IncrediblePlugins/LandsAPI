@@ -9,7 +9,7 @@ public enum TrustResult implements InviteResult {
      */
     FAILURE_SELF,
     /**
-     * A player isn't allowed to trust players.
+     * The executing player does not have permission to trust other players.
      */
     FAILURE_ACCESS,
     /**
@@ -17,16 +17,16 @@ public enum TrustResult implements InviteResult {
      */
     FAILURE_ALREADY,
     /**
-     * The area has reched the maximum amount of members.
-     * This is related to the lands.members.number permission.
+     * The area has reached the maximum number of members.
+     * This is related to the {@code lands.members.number} permission.
      */
     FAILURE_MAX_MEMBERS,
     /**
-     * You can't trust an banned player.
+     * Banned players cannot be trusted.
      */
     FAILURE_BANNED,
     /**
-     * During war trusting players is disabled.
+     * Trusting players is disabled while a war is in progress.
      */
     FAILURE_WAR,
     /**
@@ -35,39 +35,39 @@ public enum TrustResult implements InviteResult {
      */
     FAILURE_OWN_LAND,
     /**
-     * The player reached the maximum amount of lands, they can own.
+     * The target player has reached the maximum number of lands they can own.
      */
     FAILURE_PLAYER_MAX_OWN_LANDS,
     /**
-     * The player reached its maximum amount of lands, they can be a member of. This is related to the
-     * lands.lands.number permission.
+     * The target player has reached the maximum number of lands they can be a member of.
+     * This is related to the {@code lands.lands.number} permission.
      */
     FAILURE_PLAYER_MAX_LANDS,
     /**
-     * The target player is already invited.
+     * The target player has already been invited and the invite is still pending.
      */
     FAILURE_ALREADY_INVITED,
     /**
-     * A 3rd party plugin cancelled the trust event ({@link me.angeschossen.lands.api.events.LandTrustPlayerEvent}).
+     * A third-party plugin cancelled the trust via {@link me.angeschossen.lands.api.events.LandTrustPlayerEvent}.
      */
     FAILURE_PLUGIN,
     /**
-     * If the server doesn't use Luckperms for permissions, the target player must be online.
-     * Using Luckperms maximum lands limits can be checked for offline players as well.
+     * The target player is offline and the server does not use LuckPerms, which is required
+     * to look up permission-based limits for offline players.
      */
     FAILURE_OFFLINE,
     /**
-     * The target player disabled receiving invites in their personal settings menu.
+     * The target player has disabled receiving invites via their personal settings menu.
      */
     FAILURE_PLAYER_FLAG_RECEIVE_INVITES,
     /**
-     * The target player was invite successfully.
-     * If invitis are enabled in config.yml.
+     * The target player was invited successfully.
+     * Returned when invites are enabled in {@code config.yml}.
      */
     SUCCESS_INVITED,
     /**
-     * The target player was trusted successfully.
-     * If the player that trusts the target is a server admin or invites are disabled in config.yml.
+     * The target player was trusted directly without an invite.
+     * Returned when the acting player is a server admin or invites are disabled in {@code config.yml}.
      */
     SUCCESS_TRUSTED;
 

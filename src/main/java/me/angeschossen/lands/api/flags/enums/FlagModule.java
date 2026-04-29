@@ -1,8 +1,8 @@
 package me.angeschossen.lands.api.flags.enums;
 
 /**
- * There are different major features in Lands which could be called modules since they're modular.
- * Some of these modules might have flags.
+ * Identifies the plugin module to which a flag belongs.
+ * Used to categorise flags by their domain (land management, nations, or per-player settings).
  */
 public enum FlagModule {
     /**

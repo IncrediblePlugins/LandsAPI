@@ -38,10 +38,10 @@ public interface LandArea extends Area {
     boolean containsChunk(int chunkX, int chunkZ, boolean allowIntersection);
 
     /**
-     * Set a name for this area.
+     * Set the name of this sub area.
      *
-     * @param name The new land. You can include color codes
-     * @return false, if the land already has an area witht that name
+     * @param name the new name; color codes are supported
+     * @return false if the land already contains another area with that name
      */
     boolean setName(@NotNull String name);
 

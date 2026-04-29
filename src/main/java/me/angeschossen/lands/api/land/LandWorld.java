@@ -38,8 +38,8 @@ public interface LandWorld {
     /**
      * Use {@link #getArea(int, int, int)} instead.
      * Get area at the specified coordinate.
-     * If you need to retrieve an area that is located insice an unloaded chunk, use {@link #getAreaByUnloaded(int, int, int)} instead.
-     * However, this method should always be prefered if possible.
+     * If you need to retrieve an area that is located inside an unloaded chunk, use {@link #getAreaByUnloaded(int, int, int)} instead.
+     * However, this method should always be preferred if possible.
      *
      * @param location The location
      * @return null, if the target chunk isn't claimed or loaded
@@ -65,7 +65,7 @@ public interface LandWorld {
      * @param chunkX Chunk x value
      * @param chunkZ Chunk z value
      * @return null, if the chunk isn't claimed or not loaded. If you want to get the land from an unloaded chunk, use {@link #getLandByUnloadedChunk(int, int)} instead.
-     * However, this method should always prefered, if possible. Most bukkit events etc. usually have chunks already loaded
+     * However, this method should always be preferred if possible. Most bukkit events etc. usually have chunks already loaded
      */
     @Nullable
     Land getLandByChunk(int chunkX, int chunkZ);
@@ -84,7 +84,7 @@ public interface LandWorld {
     Land getLandByUnloadedChunk(int chunkX, int chunkZ);
 
     /**
-     * Get an area at the specified coordinate, even if the chunk isn't loaded.
+     * Get the area at the specified coordinate, even if the chunk isn't loaded.
      * This method can be called async. It doesn't make any database calls, but requires a deep lookup in cached data.
      *
      * @param x Block x
@@ -95,9 +95,9 @@ public interface LandWorld {
     @Nullable Area getAreaByUnloaded(int x, int y, int z);
 
     /**
-     * Get area at the specified coordinate.
-     * If you need to retrieve an area that is located insice an unloaded chunk, use {@link #getAreaByUnloaded(int, int, int)} instead.
-     * However, this method should always be prefered if possible.
+     * Get the area at the specified coordinate.
+     * If you need to retrieve an area that is located inside an unloaded chunk, use {@link #getAreaByUnloaded(int, int, int)} instead.
+     * However, this method should always be preferred if possible.
      *
      * @param x Block x
      * @param y Block y

@@ -5,8 +5,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 /**
- * A category can be set to a {@link Land} to singal to other players what the land is about. For example shops, arenas, looking for members etc.
- * Each server can define their own categories.
+ * A category that can be assigned to a {@link Land} to signal to other players what the land is about — for example shops, arenas, or recruitment.
+ * Each server can define its own categories.
  */
 public interface LandCategory {
 

@@ -48,9 +48,11 @@ public interface CaptureFlag extends ExpressionEntity {
     void setFireworkSpawnInterval(long interval);
 
     /**
-     * Get the seconds between each firework spawned. This is an approximate value as fireworks only spawn when the flag is ticked.
+     * Get the configured interval in seconds between firework spawns.
+     * This mirrors the value set by {@link #setFireworkSpawnInterval(long)}.
+     * The actual interval is approximate because fireworks are only spawned when the flag is ticked.
      *
-     * @return if smaller than 1, firework spawning is disabled
+     * @return the interval in seconds; a value smaller than 1 means firework spawning is disabled
      */
     long getLastFireworkSpawned();
 
@@ -111,15 +113,15 @@ public interface CaptureFlag extends ExpressionEntity {
     /**
      * Break this flag.
      *
-     * @param player   if a player broke that flag
-     * @param reward   should the team be rewarded
-     * @param captured was it captured?
-     * @param exlosion create any explosion?
-     * @param reason   reason of removal
-     * @return false, if a 3rd party plugin cancelled the removal
+     * @param player    the player who broke the flag, or {@code null} if broken by a non-player cause
+     * @param reward    {@code true} to reward the breaking team with points
+     * @param captured  {@code true} if the flag was captured before being broken
+     * @param explosion {@code true} to trigger a visual explosion effect
+     * @param reason    the reason the flag was broken
+     * @return a future completing with {@code false} if a third-party plugin cancelled the removal
      */
     CompletableFuture<Boolean> breakCaptureFlag(@Nullable LandPlayer player, boolean reward, boolean captured,
-                                                boolean exlosion, CaptureFlagBreakEvent.BreakReason reason);
+                                                boolean explosion, CaptureFlagBreakEvent.BreakReason reason);
 
     /**
      * Break this flag.
@@ -136,8 +138,8 @@ public interface CaptureFlag extends ExpressionEntity {
                                                 boolean explosion, CaptureFlagBreakEvent.BreakReason reason);
 
     /**
-     * Trigger code execution whenever the flag is unloaded.
-     * This is only relevant, if you implement your own capture flag.
+     * Called by Lands when the capture flag is unloaded (e.g. on chunk unload or server shutdown).
+     * Only relevant when implementing a custom capture flag type.
      */
     void atUnload();
 

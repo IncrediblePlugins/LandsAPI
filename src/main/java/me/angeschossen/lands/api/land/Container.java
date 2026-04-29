@@ -74,7 +74,7 @@ public interface Container {
      * @param x                 chunk X
      * @param z                 chunk Z
      * @param allowIntersection if false, it will only return one area that contains the chunk fully and doesn't just partially overlaps with the chunk
-     * @return will contain the lands default area ({@link Land#getDefaultArea()}, if the areas inside this chunk only overalapped and didn't contain the chunk fully.
+     * @return will include the land's default area ({@link Land#getDefaultArea()}) if the sub-areas inside this chunk only partially overlap and do not contain the chunk fully.
      */
     @NotNull Collection<? extends Area> getAreasInChunk(int x, int z, boolean allowIntersection);
 

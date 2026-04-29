@@ -4,7 +4,8 @@ import me.angeschossen.lands.api.land.LandWorld;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * A capture area can for example be a sub area of a land or a collection if chunks.
+ * Defines the geographic boundary within which a {@link CaptureFlag} must be held.
+ * The capture area can represent a land sub-area or any other region that contains block coordinates.
  */
 public interface CaptureArea {
 

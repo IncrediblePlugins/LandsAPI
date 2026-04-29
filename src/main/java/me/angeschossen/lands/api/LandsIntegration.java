@@ -94,9 +94,9 @@ public interface LandsIntegration {
     boolean canPvP(@NotNull Player attacker, @NotNull Player target, @NotNull Location location, boolean setCombatTag, boolean sendMessage);
 
     /**
-     * Get area at the specified coordinate.
-     * If you need to retrieve an area that is located insice an unloaded chunk, use {@link #getUnloadedArea(Location)} instead.
-     * However, this method should always be prefered if possible.
+     * Get the area at the specified coordinate.
+     * If you need to retrieve an area that is located inside an unloaded chunk, use {@link #getUnloadedArea(Location)} instead.
+     * However, this method should always be preferred if possible.
      *
      * @param location The location
      * @return null, if the target chunk isn't claimed or loaded
@@ -130,7 +130,7 @@ public interface LandsIntegration {
      * @param chunkX Chunk x value
      * @param chunkZ Chunk z value
      * @return null, if the chunk isn't claimed or not loaded. If you want to get the land from an unloaded chunk, use {@link #getLandByUnloadedChunk(World, int, int)} instead.
-     * However, this method should always prefered, if possible. Most bukkit events etc. usually have chunks already loaded
+     * However, this method should always be preferred if possible. Most Bukkit events have chunks already loaded
      */
     @Nullable
     Land getLandByChunk(@NotNull World world, int chunkX, int chunkZ);

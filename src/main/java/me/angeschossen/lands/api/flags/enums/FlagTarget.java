@@ -1,7 +1,9 @@
 package me.angeschossen.lands.api.flags.enums;
 
 /**
- * Some flags are not accessible for player or even admins.
+ * Controls which audience can view and toggle a flag.
+ * {@link #PLAYER} flags are visible to regular land members, {@link #ADMIN} flags only to admin-land owners,
+ * and {@link #SYSTEM} flags are reserved for internal Lands use and hidden from all players.
  */
 public enum FlagTarget {
     /**

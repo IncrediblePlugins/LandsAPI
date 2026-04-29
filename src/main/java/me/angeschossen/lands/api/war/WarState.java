@@ -134,12 +134,12 @@ public interface WarState extends Changeable {
     void onMemberHolderUpdated(@NotNull MemberHolder prev, @NotNull MemberHolder updated);
 
     /**
-     * Broadcast a message
+     * Broadcast a localised message to players.
      *
-     * @param key    message key of locale file
-     * @param p      placeholders
-     * @param v      placeholder values
-     * @param filter if true, only send to players engaged in this war. If false, send to all players
+     * @param key    the message key from the locale file
+     * @param p      placeholder names
+     * @param v      function that returns placeholder values for each recipient (allows per-player localisation)
+     * @param filter if {@code true}, only send to players currently engaged in this war; if {@code false}, send to all online players
      */
     void broadcast(String key, String[] p, Function<PlayerDataBase, String[]> v, boolean filter);
 
@@ -169,26 +169,26 @@ public interface WarState extends Changeable {
     MemberHolder getEnemy(@NotNull MemberHolder memberHolder);
 
     /**
-     * Get land or nation by opponent team
+     * Get the land or nation belonging to the given team.
      *
-     * @param warTeam the opponent team
-     * @return never null
+     * @param warTeam the team ({@link WarTeam#ATTACKER} or {@link WarTeam#DEFENDER})
+     * @return the corresponding member holder; never null
      */
     @NotNull
     MemberHolder getMemberHolder(@NotNull WarTeam warTeam);
 
     /**
-     * Get the ID of this warstate
+     * Get the unique ID of this war state.
      *
-     * @return unique ID
+     * @return a universally unique, lexicographically sortable identifier; never null
      */
     @NotNull
     ULID getULID();
 
     /**
-     * get the current state of the war or declaration
+     * Get the current phase of this war or declaration.
      *
-     * @return current state
+     * @return {@link WarStatus#PREPARATION} if the war hasn't started yet, {@link WarStatus#FIGHT} once it is active
      */
     WarStatus getState();
 

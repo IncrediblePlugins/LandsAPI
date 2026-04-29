@@ -31,17 +31,6 @@ public class Limit extends com.github.angeschossen.pluginframework.api.limit.Lim
      * Limits the maximum amount of chunks the player can claim for each land they own.
      */
     LAND_SIZE = new Limit("land_size", "lands.chunks", "chunks", LimitTarget.PLAYER, LimitTarget.LAND) {
-
-        private int increasePerMember;
-
-        public void setIncreasePerMember(int increasePerMember) {
-            this.increasePerMember = increasePerMember;
-        }
-
-        public int getIncreasePerMember() {
-            return increasePerMember;
-        }
-
         @Override
         public @NotNull Collection<String> getConfigAliases() {
             return List.of("land_chunks");
@@ -99,6 +88,14 @@ public class Limit extends com.github.angeschossen.pluginframework.api.limit.Lim
     private LimitMode mode = LimitMode.PERMISSION;
 
 
+    /**
+     * Create a new limit.
+     *
+     * @param id         unique identifier for this limit
+     * @param permission the permission node whose numeric value defines the limit (e.g. {@code "lands.chunks"})
+     * @param oldName    legacy name used for backwards-compatible permission lookups, or {@code null} if there is none
+     * @param targets    one or more targets this limit applies to (player, land, or nation)
+     */
     public Limit(@NotNull String id, @NotNull String permission, @Nullable String oldName, @NotNull LimitTarget... targets) {
         super(id, targets);
 

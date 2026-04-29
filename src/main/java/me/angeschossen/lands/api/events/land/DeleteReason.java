@@ -4,44 +4,45 @@ import me.angeschossen.lands.api.events.ChunkDeleteEvent;
 import me.angeschossen.lands.api.events.LandDeleteEvent;
 
 /**
- * Delete reasons are used at the {@link ChunkDeleteEvent} and {@link LandDeleteEvent}.
+ * Describes the cause of a land or chunk deletion, reported by {@link LandDeleteEvent} and {@link ChunkDeleteEvent}.
  */
 public enum DeleteReason {
     /**
-     * Used at command execution through player or when 3rd party plugins didn't specify a delete-reason.
+     * Deleted via a player command, or by a third-party plugin that did not specify a reason.
      */
     DEFAULT,
     /**
-     * Used by 3rd party plugins.
+     * Explicitly deleted by a third-party plugin with a known cause.
      */
     PLUGIN,
     /**
-     * Deletion because of insufficient funds.
+     * Deleted because the land could not cover its upkeep cost.
      */
     UPKEEP,
     /**
-     * Forcefully deletion triggered by a server admin via a cmd.
+     * Forcefully deleted by a server administrator via a command.
      */
     ADMIN,
     /**
-     * A land is deleted because of inactivity of the owner.
+     * Deleted because the owner has been inactive for too long.
      */
     INACTIVITY,
     /**
-     * Land was captured by their enemy during war.
+     * Deleted because the land was captured by the enemy during a war.
      */
     WAR_CAPTURED,
     /**
-     * A temporary camp has expired.
+     * Deleted because a temporary camp's lifetime expired.
      */
     CAMP_EXPIRED,
     /**
-     * A land with no claims was automatically deleted.
-     * Servers can disable this in config.
+     * Deleted automatically because the land had no remaining claims.
+     * Servers can disable this behaviour in {@code config.yml}.
      */
     NO_CLAIMS,
     /**
-     * A land member that claimed chunks left the land and the land owner can't claim any more chunks.
+     * Deleted because a member who provided extra claim slots left the land
+     * and the owner no longer has enough claim capacity.
      */
     MEMBER_LEAVE
 }
