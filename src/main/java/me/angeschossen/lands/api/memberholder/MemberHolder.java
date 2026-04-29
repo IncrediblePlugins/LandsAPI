@@ -34,9 +34,9 @@ import java.util.concurrent.CompletableFuture;
  */
 public interface MemberHolder extends BalanceHolder, ExpressionEntity, CMDTarget, Changeable, LimitHolder {
     /**
-     * Add an amount of seconds to the warshiled.
+     * Add an amount of seconds to the war shield.
      *
-     * @param seconds If negative, the seconds will be subtracted from the warshield
+     * @param seconds If negative, the seconds will be subtracted from the war shield
      */
     void addWarshield(long seconds);
 
