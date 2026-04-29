@@ -11,102 +11,102 @@ import java.util.*;
  * Represents the permission nodes to limit certain aspects of the plugin.
  */
 public class Limit extends com.github.angeschossen.pluginframework.api.limit.Limit {
+    private static final Map<String, Limit> permissionToLimitMap = new HashMap<>();
+    private static final Map<String, Limit> oldNameToLimitMap = new HashMap<>();
+
     /**
      * Limits the maximum amount of lands the player can own.
      */
-    public static Limit PLAYER_LANDS_OWNED = new Limit("player_lands_owned", "lands.ownlands", "ownlands", LimitTarget.PLAYER),
+    public static Limit PLAYER_LANDS_OWNED = register(new Limit("player_lands_owned", "lands.ownlands", "ownlands", LimitTarget.PLAYER)),
     /**
      * Amount of lands a player can create for free.
      */
-    PLAYER_LANDS_OWNED_FREE = new Limit("player_lands_owned_free", "lands.free.lands", null, LimitTarget.PLAYER),
+    PLAYER_LANDS_OWNED_FREE = register(new Limit("player_lands_owned_free", "lands.free.lands", null, LimitTarget.PLAYER)),
     /**
      * Amount of temporary camps a player can have at the same time.
      */
-    PLAYER_CAMPS_OWNED = new Limit("player_camps_owned", "lands.camps", null, LimitTarget.PLAYER),
+    PLAYER_CAMPS_OWNED = register(new Limit("player_camps_owned", "lands.camps", null, LimitTarget.PLAYER)),
     /**
      * Max amount of chunks the player can select at once when creating a selection.
      */
-    PLAYER_SELECTION_SIZE = new Limit("player_selection_size", "lands.selection", null, LimitTarget.PLAYER),
+    PLAYER_SELECTION_SIZE = register(new Limit("player_selection_size", "lands.selection", null, LimitTarget.PLAYER)),
     /**
      * Limits the maximum amount of chunks the player can claim for each land they own.
      */
-    LAND_SIZE = new Limit("land_size", "lands.chunks", "chunks", LimitTarget.PLAYER, LimitTarget.LAND) {
+    LAND_SIZE = register(new Limit("land_size", "lands.chunks", "chunks", LimitTarget.PLAYER, LimitTarget.LAND) {
         @Override
         public @NotNull Collection<String> getConfigAliases() {
             return List.of("land_chunks");
         }
-    },
+    }),
     /**
      * Limits the maximum amount of trusted players the player can trust to each land they own.
      */
-    LAND_MEMBERS = new Limit("land_members", "lands.members", "members", LimitTarget.LAND),
+    LAND_MEMBERS = register(new Limit("land_members", "lands.members", "members", LimitTarget.LAND)),
     /**
      * Limits the maximum amount of disconnected parts the player can claim for each land they own.
      */
-    LAND_PARTS = new Limit("land_parts", "lands.parts", "parts", LimitTarget.LAND),
+    LAND_PARTS = register(new Limit("land_parts", "lands.parts", "parts", LimitTarget.LAND)),
     /**
      * Limits the maximum amount of sub areas for each land the player owns.
      */
-    LAND_AREAS = new Limit("land_areas", "lands.areas", "areas", LimitTarget.LAND),
+    LAND_AREAS = register(new Limit("land_areas", "lands.areas", "areas", LimitTarget.LAND)),
     /**
      * Amount of roles a land owner can create for each area inside their land.
      */
-    AREA_ROLES = new Limit("area_roles", "lands.roles", null, LimitTarget.LAND),
+    AREA_ROLES = register(new Limit("area_roles", "lands.roles", null, LimitTarget.LAND)),
     /**
      * Amount of allies a land owner can add to each land they own.
      */
-    LAND_ALLIES = new Limit("land_allies", "lands.allies", null, LimitTarget.LAND, LimitTarget.NATION),
+    LAND_ALLIES = register(new Limit("land_allies", "lands.allies", null, LimitTarget.LAND, LimitTarget.NATION)),
     /**
      * Amount of enemies a land owner can add to each land they own.
      */
-    LAND_ENEMIES = new Limit("land_enemies", "lands.enemies", null, LimitTarget.LAND, LimitTarget.NATION),
+    LAND_ENEMIES = register(new Limit("land_enemies", "lands.enemies", null, LimitTarget.LAND, LimitTarget.NATION)),
     /**
      * Limits the maximum amount of lands the player can be trusted in. This does not include lands that the player owns.
      */
-    PLAYER_LANDS_TRUSTED = new Limit("player_lands_trusted", "lands.lands", "lands", LimitTarget.PLAYER),
+    PLAYER_LANDS_TRUSTED = register(new Limit("player_lands_trusted", "lands.lands", "lands", LimitTarget.PLAYER)),
     /**
      * Sets the amount of areas a player can rent in each land they're trusted in.
      */
-    PLAYER_RENTALS = new Limit("player_rentals", "lands.rentals", null, LimitTarget.PLAYER),
+    PLAYER_RENTALS = register(new Limit("player_rentals", "lands.rentals", null, LimitTarget.PLAYER)),
     /**
      * Total amount of chunks a player can claim across a lands (owned and trusted).
      */
-    PLAYER_CHUNKS = new Limit("player_chunks", "lands.chunks.support", null, LimitTarget.PLAYER),
+    PLAYER_CHUNKS = register(new Limit("player_chunks", "lands.chunks.support", null, LimitTarget.PLAYER)),
     /**
      * Amount of chunks a player can claim for free across all lands (owned and trusted).
      */
-    PLAYER_CHUNKS_FREE = new Limit("player_chunks_free", "lands.free.chunks", null, LimitTarget.PLAYER),
+    PLAYER_CHUNKS_FREE = register(new Limit("player_chunks_free", "lands.free.chunks", null, LimitTarget.PLAYER)),
     /**
      * Amount of lands a player can add to each nation they own.
      */
-    NATION_LANDS = new Limit("nation_lands", "nations.lands", null, LimitTarget.NATION);
+    NATION_LANDS = register(new Limit("nation_lands", "nations.lands", null, LimitTarget.NATION));
 
     private final @NotNull String permission;
     private final @Nullable String oldName;
-    private static final Map<String, Limit> permissionToLimitMap = new HashMap<>();
-    private static final Map<String, Limit> oldNameToLimitMap = new HashMap<>();
     private LimitMode mode = LimitMode.PERMISSION;
 
 
-    /**
-     * Create a new limit.
-     *
-     * @param id         unique identifier for this limit
-     * @param permission the permission node whose numeric value defines the limit (e.g. {@code "lands.chunks"})
-     * @param oldName    legacy name used for backwards-compatible permission lookups, or {@code null} if there is none
-     * @param targets    one or more targets this limit applies to (player, land, or nation)
-     */
-    public Limit(@NotNull String id, @NotNull String permission, @Nullable String oldName, @NotNull LimitTarget... targets) {
+    private Limit(@NotNull String id, @NotNull String permission, @Nullable String oldName, @NotNull LimitTarget... targets) {
         super(id, targets);
 
-        this.permission = Checks.requireNonNull(permission, "permission");
+        this.permission = StringUtils.toLowerCase(Checks.requireNonNull(permission, "permission"));
         this.oldName = oldName;
+    }
 
+    public static Limit register(Limit limit) {
+        com.github.angeschossen.pluginframework.api.limit.Limit.register(limit);
+
+        permissionToLimitMap.put(limit.getPermission(), limit);
+
+        final String oldName = limit.getOldName();
         if (oldName != null) {
-            Limit.oldNameToLimitMap.put(StringUtils.toLowerCase(oldName), this);
+            oldNameToLimitMap.put(oldName, limit);
         }
 
-        Limit.permissionToLimitMap.put(StringUtils.toLowerCase(getPermission()), this);
+        return limit;
     }
 
     /**
