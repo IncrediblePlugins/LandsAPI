@@ -1,7 +1,8 @@
 package me.angeschossen.lands.api.war.captureflag;
 
 /**
- * Capture flags can be placed by players or server admins for arenas.
+ * Describes how a capture flag was placed during a war.
+ * {@link #NORMAL} flags are planted by players mid-battle; {@link #KOTH} flags are set up by server administrators at fixed arena locations.
  */
 public enum CaptureFlagType {
     /**
@@ -9,7 +10,7 @@ public enum CaptureFlagType {
      */
     NORMAL,
     /**
-     * Capture flag placed by a server adminstrator at a point of interest.
+     * Capture flag placed by a server administrator at a predefined point of interest (KoTH arena).
      */
     KOTH
 }

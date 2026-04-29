@@ -27,9 +27,9 @@ public interface TeamGiver {
     @NotNull Collection<? extends WarPlayer> getOnlineAttackers();
 
     /**
-     * Get online players of the attacker.
+     * Get online players of the defender.
      *
-     * @return Online players of the attacker
+     * @return Online players of the defender
      */
     @NotNull Collection<? extends WarPlayer> getOnlineDefenders();
 }

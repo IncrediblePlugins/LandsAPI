@@ -1,7 +1,7 @@
 package me.angeschossen.lands.api.land.rental;
 
 /**
- * Used to determine display options for rental info.
+ * Specifies where rental information will be displayed and controls format constraints such as time-unit verbosity.
  */
 public enum InfoType {
     /**
@@ -24,9 +24,11 @@ public enum InfoType {
     }
 
     /**
-     * Defines the max amount of time units.
+     * Get the maximum number of time units shown in formatted duration strings.
+     * For example, a value of {@code 1} renders only the largest unit ("3 hours") while a value of {@code 3}
+     * may render "1 hour, 5 minutes, 10 seconds".
      *
-     * @return if 1 it will only display x days or x hours etc. instead of 1 hour, 5 minutes etc.
+     * @return the maximum number of time units; always at least 1
      */
     public int getMaxTimeLength() {
         return maxTimeLength;

@@ -5,23 +5,23 @@ package me.angeschossen.lands.api.land.block;
  */
 public enum LandBlockType {
     /**
-     * The mainblock, which opens the land menu and land storage upon interaction.
+     * The main block, which opens the land menu and land storage upon interaction.
      */
     MAIN,
     /**
-     * The mainblock for camps.
+     * The main block for a temporary camp land.
      */
     MAIN_CAMP,
     /**
-     * Capture flag during war.
+     * A capture flag placed by a player during a war.
      */
     CAPTURE_FLAG,
     /**
-     * Capture flag for the KoTH gamemode.
+     * A capture flag placed at a fixed KoTH arena location.
      */
     CAPTURE_FLAG_KOTH,
     /**
-     * Rental sign or rental hologram
+     * A rental sign or hologram advertising an area for rent or sale.
      */
     RENTAL
 }

@@ -13,12 +13,12 @@ import org.jetbrains.annotations.NotNull;
 public interface NaturalFlag extends Flag<NaturalFlag>, DefaultStateFlag<NaturalFlag> {
 
     /**
-     * Create instance of a natural flag.
+     * Create a new natural flag instance.
      *
-     * @param landsIntegration the integration
-     * @param flagTarget       target of the flag
+     * @param landsIntegration the integration that owns this flag
+     * @param flagTarget       the audience that can view and toggle this flag
      * @param name             unique name of the flag
-     * @return created flag instance
+     * @return the created flag instance; never null
      */
     @NotNull
     static NaturalFlag of(@NotNull LandsIntegration landsIntegration, @NotNull FlagTarget flagTarget, @NotNull String name) {

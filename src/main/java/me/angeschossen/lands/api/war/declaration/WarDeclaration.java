@@ -20,9 +20,9 @@ public interface WarDeclaration extends WarState {
     void setTribute(double tribute);
 
     /**
-     * Set tribute, which the surrenderer must pay to the enemy if they surrender.
+     * Get the tribute that the surrenderer must pay to the enemy if they surrender.
      *
-     * @return Can't be negative
+     * @return the tribute amount; never negative
      */
     double getTribute();
 

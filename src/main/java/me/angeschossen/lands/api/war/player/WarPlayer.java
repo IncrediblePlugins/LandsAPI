@@ -6,7 +6,9 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * Holds war specific data during war for players.
+ * Tracks war-specific runtime state for an online player participating in a war,
+ * such as their scoreboard display. Instances are created when a player logs in during an active war
+ * and removed when they log out.
  */
 public interface WarPlayer {
     /**

@@ -59,11 +59,14 @@ public interface TaxHolder extends ChangeSaveable {
     String getColorName(@Nullable CommandSender sender);
 
     /**
-     * Get estimated tax revenue amount.
-     * @param self UUID of player for {@link Land} and Land for {@link me.angeschossen.lands.api.nation.Nation}.
-     * @param assumeTrusted Assume the player is trusted or the land is a member of the nation?
-     * @param before If it should calculate the tax revenue before the latest tax increase
-     * @return The estimated tax revenue
+     * Estimate the total tax revenue this land or nation would collect in a single tax cycle.
+     *
+     * @param self          for a {@link Land}: the UUID of the player to exclude from the calculation (typically the owner),
+     *                      or {@code null} to include all members;
+     *                      for a {@link me.angeschossen.lands.api.nation.Nation}: the member {@link Land} to exclude, or {@code null} to include all
+     * @param assumeTrusted if {@code true}, treat the excluded entity as trusted/member even if it isn't
+     * @param before        if {@code true}, calculate revenue as it was before the most recent tax change
+     * @return the estimated tax revenue; never negative
      */
     double getEstimatedTaxRevenue(@Nullable Object self, boolean assumeTrusted, boolean before);
 }

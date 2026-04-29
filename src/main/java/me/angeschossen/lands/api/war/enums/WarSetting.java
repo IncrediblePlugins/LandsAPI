@@ -45,6 +45,7 @@ public enum WarSetting {
 
     /**
      * Enable this setting.
+     * Once enabled, there is no API method to disable it again at runtime.
      */
     public void setEnabled() {
         this.enabled = true;

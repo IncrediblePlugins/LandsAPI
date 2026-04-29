@@ -21,12 +21,13 @@ import java.util.function.Predicate;
 public interface RoleFlag extends Flag<RoleFlag>, DefaultStateFlag<RoleFlag> {
 
     /**
-     * Create an flag instance.
-     * @param landsIntegration the integration
-     * @param flagTarget the target
-     * @param category category of the flag
-     * @param name unique name of the flag
-     * @return created instance of this flag
+     * Create a new role flag instance.
+     *
+     * @param landsIntegration the integration that owns this flag
+     * @param flagTarget       the audience that can toggle this flag
+     * @param category         the category of this flag
+     * @param name             unique name of the flag
+     * @return the created flag instance
      */
     @NotNull
     static RoleFlag of(@NotNull LandsIntegration landsIntegration, @NotNull FlagTarget flagTarget, @NotNull RoleFlagCategory category, @NotNull String name) {
@@ -34,61 +35,73 @@ public interface RoleFlag extends Flag<RoleFlag>, DefaultStateFlag<RoleFlag> {
     }
 
     /**
-     * When this flag is new on this server, specify whether or not a flag should be applied to roles of existing lands.
-     * @param predicate if you return true, this flag is enabled for the role
-     * @return instance of this flag
+     * Specifies which existing roles should have this flag enabled when it is first encountered on the server.
+     * The predicate is evaluated once per role of every existing land at startup.
+     *
+     * @param predicate return {@code true} to enable the flag for the given role
+     * @return this flag instance
      */
     @NotNull RoleFlag setUpdatePredicate(@NotNull Predicate<Role> predicate);
 
     /**
-     * Check whether or not this flag is toggleable by the nation of the land.
-     * This only applied to the nation role.
-     * @return true, if this flag is only toggleable by the nation.
+     * Check whether this flag can only be toggled by the nation that owns the land, rather than by the land itself.
+     * Only applies to the nation role.
+     *
+     * @return true if only the nation can toggle this flag for the nation role
      */
     boolean isToggleableByNation();
 
     /**
-     * Set whether or not this flag should be toggleable by the nation for the nation role.
-     * @param toggleable If true, nations can decide if player's of the nation have this flag in all lands of the nation. The lands itself won't be able the change the state for this flag.
-     * @return instance of this flag
+     * Set whether this flag should only be toggleable by the nation for the nation role.
+     * When {@code true}, the nation controls whether its members have this flag across all of its lands;
+     * individual lands cannot override the state.
+     *
+     * @param toggleable {@code true} to restrict toggling to the nation
+     * @return this flag instance
      */
     @NotNull RoleFlag setToggleableByNation(boolean toggleable);
 
     /**
-     * Send message to the player that makes clear that they're not allowed to execute the action related to this flag.
-     * @param landPlayer the receiver
-     * @param area if null, the action affets the whole land
+     * Send the player a message explaining that they are not allowed to perform the action governed by this flag.
+     *
+     * @param landPlayer the player to notify
+     * @param area       the specific area where the action was attempted, or {@code null} if the restriction applies to the whole land
      */
     void sendDenied(@NotNull LandPlayer landPlayer, @Nullable Area area);
 
     /**
-     * Send message to the player that makes clear that they're not allowed to execute an action related to this flag in the war.
-     * @param landPlayer the receiver
-     * @param land If null, this action affects wars in general and not a specific land that is in war.
+     * Send the player a message explaining that they are not allowed to perform the action governed by this flag during a war.
+     *
+     * @param landPlayer the player to notify
+     * @param land       the land currently in war, or {@code null} if the restriction applies to wars in general
      */
     void sendDeniedInWar(@NotNull LandPlayer landPlayer, @Nullable Land land);
 
     /**
-     * Get update predicate.
-     * @return predicate that defines, if this flag should be applied to an role of existing lands, when this flag is available for the first time on the server.
+     * Get the predicate that determines which existing roles should have this flag enabled on first startup.
+     *
+     * @return predicate applied to each role; never null
      */
     @NotNull Predicate<Role> getUpdatePredicate();
 
     /**
-     * Get permission that allows players to bypass restrictions that this flag imposes, like breaking blocks ({@link Flags#BLOCK_BREAK}) etc.
-     * To get the bypass permission for the wilderness, use {@link #getBypassPermissionWilderness()}.
-     * @return bypass permission that allows players to bypass this flag
+     * Get the permission node that allows players to bypass restrictions imposed by this flag (e.g. breaking blocks despite {@link Flags#BLOCK_BREAK} being disabled).
+     * For the equivalent wilderness bypass, use {@link #getBypassPermissionWilderness()}.
+     *
+     * @return the bypass permission node; never null
      */
     @NotNull String getBypassPermission();
 
     /**
-     * Get permission that allows players to bypass restrictions that this flag imposes in the wilderness, like breaking blocks ({@link Flags#BLOCK_BREAK}) etc.
-     * @return bypass permission that allows players to bypass this flag in the wilderness
+     * Get the permission node that allows players to bypass restrictions imposed by this flag in the wilderness.
+     *
+     * @return the wilderness bypass permission node; never null
      */
     @NotNull String getBypassPermissionWilderness();
 
     /**
      * Get the category of this flag.
+     *
      * @return never null
      */
     @NotNull RoleFlagCategory getCategory();

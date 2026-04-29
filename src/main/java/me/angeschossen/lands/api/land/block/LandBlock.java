@@ -6,7 +6,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * Special blocks that can be placed inside a land.
+ * Represents a special block (or multi-block structure) placed inside a land, such as the land main block,
+ * a capture flag, or a rental sign. See {@link LandBlockType} for the available types.
  */
 public interface LandBlock {
     /**
