@@ -17,79 +17,74 @@ public class Limit extends com.github.angeschossen.pluginframework.api.limit.Lim
     /**
      * Limits the maximum amount of lands the player can own.
      */
-    public static Limit PLAYER_LANDS_OWNED = register(new Limit("player_lands_owned", "lands.ownlands", "ownlands", LimitTarget.PLAYER)),
+    public static Limit PLAYER_LANDS_OWNED;
     /**
      * Amount of lands a player can create for free.
      */
-    PLAYER_LANDS_OWNED_FREE = register(new Limit("player_lands_owned_free", "lands.free.lands", null, LimitTarget.PLAYER)),
+    public static Limit PLAYER_LANDS_OWNED_FREE;
     /**
      * Amount of temporary camps a player can have at the same time.
      */
-    PLAYER_CAMPS_OWNED = register(new Limit("player_camps_owned", "lands.camps", null, LimitTarget.PLAYER)),
+    public static Limit PLAYER_CAMPS_OWNED;
     /**
      * Max amount of chunks the player can select at once when creating a selection.
      */
-    PLAYER_SELECTION_SIZE = register(new Limit("player_selection_size", "lands.selection", null, LimitTarget.PLAYER)),
+    public static Limit PLAYER_SELECTION_SIZE;
     /**
      * Limits the maximum amount of chunks the player can claim for each land they own.
      */
-    LAND_SIZE = register(new Limit("land_size", "lands.chunks", "chunks", LimitTarget.PLAYER, LimitTarget.LAND) {
-        @Override
-        public @NotNull Collection<String> getConfigAliases() {
-            return List.of("land_chunks");
-        }
-    }),
+    public static Limit LAND_SIZE;
     /**
      * Limits the maximum amount of trusted players the player can trust to each land they own.
      */
-    LAND_MEMBERS = register(new Limit("land_members", "lands.members", "members", LimitTarget.LAND)),
+    public static Limit LAND_MEMBERS;
     /**
      * Limits the maximum amount of disconnected parts the player can claim for each land they own.
      */
-    LAND_PARTS = register(new Limit("land_parts", "lands.parts", "parts", LimitTarget.LAND)),
+    public static Limit LAND_PARTS;
     /**
      * Limits the maximum amount of sub areas for each land the player owns.
      */
-    LAND_AREAS = register(new Limit("land_areas", "lands.areas", "areas", LimitTarget.LAND)),
+    public static Limit LAND_AREAS;
     /**
      * Amount of roles a land owner can create for each area inside their land.
      */
-    AREA_ROLES = register(new Limit("area_roles", "lands.roles", null, LimitTarget.LAND)),
+    public static Limit AREA_ROLES;
     /**
      * Amount of allies a land owner can add to each land they own.
      */
-    LAND_ALLIES = register(new Limit("land_allies", "lands.allies", null, LimitTarget.LAND, LimitTarget.NATION)),
+    public static Limit LAND_ALLIES;
     /**
      * Amount of enemies a land owner can add to each land they own.
      */
-    LAND_ENEMIES = register(new Limit("land_enemies", "lands.enemies", null, LimitTarget.LAND, LimitTarget.NATION)),
+    public static Limit LAND_ENEMIES;
     /**
      * Limits the maximum amount of lands the player can be trusted in. This does not include lands that the player owns.
      */
-    PLAYER_LANDS_TRUSTED = register(new Limit("player_lands_trusted", "lands.lands", "lands", LimitTarget.PLAYER)),
+    public static Limit PLAYER_LANDS_TRUSTED;
     /**
      * Sets the amount of areas a player can rent in each land they're trusted in.
      */
-    PLAYER_RENTALS = register(new Limit("player_rentals", "lands.rentals", null, LimitTarget.PLAYER)),
+    public static Limit PLAYER_RENTALS;
     /**
      * Total amount of chunks a player can claim across a lands (owned and trusted).
      */
-    PLAYER_CHUNKS = register(new Limit("player_chunks", "lands.chunks.support", null, LimitTarget.PLAYER)),
+    public static Limit PLAYER_CHUNKS;
     /**
      * Amount of chunks a player can claim for free across all lands (owned and trusted).
      */
-    PLAYER_CHUNKS_FREE = register(new Limit("player_chunks_free", "lands.free.chunks", null, LimitTarget.PLAYER)),
+    public static Limit PLAYER_CHUNKS_FREE;
     /**
      * Amount of lands a player can add to each nation they own.
      */
-    NATION_LANDS = register(new Limit("nation_lands", "nations.lands", null, LimitTarget.NATION));
+    public static Limit NATION_LANDS;
 
     private final @NotNull String permission;
     private final @Nullable String oldName;
     private LimitMode mode = LimitMode.PERMISSION;
 
 
-    private Limit(@NotNull String id, @NotNull String permission, @Nullable String oldName, @NotNull LimitTarget... targets) {
+    public Limit(@NotNull String id, @NotNull String permission, @Nullable String oldName, @NotNull LimitTarget... targets) {
         super(id, targets);
 
         this.permission = StringUtils.toLowerCase(Checks.requireNonNull(permission, "permission"));
